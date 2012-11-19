@@ -1,0 +1,5 @@
+# Form config file root/forms/projects/manage.fb
+name: users
+method: post
+
+submit: Update users

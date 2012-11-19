@@ -1,0 +1,60 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $mkdatadir, $datadir, $errormessage );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+     $mkdatadir = exists $pos{'mkdatadir'} ? $_[ $pos{'mkdatadir'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+     $datadir = exists $pos{'datadir'} ? $_[ $pos{'datadir'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+     $errormessage = exists $pos{'errormessage'} ? $_[ $pos{'errormessage'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 6 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+$m->print( '<results dir="' );
+#line 6 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+$m->print(  $datadir  );
+#line 6 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+$m->print( '" 
+' );
+#line 7 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+ if ($mkdatadir eq "succeeded") {
+$m->print( '  mkdatadir="success" />
+' );
+#line 9 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+  }
+ elsif ($mkdatadir eq "failed") {
+$m->print( '  mkdatadir="failed" >
+  ' );
+#line 12 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+$m->print( $m->interp->apply_escapes( (join '', ( $errormessage)), 'h' ) );
+#line 12 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+$m->print( '
+</results>
+' );
+#line 14 /home/dragonfly/df/DragonFlyFM/root/mkdatadir.html
+ }
+;return;
+},
+'declared_args' => {
+  '$datadir' => { default => ' undef' },
+  '$errormessage' => { default => ' undef' },
+  '$mkdatadir' => { default => ' undef' }
+},
+'load_time' => 1227637823,
+
+)
+;

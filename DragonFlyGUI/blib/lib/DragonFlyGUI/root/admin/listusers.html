@@ -1,0 +1,71 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$users	=> undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+<!-- setting up Tabs script ... -->
+
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+ <p class="clear" />
+ <H3>List of users</H3>
+ 
+ <table id="myTable-users" cellspacing="1" class="tablesorter">
+  <thead>
+   <tr>
+    <th >id</th>
+    <th>username</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>active</th>
+   </tr>
+ </thead>
+ <tbody>
+% foreach my $id (sort {$a <=> $b} keys %{$users})
+%  {
+   <tr>
+%   foreach my $field (qw(id username first_name last_name active))
+%    {    
+      <td>
+%      if ($field eq "id") {
+	<a href="/admin/edituser/<% $id %>">
+%       }      
+       <% $users->{$id}->{$field} %>
+%      if ($field eq "id") {
+	</a >
+%       }      
+       
+      </td>
+%    } 
+   </tr> 
+%  }  
+
+
+ </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+ 
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

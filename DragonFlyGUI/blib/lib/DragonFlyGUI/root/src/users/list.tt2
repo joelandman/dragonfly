@@ -1,0 +1,21 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'Users List' -%]
+
+<table>
+<tr><th>Title</th><th>User</th><th>List</th></tr>
+[% # Display each user in a table row %]
+[% FOREACH user IN users -%]
+  <tr>
+    <td>[% user.id %]</td>
+    <td>[% user.first_name %]</td>
+    <td>[% user.last_name %]</td>
+    <td>[% user.login_name %]</td>
+    <td>[% user.email_addr %]</td>
+    <td>[% user.phone_office %]</td>
+    <td>[% user.phone_cell %]</td>
+    <td>[% user.date_added %]</td>
+    <td>[% user.enabled %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

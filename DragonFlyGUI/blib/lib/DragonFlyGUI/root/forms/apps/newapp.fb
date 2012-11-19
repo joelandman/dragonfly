@@ -1,0 +1,5 @@
+# Form config file root/forms/apps/newapp.fb
+name: jobs_newapp
+method: post
+submit: Cancel, Next
+reset:  Reset

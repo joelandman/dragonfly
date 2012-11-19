@@ -1,0 +1,31 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$forms  => undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/left.mas,        links   => $left  &>
+<& /components/body.mas,        main    => $body  &>
+
+
+<H3>Review the job you are about to save</H3>
+<p>
+<H4>Do you wish to save this job?</H2>
+<p> <% $forms->render %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

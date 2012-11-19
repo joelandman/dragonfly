@@ -1,0 +1,9 @@
+<%args>
+$rc	=> undef
+</%args>
+% use XML::Dumper;
+% my $dump = new XML::Dumper;
+<?xml version="1.0" ?>
+<rc>
+ <% $dump->pl2xml( $rc ) %>
+</rc>

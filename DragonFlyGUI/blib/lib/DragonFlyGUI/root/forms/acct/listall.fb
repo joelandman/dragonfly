@@ -1,0 +1,4 @@
+# Form config file root/forms/acct/listall.fb
+name: acct_listall
+method: post
+submit: Create Excel File

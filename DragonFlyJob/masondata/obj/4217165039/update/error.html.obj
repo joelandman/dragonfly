@@ -1,0 +1,54 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $error, $updatable_fields );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+     $error = exists $pos{'error'} ? $_[ $pos{'error'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+     $updatable_fields = exists $pos{'updatable_fields'} ? $_[ $pos{'updatable_fields'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 5 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+$m->print( '<?xml version="1.0" ?>
+<error>
+ ' );
+#line 7 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+$m->print(  $error  );
+#line 7 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+$m->print( '
+' );
+#line 8 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+ if ( $updatable_fields ) {
+$m->print( ' Updatable fields: ' );
+#line 9 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+$m->print(  join(", ",@{$updatable_fields} )  );
+#line 9 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+$m->print( '
+' );
+#line 10 /home/dragonfly/df/DragonFlyJob/root/update/error.html
+ }
+$m->print( '</error>
+' );
+;return;
+},
+'declared_args' => {
+  '$error' => { default => ' undef' },
+  '$updatable_fields' => { default => ' undef' }
+},
+'load_time' => 1223341717,
+
+)
+;

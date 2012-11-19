@@ -1,0 +1,115 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $enable_jquery );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyFM/root/components/navigation.mas
+     $enable_jquery = exists $pos{'enable_jquery'} ? $_[ $pos{'enable_jquery'} ] : 	1;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyFM/root/components/navigation.mas
+$m->print( '<!-- in navigation.mas -->
+' );
+#line 5 /home/dragonfly/df/DragonFlyFM/root/components/navigation.mas
+ if ($enable_jquery) {
+$m->print( ' <!-- setting up jQuery navigation -->
+
+<script src="/js/jquery.bgiframe.js" type="text/javascript"></script>
+<script src="/js/jquery.dimensions.js" type="text/javascript"></script>
+<script src="/js/jquery.jdMenu.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery.tablesorter.pack.js"></script> 
+<script type="text/javascript">
+// Initialization, you can leave this here or move this somewhere else
+$(function(){
+   $(\'ul.jd_menu\').jdMenu({	onShow: loadMenu
+							   //onHideCheck: onHideCheckMenu,
+							   //onHide: onHideMenu, 
+							   //onClick: onClickMenu, 
+							   //onAnimate: onAnimate
+							   });
+   $(\'ul.jd_menu_vertical\').jdMenu({onShow: loadMenu, onHide: unloadMenu, offset: 1, onAnimate: onAnimate});
+});
+
+function onAnimate(show) {
+	//$(this).fadeIn(\'slow\').show();
+	if (show) {
+		$(this)
+			.css(\'visibility\', \'hidden\').show()
+				.css(\'width\', $(this).innerWidth())
+			.hide().css(\'visibility\', \'visible\')
+		.fadeIn(\'normal\');
+	} else {
+		$(this).fadeOut(\'fast\');
+	}
+}
+
+var MENU_COUNTER = 1;
+function loadMenu() {
+	if (this.id == \'dynamicMenu\') {
+		$(\'> ul > li\', this).remove();
+
+		var ul = $(\'<ul></ul>\');
+		var t = MENU_COUNTER + 10;
+		for (; MENU_COUNTER < t; MENU_COUNTER++) {
+			$(\'> ul\', this).append(\'<li>Item \' + MENU_COUNTER + \'</li>\');
+		}
+	}
+}
+
+function unloadMenu() {
+	if (MENU_COUNTER >= 30) {
+		MENU_COUNTER = 1;
+	}
+}
+
+// We\'re passed a UL
+function onHideCheckMenu() {
+	return !$(this).parent().is(\'.LOCKED\');
+}
+
+// We\'re passed a LI
+function onClickMenu() {
+	$(this).toggleClass(\'LOCKED\');
+	return true;
+}
+</script>
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+      $("#myTable").tablesorter(); 
+    } 
+); 
+</script>
+
+<link rel="stylesheet" href="/style/jdMenu.css" type="text/css" />
+<link rel="stylesheet" href="/style/jdMenu.slate.css" type="text/css" />
+
+        
+ <!-- done setting up jQuery navigation bar -->
+
+' );
+#line 81 /home/dragonfly/df/DragonFlyFM/root/components/navigation.mas
+ }
+$m->print( '<!-- end of navigation.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$enable_jquery' => { default => '	1;' }
+},
+'load_time' => 1222744732,
+
+)
+;

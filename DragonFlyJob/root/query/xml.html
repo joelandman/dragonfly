@@ -1,0 +1,20 @@
+<%args>
+$hash   => undef
+</%args>
+<?xml version="1.0" ?>
+<jobs>
+% foreach my $job ( @{$hash} )
+%  {
+ <job
+%   foreach my $tag ( sort keys %{$job} )
+%    {
+%      next if ($tag =~ /jobxml/);
+       <% $tag %>="<% $job->{$tag} %>"
+%    }
+  >
+  <jobxml>
+   <% $job->{'jobxml'} %>
+  </jobxml>    
+ </job>
+%  }
+</jobs>

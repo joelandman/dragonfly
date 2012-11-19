@@ -1,0 +1,5 @@
+# Form config file root/forms/apps/getargs.fb
+name: jobs_getargs
+method: post
+submit: Cancel, Previous, Add this Argument, Done with Arguments
+reset:  Reset

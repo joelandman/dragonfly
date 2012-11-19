@@ -1,0 +1,44 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $tab );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/table.mas
+     $tab = exists $pos{'tab'} ? $_[ $pos{'tab'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/components/table.mas
+$m->print( '<!-- in table.mas -->
+
+
+<!-- setting up table ... -->
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+); 
+</script>
+<!-- done with table.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$tab' => { default => ' undef' }
+},
+'load_time' => 1223220204,
+
+)
+;

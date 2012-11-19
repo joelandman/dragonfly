@@ -1,0 +1,134 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $tab );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+     $tab = exists $pos{'tab'} ? $_[ $pos{'tab'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '<!-- in create_tabs.mas -->
+' );
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+
+my @array =  ('a'..'z','A'..'Z');
+my (@container_letters,$container,$this);
+map {push @container_letters,$array[int(rand scalar(@array))]} (1..8);
+$container	= join("",@container_letters);
+#line 11 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '
+' );
+#line 12 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+
+# tabs come in via an array of hashes with the following structure
+#
+# $tab[...] = { label=>"..." uri=>"...",content=>"..."  }
+#
+# they are pre-arranged in order in the array for easy traversal
+#
+return if (!$tab);	# if there is no work to do, then return
+
+# now generate the tabs from the tab data structure
+#line 23 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '
+<!-- setting up Tabs script ... -->
+<script type="text/javascript">
+ $(function() {
+     $(\'#tab-container-' );
+#line 27 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $container)), 'h' ) );
+#line 27 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '\').tabs();              
+ });
+</script>
+<!-- end of Tabs script setup ... -->
+
+<!-- setting up tabs -->
+' );
+#line 33 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ # setup the tab container
+$m->print( '<div id="tab-container-' );
+#line 34 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $container)), 'h' ) );
+#line 34 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '">
+ <ul>
+
+' );
+#line 37 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ # set up UL to each tab element
+foreach $this (@$tab)
+ {
+$m->print( '   <li>
+    <a href="#' );
+#line 41 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $this->{uri})), 'h' ) );
+#line 41 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '">
+     <span>
+      ' );
+#line 43 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $this->{label})), 'h' ) );
+#line 43 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '
+     </span>
+    </a>
+   </li>
+' );
+#line 47 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ }
+$m->print( ' </ul>
+
+' );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ # now create each div container for each tab, and put the content there ...
+foreach $this (@$tab)
+ {
+$m->print( '   <div align="center" id="' );
+#line 53 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $this->{uri})), 'h' ) );
+#line 53 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '">    
+      ' );
+#line 54 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print(  $this->{content}  );
+#line 54 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+$m->print( '    
+   </div>
+' );
+#line 56 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ }
+$m->print( '
+' );
+#line 58 /home/dragonfly/df/DragonFlyGUI/root/components/create_tabs.mas
+ # terminate the tab div container ...
+$m->print( '</div>
+
+<!-- end of tabs setup ... -->
+
+
+
+<!-- done with create_tabs.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$tab' => { default => ' undef' }
+},
+'load_time' => 1222744045,
+
+)
+;

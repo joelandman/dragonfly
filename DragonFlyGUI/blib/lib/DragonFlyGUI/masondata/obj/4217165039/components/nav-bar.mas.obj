@@ -1,0 +1,292 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $navbar );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '
+<!-- in nav-bar.mas -->
+
+' );
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+
+my @array =  ('a'..'z','A'..'Z');
+my (@container_letters,$container,$this,$menu);
+map {push @container_letters,$array[int(rand scalar(@array))]} (1..8);
+$container	= join("",@container_letters);
+
+
+
+
+# navbar comes in via an hash of hashes with the following structure
+#
+# $navbar->{top} = [{ label=>"..." , text=>"...", uri=>"...",submenu=>"..."}, ...]
+# $navbar->{submenu}->{$label} = [{ label=>"..." , text=>"...", uri=>"...",submenu=>"..."}, ...]
+# 
+# so that $navbar->{top} is an array, and populated in order of appearance
+# where "top" signifies the top level menu
+#       "label" is the menu id label 
+#       "text" is the text in the menu
+#       "uri" if defined is the URI to the link that this menu represents
+#       "submenu" if defined points to the submenu named as the next level down
+#                 only one level of submenu is currently supported
+#       
+#
+# they are pre-arranged in order in the array for easy traversal
+#
+ 
+if (!$navbar)
+ {
+  #
+  # handle case of no pre-defined navbar, emit 'default' navbar
+ 
+  push @{$navbar->{top}},{
+             label      => "admin",
+             text       => "Admin",
+             submenu    => "admin"
+            };           
+  push @{$navbar->{submenu}->{admin}},{
+             label      => "adduser",
+             text       => "Add users",
+             uri        => "/admin/adduser"
+            };
+  push @{$navbar->{submenu}->{admin}},{
+             label      => "listuser",
+             text       => "List users",
+             uri        => "/admin/listuser"
+            };
+  push @{$navbar->{top}},{
+             label      => "projects",
+             text       => "Projects",
+             submenu    => "projects"
+            };           
+  push @{$navbar->{submenu}->{projects}},{
+             label      => "List",
+             text       => "List projects",
+             uri        => "/projects/list"
+            };
+#if ( $c->check_user_roles( 'admin' ) ) {
+  push @{$navbar->{submenu}->{projects}},{
+             label      => "Create",
+             text       => "Create new project",
+             uri        => "/projects/add_project"
+            };
+#}
+  push @{$navbar->{top}},{
+             label      => "apps",
+             text       => "Apps",
+             submenu    => "apps"
+            };
+  push @{$navbar->{submenu}->{apps}},{
+             label      => "list",
+             text       => "List Applications",
+             uri        => "/apps/list"
+            };
+#if ( $c->check_user_roles( 'admin' ) ) {           
+  push @{$navbar->{submenu}->{apps}},{
+             label      => "add",
+             text       => "Add an Application",
+             uri        => "/apps/add"
+            };
+#}
+  push @{$navbar->{top}},{
+             label      => "jobs",
+             text       => "Jobs",
+             submenu    => "jobs"
+            };
+  push @{$navbar->{submenu}->{jobs}},{
+             label      => "list",
+             text       => "List jobs",
+             uri        => "/jobs/list"
+            };
+  push @{$navbar->{submenu}->{jobs}},{
+             label      => "new",
+             text       => "Create New job",
+             uri        => "/jobs/newjob00"
+            };
+  push @{$navbar->{top}},{
+             label      => "acct",
+             text       => "Accounting",
+             submenu    => "acct"
+            };
+  push @{$navbar->{submenu}->{acct}},{
+             label      => "list",
+             text       => "All Jobs",
+             uri        => "/acct/listall"
+            };
+  push @{$navbar->{submenu}->{acct}},{
+             label      => "info",
+             text       => "Select jobs",
+             uri        => "/acct/acctinfo"
+            };                  
+            
+  push @{$navbar->{top}},{
+             label      => "files",
+             text       => "Files",
+             submenu    => "files"
+            };      
+  push @{$navbar->{submenu}->{files}},{
+             label      => "manage",
+             text       => "Manage files",
+             uri        => "/files"
+            };
+
+
+  push @{$navbar->{top}},{
+             label      => "help",
+             text       => "Help",
+             submenu    => "help"
+            };      
+  push @{$navbar->{submenu}->{help}},{
+             label      => "feedback",
+             text       => "Feedback",
+             uri        => "/admin/feedback"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "howto",
+             text       => "How do I ...",
+             uri        => "/help/howto"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "RFE",
+             text       => "Request feature",
+             uri        => "/admin/rfe"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "admin",
+             text       => "Request administrator contact me",
+             uri        => "/admin/support_request"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "bug",
+             text       => "Report bug",
+             uri        => "/help/bug"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "search",
+             text       => "Search help system",
+             uri        => "/help/search"
+            };
+
+
+  push @{$navbar->{top}},{
+             label      => "logout",
+             text       => "Logout",
+             uri        => "/logout"
+            };      
+
+ };
+
+# now generate the tabs from the tab data structure
+#line 177 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '
+' );
+#line 178 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+ # external enclosing div and UL
+$m->print( '<div align="left">
+ <ul class="jd_menu jd_menu_slate accessible " style="width: 800px;">
+
+' );
+#line 182 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+ foreach $this (@{$navbar->{top}}) 
+  {
+$m->print( '    <li>
+' );
+#line 185 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+   if (defined($this->{uri}))
+    {
+$m->print( '      <a href="' );
+#line 187 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print(   ($this->{uri})  );
+#line 187 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '" >
+' );
+#line 188 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+    }
+$m->print( '      ' );
+#line 189 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( $m->interp->apply_escapes( (join '', (  $this->{text})), 'h' ) );
+#line 189 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+' );
+#line 190 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+   if (defined($this->{submenu}))
+    {
+$m->print( '        
+
+' );
+#line 194 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+ # generate submenu
+$m->print( '       <ul class="accessible">
+' );
+#line 196 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+ foreach $menu (@{$navbar->{submenu}->{$this->{submenu}}})
+  { 
+$m->print( '        <li>
+	 <a href="' );
+#line 199 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print(  $menu->{uri}  );
+#line 199 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '">
+	   ' );
+#line 200 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $menu->{text})), 'h' ) );
+#line 200 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+$m->print( '
+	 </a>
+	</li>
+' );
+#line 203 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+  }
+$m->print( '	
+	
+       </ul>       
+' );
+#line 207 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+    }
+$m->print( '       
+' );
+#line 209 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+   if (defined($this->{uri}))
+    {
+$m->print( '      </a>
+' );
+#line 212 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+    }
+$m->print( ' 
+    </li>
+' );
+#line 215 /home/dragonfly/df/DragonFlyGUI/root/components/nav-bar.mas
+  }
+$m->print( ' </ul>
+ 
+
+
+</div> 
+<!-- end of nav-bar.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$navbar' => { default => ' undef;' }
+},
+'load_time' => 1223222687,
+
+)
+;

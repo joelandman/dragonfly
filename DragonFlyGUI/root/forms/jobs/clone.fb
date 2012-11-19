@@ -1,0 +1,4 @@
+# Form config file root/forms/jobs/clone.fb
+name: clone
+method: post
+submit: Return to Job List, Submit This Job

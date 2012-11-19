@@ -1,0 +1,22 @@
+<!-- from footer.mas -->
+% use POSIX qw(strftime);
+<div class="footer" >
+ <p class="clear" />
+ <div id="header-left">
+  <a href="http://scalableinformatics.com" style="border-style: none;vertical-align: middle" border="0">
+   <img src="/static/images/dragonfly72_sm-med.png" alt="DragonFly" class="left-image" border="0" /> 
+  </a>
+ </div>
+ 
+ <div id="header-right" >
+   <img src="/static/images/72-si-slogan-tight_sm-med.jpg" alt="Simply faster" class="right-image" style="vertical-align: middle"/>
+ </div>
+
+<div align="center">
+  Copyright &copy; 2003-<% (strftime "%Y",localtime) %>  Scalalable Informatics
+  All trademarks are properties of their respective owners.
+  <strong>DragonFly</strong> is commercially licensed software.
+  Contact <a href="http://scalableinformatics.com">Scalable Informatics</a> for details.
+ </div>
+</div>
+<!-- end of footer.mas -->

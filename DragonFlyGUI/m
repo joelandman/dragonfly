@@ -1,0 +1,1134 @@
+Odd number of elements in anonymous hash at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Catalyst/Component.pm line 93.
+Constant subroutine DragonFlyGUI::Controller::Jobs::true redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::false redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::true redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::false redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Subroutine initialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 70.
+Subroutine uninitialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 88.
+Subroutine reinitialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 101.
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[warn] You are running an old script!
+
+  Please update by running (this will overwrite existing files):
+    catalyst.pl -force -scripts DragonFlyGUI
+
+  or (this will not overwrite existing files):
+    catalyst.pl -scripts DragonFlyGUI
+
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::Authentication  0.10007                                  |
+| Catalyst::Plugin::Authentication::Credential::Password                     |
+| Catalyst::Plugin::Authentication::Store::DBIC  0.11                        |
+| Catalyst::Plugin::Authorization::Roles  0.07                               |
+| Catalyst::Plugin::Config::YAML  0.04                                       |
+| Catalyst::Plugin::ConfigLoader  0.21                                       |
+| Catalyst::Plugin::Redirect  0.02                                           |
+| Catalyst::Plugin::Session  0.19                                            |
+| Catalyst::Plugin::Session::State::Cookie  0.09                             |
+| Catalyst::Plugin::Session::Store::File  0.13                               |
+| Catalyst::Plugin::StackTrace  0.09                                         |
+| Catalyst::Plugin::Static::Simple  0.20                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/home/dragonfly/df/DragonFlyGUI"
+[debug] Loaded Config "/home/dragonfly/df/DragonFlyGUI/dragonflygui.yml"
+[warn] Authentication::Store::DBIC is deprecated!
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| DragonFlyGUI::Controller::Acct                                  | instance |
+| DragonFlyGUI::Controller::Admin                                 | instance |
+| DragonFlyGUI::Controller::Apps                                  | instance |
+| DragonFlyGUI::Controller::Files                                 | instance |
+| DragonFlyGUI::Controller::Help                                  | instance |
+| DragonFlyGUI::Controller::Jobs                                  | instance |
+| DragonFlyGUI::Controller::Login                                 | instance |
+| DragonFlyGUI::Controller::Logout                                | instance |
+| DragonFlyGUI::Controller::Main                                  | instance |
+| DragonFlyGUI::Controller::Projects                              | instance |
+| DragonFlyGUI::Controller::Root                                  | instance |
+| DragonFlyGUI::Controller::Users                                 | instance |
+| DragonFlyGUI::Model::DragonFlyGUIDB                             | instance |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Job                        | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Project                    | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Role                       | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::User                       | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::UserRole                   | class    |
+| DragonFlyGUI::View::Mason                                       | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | DragonFlyGUI::Controller::Root       | default      |
+| /end                 | DragonFlyGUI::Controller::Root       | end          |
+| /index               | DragonFlyGUI::Controller::Root       | index        |
+| /ping                | DragonFlyGUI::Controller::Root       | ping         |
+| /auto                | DragonFlyGUI::Controller::Root       | auto         |
+| /jobs/review         | DragonFlyGUI::Controller::Jobs       | review       |
+| /jobs/submit         | DragonFlyGUI::Controller::Jobs       | submit       |
+| /jobs/newjob00       | DragonFlyGUI::Controller::Jobs       | newjob00     |
+| /jobs/submitjob      | DragonFlyGUI::Controller::Jobs       | submitjob    |
+| /jobs/clone          | DragonFlyGUI::Controller::Jobs       | clone        |
+| /jobs/xml            | DragonFlyGUI::Controller::Jobs       | xml          |
+| /jobs/list_one       | DragonFlyGUI::Controller::Jobs       | list_one     |
+| /jobs/runjob         | DragonFlyGUI::Controller::Jobs       | runjob       |
+| /jobs/list           | DragonFlyGUI::Controller::Jobs       | list         |
+| /jobs/list2          | DragonFlyGUI::Controller::Jobs       | list2        |
+| /jobs/stop           | DragonFlyGUI::Controller::Jobs       | stop         |
+| /jobs/rerun          | DragonFlyGUI::Controller::Jobs       | rerun        |
+| /jobs/build_jobxml   | DragonFlyGUI::Controller::Jobs       | build_jobxml |
+| /jobs/default        | DragonFlyGUI::Controller::Jobs       | default      |
+| /jobs/newjob1        | DragonFlyGUI::Controller::Jobs       | newjob1      |
+| /jobs/editjob        | DragonFlyGUI::Controller::Jobs       | editjob      |
+| /jobs/on_submit_tri- | DragonFlyGUI::Controller::Jobs       | on_submit_t- |
+| ggered_pre           |                                      | riggered_pre |
+| /jobs/delete         | DragonFlyGUI::Controller::Jobs       | delete       |
+| /jobs/newjob0        | DragonFlyGUI::Controller::Jobs       | newjob0      |
+| /login/index         | DragonFlyGUI::Controller::Login      | index        |
+| /login/licensing     | DragonFlyGUI::Controller::Login      | licensing    |
+| /help/search         | DragonFlyGUI::Controller::Help       | search       |
+| /help/default        | DragonFlyGUI::Controller::Help       | default      |
+| /help/bug            | DragonFlyGUI::Controller::Help       | bug          |
+| /help/feedback       | DragonFlyGUI::Controller::Help       | feedback     |
+| /help/howto          | DragonFlyGUI::Controller::Help       | howto        |
+| /help/contactme      | DragonFlyGUI::Controller::Help       | contactme    |
+| /help/rfe            | DragonFlyGUI::Controller::Help       | rfe          |
+| /acct/listsome       | DragonFlyGUI::Controller::Acct       | listsome     |
+| /acct/jobdata        | DragonFlyGUI::Controller::Acct       | jobdata      |
+| /acct/acctinfo       | DragonFlyGUI::Controller::Acct       | acctinfo     |
+| /acct/jobs           | DragonFlyGUI::Controller::Acct       | jobs         |
+| /acct/index          | DragonFlyGUI::Controller::Acct       | index        |
+| /acct/listall        | DragonFlyGUI::Controller::Acct       | listall      |
+| /acct/xml            | DragonFlyGUI::Controller::Acct       | xml          |
+| /apps/getargs        | DragonFlyGUI::Controller::Apps       | getargs      |
+| /apps/addarg         | DragonFlyGUI::Controller::Apps       | addarg       |
+| /apps/add            | DragonFlyGUI::Controller::Apps       | add          |
+| /apps/review         | DragonFlyGUI::Controller::Apps       | review       |
+| /apps/addenvcopy     | DragonFlyGUI::Controller::Apps       | addenvcopy   |
+| /apps/appupdate      | DragonFlyGUI::Controller::Apps       | appupdate    |
+| /apps/xml            | DragonFlyGUI::Controller::Apps       | xml          |
+| /apps/list           | DragonFlyGUI::Controller::Apps       | list         |
+| /apps/newapp         | DragonFlyGUI::Controller::Apps       | newapp       |
+| /apps/appdata        | DragonFlyGUI::Controller::Apps       | appdata      |
+| /apps/getparms       | DragonFlyGUI::Controller::Apps       | getparms     |
+| /apps/addenv         | DragonFlyGUI::Controller::Apps       | addenv       |
+| /apps/default        | DragonFlyGUI::Controller::Apps       | default      |
+| /apps/generate_appx- | DragonFlyGUI::Controller::Apps       | generate_ap- |
+| ml                   |                                      | pxml         |
+| /apps/index          | DragonFlyGUI::Controller::Apps       | index        |
+| /apps/addparam       | DragonFlyGUI::Controller::Apps       | addparam     |
+| /apps/addexecutable  | DragonFlyGUI::Controller::Apps       | addexecutab- |
+|                      |                                      | le           |
+| /apps/addmpi         | DragonFlyGUI::Controller::Apps       | addmpi       |
+| /apps/addreview      | DragonFlyGUI::Controller::Apps       | addreview    |
+| /main/index          | DragonFlyGUI::Controller::Main       | index        |
+| /admin/adduser       | DragonFlyGUI::Controller::Admin      | adduser      |
+| /admin/listuser      | DragonFlyGUI::Controller::Admin      | listuser     |
+| /admin/support_requ- | DragonFlyGUI::Controller::Admin      | support_req- |
+| est                  |                                      | uest         |
+| /admin/feedback      | DragonFlyGUI::Controller::Admin      | feedback     |
+| /admin/index         | DragonFlyGUI::Controller::Admin      | index        |
+| /admin/edituser      | DragonFlyGUI::Controller::Admin      | edituser     |
+| /admin/rfe           | DragonFlyGUI::Controller::Admin      | rfe          |
+| /files/index         | DragonFlyGUI::Controller::Files      | index        |
+| /projects/listxxx    | DragonFlyGUI::Controller::Projects   | listxxx      |
+| /projects/form_crea- | DragonFlyGUI::Controller::Projects   | form_create- |
+| te_do                |                                      | _do          |
+| /projects/dumper     | DragonFlyGUI::Controller::Projects   | dumper       |
+| /projects/users      | DragonFlyGUI::Controller::Projects   | users        |
+| /projects/close      | DragonFlyGUI::Controller::Projects   | close        |
+| /projects/form_crea- | DragonFlyGUI::Controller::Projects   | form_create  |
+| te                   |                                      |              |
+| /projects/xml        | DragonFlyGUI::Controller::Projects   | xml          |
+| /projects/modify     | DragonFlyGUI::Controller::Projects   | modify       |
+| /projects/add_proje- | DragonFlyGUI::Controller::Projects   | add_project  |
+| ct                   |                                      |              |
+| /projects/list       | DragonFlyGUI::Controller::Projects   | list         |
+| /projects/default    | DragonFlyGUI::Controller::Projects   | default      |
+| /projects/switch     | DragonFlyGUI::Controller::Projects   | switch       |
+| /projects/delete     | DragonFlyGUI::Controller::Projects   | delete       |
+| /projects/accounting | DragonFlyGUI::Controller::Projects   | accounting   |
+| /users/index         | DragonFlyGUI::Controller::Users      | index        |
+| /users/list          | DragonFlyGUI::Controller::Users      | list         |
+| /logout/index        | DragonFlyGUI::Controller::Logout     | index        |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /acct/acctinfo                      | /acct/acctinfo                       |
+| /acct/jobdata                       | /acct/jobdata                        |
+| /acct/jobs                          | /acct/jobs                           |
+| /acct/listall                       | /acct/listall                        |
+| /acct/listsome                      | /acct/listsome                       |
+| /acct/xml                           | /acct/xml                            |
+| /admin/adduser                      | /admin/adduser                       |
+| /admin/edituser                     | /admin/edituser                      |
+| /admin/feedback                     | /admin/feedback                      |
+| /admin/listuser                     | /admin/listuser                      |
+| /admin/rfe                          | /admin/rfe                           |
+| /admin/support_request              | /admin/support_request               |
+| /apps/add                           | /apps/add                            |
+| /apps/addarg                        | /apps/addarg                         |
+| /apps/addenv                        | /apps/addenv                         |
+| /apps/addenvcopy                    | /apps/addenvcopy                     |
+| /apps/addexecutable                 | /apps/addexecutable                  |
+| /apps/addmpi                        | /apps/addmpi                         |
+| /apps/addparam                      | /apps/addparam                       |
+| /apps/addreview                     | /apps/addreview                      |
+| /apps/appdata                       | /apps/appdata                        |
+| /apps/appupdate                     | /apps/appupdate                      |
+| /apps/getargs                       | /apps/getargs                        |
+| /apps/getparms                      | /apps/getparms                       |
+| /apps/list                          | /apps/list                           |
+| /apps/newapp                        | /apps/newapp                         |
+| /apps/review                        | /apps/review                         |
+| /apps/xml                           | /apps/xml                            |
+| /files/index                        | /files/index                         |
+| /help/bug                           | /help/bug                            |
+| /help/contactme                     | /help/contactme                      |
+| /help/feedback                      | /help/feedback                       |
+| /help/howto                         | /help/howto                          |
+| /help/rfe                           | /help/rfe                            |
+| /help/search                        | /help/search                         |
+| /jobs/clone                         | /jobs/clone                          |
+| /jobs/editjob                       | /jobs/editjob                        |
+| /jobs/list                          | /jobs/list                           |
+| /jobs/list2                         | /jobs/list2                          |
+| /jobs/list_one                      | /jobs/list_one                       |
+| /jobs/newjob0                       | /jobs/newjob0                        |
+| /jobs/newjob00                      | /jobs/newjob00                       |
+| /jobs/newjob1                       | /jobs/newjob1                        |
+| /jobs/rerun                         | /jobs/rerun                          |
+| /jobs/review                        | /jobs/review                         |
+| /jobs/runjob                        | /jobs/runjob                         |
+| /jobs/stop                          | /jobs/stop                           |
+| /jobs/submit                        | /jobs/submit                         |
+| /jobs/submitjob                     | /jobs/submitjob                      |
+| /jobs/xml                           | /jobs/xml                            |
+| /licensing                          | /login/licensing                     |
+| /ping                               | /ping                                |
+| /projects/accounting                | /projects/accounting                 |
+| /projects/add_project               | /projects/add_project                |
+| /projects/close                     | /projects/close                      |
+| /projects/delete                    | /projects/delete                     |
+| /projects/dumper                    | /projects/dumper                     |
+| /projects/form_create               | /projects/form_create                |
+| /projects/form_create_do            | /projects/form_create_do             |
+| /projects/list                      | /projects/list                       |
+| /projects/listxxx                   | /projects/listxxx                    |
+| /projects/modify                    | /projects/modify                     |
+| /projects/switch                    | /projects/switch                     |
+| /projects/users                     | /projects/users                      |
+| /projects/xml                       | /projects/xml                        |
+| /users/list                         | /users/list                          |
+'-------------------------------------+--------------------------------------'
+
+[info] DragonFlyGUI powered by Catalyst 5.7014
+You can connect to your server at http://dragonfly:3000
+[CGI::FormBuilder::Messages::new] (debug1) creating Messages object from (default)
+[CGI::FormBuilder::new] (debug1) creating fields list
+[CGI::FormBuilder::new] (debug2) assuming fields list from ARRAY
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_id)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_id
+[CGI::FormBuilder::new] (debug2) push @(), project_id
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_name)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_name
+[CGI::FormBuilder::new] (debug2) push @(project_id), project_name
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_description)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_description
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name), project_description
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_status)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_status
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description), project_status
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_start)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_start
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description project_status), project_start
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_documentation)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_documentation
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description project_status project_start), project_documentation
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(project_uri)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field project_uri
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description project_status project_start project_documentation), project_uri
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(active)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field active
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description project_status project_start project_documentation project_uri), active
+[CGI::FormBuilder::new_field] (debug1) called $form->new_field(locked)
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{cleanopts} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{sticky} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectname} = 1;
+[CGI::FormBuilder::new_field] (debug2) rearrange: $args->{selectnum} = 5;
+[CGI::FormBuilder::new_field] (debug1) created field locked
+[CGI::FormBuilder::new] (debug2) push @(project_id project_name project_description project_status project_start project_documentation project_uri active), locked
+[CGI::FormBuilder::new] (debug1) field creation done, list = (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field(name project_start value 2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::field] (debug2) searching fields for 'project_start'
+[CGI::FormBuilder::Field::value] (debug2) project_start: called $field->value()
+[CGI::FormBuilder::Field::value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::field] (debug2) called $form->field(name locked options ARRAY(0x3735788) value ARRAY(0x3733d70) type radio)
+[CGI::FormBuilder::field] (debug2) searching fields for 'locked'
+[CGI::FormBuilder::Field::value] (debug2) locked: called $field->value()
+[CGI::FormBuilder::Field::value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::field] (debug2) called $form->field(name active options ARRAY(0x37355d8) value ARRAY(0x3734010) type radio)
+[CGI::FormBuilder::field] (debug2) searching fields for 'active'
+[CGI::FormBuilder::Field::value] (debug2) active: called $field->value()
+[CGI::FormBuilder::Field::value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::prepare] (debug1) Calling $form->prepare()
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug1) project_id: field set to type 'text' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generated tag = <input class="fb_input" id="project_id" name="project_id" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug1) project_name: field set to type 'text' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generated tag = <input class="fb_input" id="project_name" name="project_name" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::type] (debug1) project_description: field set to type 'textarea' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_description: generated tag = <textarea class="fb_textarea" cols="56" id="project_description" name="project_description" rows="5"></textarea>
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug1) project_status: field set to type 'text' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generated tag = <input class="fb_input" id="project_status" name="project_status" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug1) project_start: field set to type 'text' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generated tag = <input class="fb_input" id="project_start" name="project_start" size="80" type="text" value="2008-10-05 12:08:56 -0400" />
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::type] (debug1) project_documentation: field set to type 'textarea' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_documentation: generated tag = <textarea class="fb_textarea" cols="56" id="project_documentation" name="project_documentation" rows="5"></textarea>
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug1) project_uri: field set to type 'text' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generated tag = <input class="fb_input" id="project_uri" name="project_uri" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::type] (debug1) active: field set to type 'radio' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Active Inactive) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generated tag = <input checked="checked" class="fb_radio" id="active_Active" name="active" size="3" type="radio" value="Active" /> <label class="fb_option" for="active_Active">Active</label>
+<input class="fb_radio" id="active_Inactive" name="active" size="3" type="radio" value="Inactive" /> <label class="fb_option" for="active_Inactive">Inactive</label>
+
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::type] (debug1) locked: field set to type 'radio' (reblessing)
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Locked Unlocked) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generated tag = <input class="fb_radio" id="locked_Locked" name="locked" size="3" type="radio" value="Locked" /> <label class="fb_option" for="locked_Locked">Locked</label>
+<input checked="checked" class="fb_radio" id="locked_Unlocked" name="locked" size="3" type="radio" value="Unlocked" /> <label class="fb_option" for="locked_Unlocked">Unlocked</label>
+
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{jshead} = $self->script
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_id: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_name: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_start: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_uri: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{title} = $self->title
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{start} = $self->start . $self->statetags . $self->keepextras
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{submit} = $self->submit
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{reset} = $self->reset
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{end} = $self->end
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{invalid} = $self->invalid
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{required} = $self->required
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{fields} = [ map $tmplvar{field}{$_}, $self->field ]
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::render] (debug1) starting $form->render()
+[CGI::FormBuilder::prepare] (debug1) Calling $form->prepare()
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generated tag = <input class="fb_input" id="project_id" name="project_id" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generated tag = <input class="fb_input" id="project_name" name="project_name" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_description: generated tag = <textarea class="fb_textarea" cols="56" id="project_description" name="project_description" rows="5"></textarea>
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generated tag = <input class="fb_input" id="project_status" name="project_status" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generated tag = <input class="fb_input" id="project_start" name="project_start" size="80" type="text" value="2008-10-05 12:08:56 -0400" />
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_documentation: generated tag = <textarea class="fb_textarea" cols="56" id="project_documentation" name="project_documentation" rows="5"></textarea>
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generated tag = <input class="fb_input" id="project_uri" name="project_uri" size="80" type="text" />
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Active Inactive) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generated tag = <input checked="checked" class="fb_radio" id="active_Active" name="active" size="3" type="radio" value="Active" /> <label class="fb_option" for="active_Active">Active</label>
+<input class="fb_radio" id="active_Inactive" name="active" size="3" type="radio" value="Inactive" /> <label class="fb_option" for="active_Inactive">Inactive</label>
+
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Locked Unlocked) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generated tag = <input class="fb_radio" id="locked_Locked" name="locked" size="3" type="radio" value="Locked" /> <label class="fb_option" for="locked_Locked">Locked</label>
+<input checked="checked" class="fb_radio" id="locked_Unlocked" name="locked" size="3" type="radio" value="Unlocked" /> <label class="fb_option" for="locked_Unlocked">Unlocked</label>
+
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{jshead} = $self->script
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_id: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_name: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_start: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_uri: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{title} = $self->title
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{start} = $self->start . $self->statetags . $self->keepextras
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{submit} = $self->submit
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{reset} = $self->reset
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{end} = $self->end
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{invalid} = $self->invalid
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{required} = $self->required
+[CGI::FormBuilder::prepare] (debug2) $tmplvar{fields} = [ map $tmplvar{field}{$_}, $self->field ]
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::render] (debug1) loading CGI::FormBuilder::Template::Builtin for 'template' option
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_id: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_name: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_start: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || )
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 1)
+[CGI::FormBuilder::Field::jsfield] (debug1) project_uri: generating JavaScript validation code
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::jsfield] (debug2) return '' unless auto && ( || 0)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::fieldsets] (debug2) added fieldset  (legend=) to @sets
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_id to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_name to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_description to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_status to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_start to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_documentation to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field project_uri to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field active to form
+[CGI::FormBuilder::fieldlist] (debug2) appended non-fieldset field locked to form
+[CGI::FormBuilder::Field::type] (debug2) project_id: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_name: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_description: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::type] (debug2) project_status: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_start: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) project_documentation: called $field->type (manual = 'textarea')
+[CGI::FormBuilder::Field::type] (debug2) project_uri: called $field->type (manual = 'text')
+[CGI::FormBuilder::Field::type] (debug2) active: called $field->type (manual = 'radio')
+[CGI::FormBuilder::Field::type] (debug2) locked: called $field->type (manual = 'radio')
+[CGI::FormBuilder::fieldsets] (debug2) added fieldset  (legend=) to @sets
+[CGI::FormBuilder::field] (debug2) called $form->field()
+[CGI::FormBuilder::field] (debug2) return (project_id project_name project_description project_status project_start project_documentation project_uri active locked)
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_id'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_id: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_id: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_id: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_id: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_id: generated tag = <input class="fb_input" id="project_id" name="project_id" size="80" type="text" />
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_name'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_name: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_name: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_name: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_name: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_name: generated tag = <input class="fb_input" id="project_name" name="project_name" size="80" type="text" />
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_description'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_description: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_description: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_description: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_description: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_description: generated tag = <textarea class="fb_textarea" cols="56" id="project_description" name="project_description" rows="5"></textarea>
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_status'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_status: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_status: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_status: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_status: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_status: generated tag = <input class="fb_input" id="project_status" name="project_status" size="80" type="text" />
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_start'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_start: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_start: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_start: def value = (2008-10-05 12:08:56 -0400)
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_start: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_start: generated tag = <input class="fb_input" id="project_start" name="project_start" size="80" type="text" value="2008-10-05 12:08:56 -0400" />
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_documentation'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_documentation: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_documentation: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_documentation: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_documentation: called $field->inflate_value
+[CGI::FormBuilder::Field::textarea::tag] (debug2) project_documentation: generated tag = <textarea class="fb_textarea" cols="56" id="project_documentation" name="project_documentation" rows="5"></textarea>
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'project_uri'
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) project_uri: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) project_uri: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) project_uri: def value = ()
+[CGI::FormBuilder::Field::inflate_value] (debug2) project_uri: called $field->inflate_value
+[CGI::FormBuilder::Field::text::tag] (debug2) my() = $field->options
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generating text input type
+[CGI::FormBuilder::Field::text::tag] (debug2) project_uri: generated tag = <input class="fb_input" id="project_uri" name="project_uri" size="80" type="text" />
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'active'
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) active: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) active: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) active: def value = (Active)
+[CGI::FormBuilder::Field::inflate_value] (debug2) active: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Active Inactive) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) active: generated tag = <input checked="checked" class="fb_radio" id="active_Active" name="active" size="3" type="radio" value="Active" /> <label class="fb_option" for="active_Active">Active</label>
+<input class="fb_radio" id="active_Inactive" name="active" size="3" type="radio" value="Inactive" /> <label class="fb_option" for="active_Inactive">Inactive</label>
+
+[CGI::FormBuilder::Template::Builtin::prepare] (debug2) render: attacking normal field 'locked'
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: called $field->tag_value
+[CGI::FormBuilder::Field::tag_value] (debug2) locked: sticky && ! force
+[CGI::FormBuilder::Field::cgi_value] (debug2) locked: called $field->cgi_value
+[CGI::FormBuilder::Field::tag_value] (debug2) no cgi found, returning def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: called $field->def_value
+[CGI::FormBuilder::Field::def_value] (debug2) locked: def value = (Unlocked)
+[CGI::FormBuilder::Field::inflate_value] (debug2) locked: called $field->inflate_value
+[CGI::FormBuilder::Field::radio::tag] (debug2) my(Locked Unlocked) = $field->options
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generating radio input type
+[CGI::FormBuilder::Field::radio::tag] (debug2) locked: generated tag = <input class="fb_radio" id="locked_Locked" name="locked" size="3" type="radio" value="Locked" /> <label class="fb_option" for="locked_Locked">Locked</label>
+<input checked="checked" class="fb_radio" id="locked_Unlocked" name="locked" size="3" type="radio" value="Unlocked" /> <label class="fb_option" for="locked_Unlocked">Unlocked</label>
+
+[CGI::FormBuilder::render] (debug1) returning CGI::FormBuilder::Template::Builtin=HASH(0x382a110)->render(HASH(0x37df0a0))
+[info] *** Request 1 (0.167/s) [19591] [Sun Oct  5 12:08:56 2008] ***
+[debug] "GET" request for "projects/add_project" from "192.168.1.2"
+[debug] Path is "projects/add_project"
+[debug] Found sessionid "5c1300118cf5571b1f8641b99b69d28684cd6136" in cookie
+[debug] Restored session "5c1300118cf5571b1f8641b99b69d28684cd6136"
+[debug] Form (projects/add_project): Looking for config file projects/add_project.fb
+[debug] Form (projects/add_project): Found form config /home/dragonfly/df/DragonFlyGUI/root/forms/projects/add_project.fb
+[debug] Rendering component "/projects/manage.html"
+[info] Request took 0.087598s (11.416/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.005013s |
+| /projects/add_project                                          | 0.022639s |
+| /end                                                           | 0.041199s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.038261s |
+'----------------------------------------------------------------+-----------'
+

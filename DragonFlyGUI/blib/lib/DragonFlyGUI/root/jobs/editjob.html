@@ -1,0 +1,31 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$forms  => undef
+$id	=> undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/left.mas,        links   => $left  &>
+<& /components/body.mas,        main    => $body  &>
+
+
+<H3>Changes to job id=<% $id %></H3>
+
+<p> <% $forms->render(submit => ['Save', 'Cancel', 'Delete']) %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

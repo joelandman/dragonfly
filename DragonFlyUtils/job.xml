@@ -1,0 +1,7 @@
+<job project="P00001" jobname="NR count" version="" >
+ <program name="Count [v1]" index="" version="" >
+  <exec>
+   <param name="" value="" />
+  </exec>
+<arg name="-i" value="http://dragonfly.scalableinformatics.com:3010/downloadabs//home2/projects/P00001/nr" input_file="Yes" output_file="No" />
+ </program>

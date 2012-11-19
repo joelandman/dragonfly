@@ -1,0 +1,17 @@
+# Form config file root/forms/jobs/add_job.fb
+name: projects_add_job
+method: post
+fields:
+    name:
+        label: Job Name
+        type:  text
+        size:  40
+        required: 1
+    owner:
+        label: Job Owner
+        type:  text
+        size:  80
+        required: 1
+
+submit: Add New Job
+reset:  Reset Form

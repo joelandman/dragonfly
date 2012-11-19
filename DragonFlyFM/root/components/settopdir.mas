@@ -1,0 +1,17 @@
+<%args>
+$top_dir	=> undef
+</%args>
+<!-- in directories.mas -->
+<table valign="top">
+ <tr valign="top">
+  <td >set top directory</td>
+  <td>
+   <form action="/settopdir" method="POST" >
+    <input type="text" name="top_dir" value="<% $top_dir %>" />
+    <input type="submit" name="set" value="set" />
+    <input type="hidden" name="form_submit" value="yes" />
+   </form>
+  </td>
+ </tr>
+</table>
+<!-- end of directories.mas -->

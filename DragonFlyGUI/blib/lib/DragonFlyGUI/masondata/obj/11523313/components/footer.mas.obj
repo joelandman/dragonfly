@@ -1,0 +1,41 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 /home/dragonfly/df/DragonFlyGUI/root/components/footer.mas
+$m->print( '<!-- from footer.mas -->
+' );
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/footer.mas
+ use POSIX qw(strftime);
+$m->print( '<div class="footer" >
+ <p class="clear" />
+ <div id="header-left">
+  <a href="http://scalableinformatics.com" style="border-style: none" border="0">
+   <img src="/static/images/sillc_sm2.jpg" alt="Scalable Informatics" class="left-image" border="0" /> 
+  </a>
+ </div>
+ 
+ <div id="header-right">
+ <img src="/static/images/simply_faster_sm_trans.png" alt="Simply faster" class="right-image" />
+</div>
+<div align="center">
+  Copyright &copy; 2003-' );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/components/footer.mas
+$m->print(  (strftime "%Y",localtime)  );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/components/footer.mas
+$m->print( '  Scalalable Informatics LLC<br />
+  All trademarks are properties of their respective owners.<br />
+  DragonFly is commercially licensed software.<br />Contact <a href="http://scalableinformatics.com">Scalable Informatics</a> for details.
+ </div>
+</div>
+<!-- end of footer.mas -->
+' );
+;return;
+},
+'load_time' => 1300392124,
+
+)
+;

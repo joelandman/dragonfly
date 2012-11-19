@@ -1,0 +1,63 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $main );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+     $main = exists $pos{'main'} ? $_[ $pos{'main'} ] :  undef;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+ use XML::Smart;
+ my ($xml,$desc);
+ return if (!defined($main));
+ $xml = XML::Smart->new($main);
+$m->print( '<!-- from body.mas -->
+<div id="main-box" class="main-box">
+ <ul>
+' );
+#line 11 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+ foreach (@{$xml->{main}->{article}}) {
+   if ( $_->{available} =~ /yes/i ) {
+$m->print( '  <li ><h3>' );
+#line 13 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $_->{name})), 'h' ) );
+#line 13 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+$m->print( '</h3>
+' );
+#line 14 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+   $desc=  $_->{description}('<xml>');
+$m->print( '  ' );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+$m->print(  $desc  );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+$m->print( ' </li>
+' );
+#line 16 /home/dragonfly/df/DragonFlyGUI/root/components/body.mas
+  }
+ }
+$m->print( '</div>
+<p class="clear" />
+<!-- end of body.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$main' => { default => ' undef;' }
+},
+'load_time' => 1223220194,
+
+)
+;

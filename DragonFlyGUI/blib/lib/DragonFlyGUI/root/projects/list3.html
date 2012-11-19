@@ -1,0 +1,79 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$projects  => undef
+
+</%args>
+<html>
+% use Data::Dumper;
+% my ($hash,%data);;
+% my @project_fields = ('project_id', 'project_name', 'active', 'status', 'locked', 'project_start', 'project_description', 'project_uri', 'project_documentation' );
+ 
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+
+<!--
+  Dump of projects:
+  <% Dumper($projects) %>
+  -->
+
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+    <th>Project ID</th>
+    <th>Name</th>
+    <th>Active</th>
+    <th>Status</th>
+    <th>Locked</th>
+    <th>Start</th>
+    <th>Description</th>
+    <th>Data Repository</th>
+    <th>Documentation</th>
+</tr>
+</thead>
+<tbody> 
+% foreach $hash (@{$projects}) {
+%#   %data = %{$hash->{_column_data}};
+%	%data	= %{$hash};
+    
+<tr>
+%   foreach (@project_fields)
+%   {
+ <td>
+%     if ($_ eq "project_id")
+%      {
+         <a href="<% $c->uri_for('modify/') . $data{id} %>">
+%      }
+%     if ($_ eq "project_uri")
+%      {
+         <a href="<% $data{project_uri} %>" target="_blank" >
+%      }
+       <% $data{$_} %>
+%     if ($_ eq "project_id")
+%      {
+         </a>
+%      }
+  </td>
+%   }
+</tr>
+% }
+</tbody>
+</table>
+</p>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

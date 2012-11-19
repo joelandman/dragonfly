@@ -1,0 +1,32 @@
+<%args>
+$destination_path	=> undef
+$is_IE			=> undef
+$rel_path		=> undef
+</%args>
+<!-- in upload.mas -->
+ 
+<table valign="top">
+ <tr valign="top">
+  <td >Upload file(s):</td>
+  <td>
+   <form 
+   	action="/upload" 
+	enctype="multipart/form-data" 
+	method="POST"     
+% if (!$is_IE) {   
+                 onsubmit="return startEmbeddedProgressBar(this)"
+% }
+		 >
+    <input type="file" class="multi" />
+    <input type="submit" name="upload" value="upload file(s)" />
+    <input type="hidden" name="destination_path" value="<% $destination_path %>" />
+    <input type="hidden" name="form_submit" value="yes" />
+    <input type="hidden" name="rel_path" value="<% $rel_path %>" />
+   </form>
+  </td>
+ </tr>
+ <tr>
+  <div id='progress'></div>
+ </tr>
+</table>
+<!-- end of upload.mas -->

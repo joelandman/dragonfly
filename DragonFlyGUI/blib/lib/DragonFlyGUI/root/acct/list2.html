@@ -1,0 +1,79 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$jobs   => undef
+$forms  => undef
+</%args>
+
+<html>
+% my ($hash,%data);;
+% my @job_fields = ('jobid', 'jobname', 'job_owner_uid', 'application', 'job_directory', 'queue_jobid', 'queue_jobname', 'submitted', 'queued', 'started', 'completed', 'hold', 'assigned_to_cluster', 'running_on', 'NCPU', 'wallclock_run', 'wallclock_queued' );
+ 
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+
+<& /components/table.mas                            &>
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+    <th>Job ID</th>
+    <th>Job Name</th>
+    <th>Owner</th>
+    <th>Application</th>
+    <th>Directory</th>
+    <th>Q Jobid</th>
+    <th>Q Jobname</th>
+    <th>Submitted</th>
+    <th>Queued</th>
+    <th>Started</th>
+    <th>Completed</th>
+    <th>Hold</th>
+    <th>Cluster</th>
+    <th>Nodes</th>
+    <th>NCPU</th>
+    <th>Run Time</th>
+    <th>Queued Time</th>
+</tr>
+</thead>
+<tbody> 
+% foreach $hash (@{$jobs}) {
+%   %data = %{$hash};
+    
+<tr>
+%   foreach (@job_fields)
+%   {
+ <td>
+%     if ($_ eq "jobid")
+%      {
+         <a href="<% $c->uri_for('xml/jobid=') . $data{jobid} %>">
+%      }
+  <% $data{$_} %>
+%     if ($_ eq "jobid")
+%      {
+         </a>
+%      }
+  </td>
+%   }
+</tr>
+% }
+</tbody>
+</table>
+</p>
+<p> <% $forms->render %>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

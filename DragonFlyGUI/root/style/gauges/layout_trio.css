@@ -1,0 +1,53 @@
+/*-----------------------------------------------------------
+						RESET
+-----------------------------------------------------------*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background-color: transparent;
+}
+
+body {
+	line-height: 1;
+}
+
+/*-----------------------------------------------------------
+					LAYOUT
+-----------------------------------------------------------*/
+
+body {
+	text-align: center;
+	min-width: 760px;
+	background-color: #ffffff;
+}
+
+#wrapper {
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+	background-color: #ffffff;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul li {
+	float: left;
+	padding: 50px 45px 0 0;
+}
+
+.last {
+	padding-right: 0;
+}
+
+#fuelGauge, #tempGauge {
+	margin: 30px 0 0 0;
+}

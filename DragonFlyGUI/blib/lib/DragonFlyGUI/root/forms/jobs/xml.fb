@@ -1,0 +1,4 @@
+# Form config file root/forms/jobs/xml.fb
+name: xml
+method: post
+submit: Return to Job List, Submit This Job

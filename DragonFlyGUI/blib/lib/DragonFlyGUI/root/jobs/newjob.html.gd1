@@ -1,0 +1,22 @@
+<%args>
+$forms  => undef
+</%args>
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<% $forms->render %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

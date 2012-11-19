@@ -1,0 +1,35 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 "/local2/home/landman/df/DragonFlyGUI/root/components/so-1.0.3.mas"
+$m->print( ' <!-- speedometer 1.0.3 -->
+       <script src="/js/jquery.speedometer.js"></script>
+       <script src="/js/jquery.jqcanvas-modified.js"></script>
+       <script src="/js/excanvas-modified.js"></script>
+	   <script>
+                $(function(){
+                        $(\'#test\').speedometer();
+
+                        $(\'.changeSpeedometer\').click(function(){
+                                $(\'#test\').speedometer({ percentage: $(\'.speedometer\').val() || 0 });
+                        });
+
+                });       
+       </script> 
+	   <input type="text" class="speedometer" value="90"></input>
+                <button class="changeSpeedometer">Submit</button><br/>
+
+
+                <div id="test">
+                90
+                </div>' );
+;return;
+},
+'load_time' => 1301334474,
+
+)
+;

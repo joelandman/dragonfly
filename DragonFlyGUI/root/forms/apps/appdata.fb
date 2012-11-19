@@ -1,0 +1,7 @@
+# Form config file root/forms/apps/appdata.fb
+name: appdata
+method: post
+font: arial,helvetica
+lalign: right
+fieldsets: appinfo=Application Data,parm=Parameters,arg=Arguments
+submit: Return to Application List, Update This Application

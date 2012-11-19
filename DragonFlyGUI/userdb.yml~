@@ -1,0 +1,10 @@
+name: userdb
+
+userdb:
+  dsn:     'dbi:SQLite:dbname=userdb.db'
+  dbuser:  ''
+  dbpass:  ''
+#    dsn:     'dbi:Pg:dbname=userdb;host=crunch;port=5432'
+#    dbuser:  'dfadmin'
+#    dbpass:  'dr1g4nfl6db'
+        

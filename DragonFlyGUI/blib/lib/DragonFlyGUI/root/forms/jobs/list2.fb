@@ -1,0 +1,4 @@
+# Form config file root/forms/jobs/list2.fb
+name: list2
+method: post
+submit: Previous

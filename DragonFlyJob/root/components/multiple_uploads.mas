@@ -1,0 +1,18 @@
+<%args>
+$enable_jquery	=>	1;
+</%args>
+<!-- in multiple_uploads.mas -->
+% if ($enable_jquery) {
+<!-- setting up jQuery multiple file uploads -->
+
+<script type="text/javascript" src="/js/jquery.MultiFile.js"></script>
+
+
+<script>
+
+</script>
+  
+<!-- done setting up jQuery multiple file uploads -->
+
+% }
+<!-- end of multiple_uploads.mas -->

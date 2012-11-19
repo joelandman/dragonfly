@@ -1,0 +1,31 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$forms  => undef
+$jobxml => undef
+</%args>
+</html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+<p>
+<H2>Job XML for New Job </H2>
+<p>
+
+<% $forms->render %>
+<% $jobxml %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

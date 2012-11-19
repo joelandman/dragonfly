@@ -1,0 +1,126 @@
+<%args>
+$left		=> undef
+$nav		=> undef
+$body		=> undef
+$error_msg	=> undef
+$tab		=> undef
+</%args>
+<html>
+<& /components/style.mas &>
+
+<head>
+<& /components/header.mas &>
+<& /components/tabs.mas &>
+
+</head>
+<body>
+<%perl>
+use Sys::Hostname;
+my $hostname	= hostname;
+#
+# handle case of no pre-defined tabs, emit 'default' set of login tabs
+if (!$tab)
+ {
+  push @$tab,{
+  	     label	=> "Login",
+	     uri	=> "login",
+	     content	=> '
+<p>
+ <table>
+  <form method="POST" action="/login">
+   <tr>
+    <td><strong>Username</strong>:</td>
+    <td><input type="text" name="username" size="32" /></td>
+   </tr>
+   <tr>
+    <td><strong>Password</strong>:</td>
+    <td> <input type="password" name="password" size="32" /></td>
+   </tr>
+   <tr>
+    <td><input type="submit" value="Login" /></td>
+   </tr>
+  </form>
+ </table>
+</p>	     
+	     '
+	    };
+	    
+  push @$tab,{
+  	     label	=> "Help",
+	     uri	=> "help",
+	     content	=> '
+
+<p align="justify">
+ For help on logins, or getting login access, please contact your systems
+ administrator, or <a href="mailto:help@scalableinformatics.com?Subject=DragonFly setup help">
+ send us an email</a>.
+ <br />
+ <br />
+ For help on setting up your own DragonFly system atop an existing or new storage environment,
+ please <a href="mailto:help@scalableinformatics.com?Subject=DragonFly login help">
+ send us an email</a>.
+ <br />
+ <br />
+ To report a problem with the system, please
+ <a href="mailto:help@scalableinformatics.com?Subject=DragonFly problem">
+ send us an email</a>.
+</p>
+	     '
+	     };
+  push @$tab,{
+  	     label	=> "About",
+	     uri	=> "about",
+	     content	=> '
+<p align="justify">
+ 
+  DragonFly and StorM are technologies owned, developed, and marketed by 
+  <A href="http://scalableinformatics.com">Scalable Informatics Inc.</a> in conjunction
+  with sales of Scalable Informatics <a href="http://scalableinformatics.com/sicluster">siCluster</a> product. 
+  DragonFly is a set of technologies to provide an abstracted interface to an HPC cloud or cluster, 
+  and StorM is the Storage Management system built atop the DragonFly framework.
+  <br /><br />
+  DragonFly and StorM enable end users to easily interact with complex high performance storage and 
+  computing environments.  DragonFly and its ancestors (SICE) 
+  have been in active development since 2002.  StorM has been in active development since 2009.
+  <br /><br />
+  DragonFly and StorM  enables end users to interact with their high performance storage and computing
+  environments via commonly available web browser tools, on computers, and mobile devices.
+  It provides an impeadence match between complex command line environments and accessable GUI 
+  environments, and allows high performance storage and computing resource owners to more 
+  easily utilize and manage their systems. 
+  <br /><br />
+  This in turn, reduces usage and management complexity and shortens learning curves for users, 
+  allowing them to become more productive users and managers of complex high performance storage
+  and computing systems sooner.  DragonFly and StorM are designed specifically
+  to enable easy addition of new storage systems, and rapid deployment of cluster and target storage within HPC 
+  computing systems.
+  <br /><br />
+  Dragonfly and StorM are a <a href="/licensing">commercially licensed</a> part of <A href="http://scalableinformatics.com/sicluster">Scalable Informatics siCluster</a> system.form
+  
+  DragonFly and SICE are copyright &copy; 2002-2011 <a href="http://scalableinformatics.com">Scalable Informatics Inc.</a>
+  Storm are  copyright &copy; 2009-2011 <a href="http://scalableinformatics.com">Scalable Informatics Inc.</a>
+</p>
+	     '
+	     };  
+ }
+</%perl>
+
+% if ($error_msg) {
+<div align="center" class="error_msg">
+ <p><% $error_msg |h %></p>
+</div>
+% }
+<div align="center" >
+ <br />
+ <br />
+</div>
+<& /components/create_tabs.mas ,tab=>$tab &>
+
+<div align="center" >
+ <br />
+ <br />
+</div>
+
+<& /components/footer.mas &>
+</body>
+</html>

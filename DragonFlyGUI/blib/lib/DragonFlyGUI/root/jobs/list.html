@@ -1,0 +1,353 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$jobs  => undef
+</%args>
+% use Data::Dumper;
+% use URI;
+% my ($results_uri,$results_path,$path);
+
+
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+<!-- setting up Tabs script ... -->
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+     $('#tab-container-job-list').tabs();            
+    });
+</script>
+<!-- end of Tabs script setup ... -->
+
+</head>
+<meta http-equiv="refresh" content="15" />
+
+<body>
+<div align="center">
+ <br />
+</div>
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+ <p class="clear" />
+
+<div align="left" id="tab-container-job-list">
+ <ul>
+
+   <li>
+
+    <a href="#unsubmitted">
+     <span>
+      Unqueued/unsubmitted Jobs
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="#queued">
+     <span>
+      Queued Jobs
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="#failed">
+     <span>
+      Failed Jobs
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="#running">
+     <span>
+      Running Jobs
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="#stopped">
+     <span>
+      Stopped Jobs
+     </span>
+    </a>
+   </li>
+    <li>
+    <a href="#successful">
+     <span>
+      Successful Jobs
+     </span>
+    </a>
+   </li>
+  
+ </ul>
+
+
+<div align="left" id="unsubmitted">
+<h3>Unqueued/Unsubmitted jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>status</th>
+   <th>Creation date</th>
+
+   
+</tr>
+</thead>
+ <tbody
+% foreach my $id (sort keys %{$jobs})
+%  {
+%    next if (lc($jobs->{$id}->{'status'}) ne "created");
+    
+
+<tr>
+    <td width="150" >[<a href="<% (sprintf "%s%s",$c->uri_for('submit/'),$jobs->{$id}->{id}) %>">start</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('stop/'),$jobs->{$id}->{id})  %>">stop</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('editjob/'),$jobs->{$id}->{id}) %>">edit</a>]
+	 
+	 </td>
+    <td><% $jobs->{$id}->{id} |h %></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{status} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>   
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+</div>
+
+<div align="left" id="queued">
+<h3>Queued jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>status</th>
+   <th>Creation date</th>
+
+   
+</tr>
+</thead>
+ <tbody
+% foreach my $id (sort keys %{$jobs})
+%  {
+%    next if (lc($jobs->{$id}->{'status'}) !~ /submit/i);
+    
+
+<tr>
+    <td width="150" >[<a href="<% (sprintf "%s%s",$c->uri_for('submit/'),$jobs->{$id}->{id}) %>">start</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('stop/'),$jobs->{$id}->{id})  %>">stop</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]
+	 
+	 </td>
+    <td><a href="<% (sprintf "%s%s",$c->uri_for('list_one/'),$jobs->{$id}->{id}) %>"><% $jobs->{$id}->{id} |h %></a></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{status} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>   
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+</div>
+
+<div align="left" id="failed">
+<h3>Failed jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>cluster</th>
+   <th>Creation date</th>
+   <th>Submission date</th>
+   <th>Job STDERR</th>
+   <th>Job STDOUT</th>
+   
+</tr>
+</thead>
+ <tbody>
+% foreach my $id (sort keys %{$jobs})
+%  {  next if (lc ( $jobs->{$id}->{'status'} ) ne "failed") ;
+%    
+
+<tr>
+    <td width="150" >[<a href="<% (sprintf "%s%s",$c->uri_for('submit/'),$jobs->{$id}->{id}) %>">start</a>]&nbsp;&nbsp;&nbsp;
+         
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]&nbsp;&nbsp;&nbsp;
+	 [<a href="<% $jobs->{$id}->{project_output_directory} %>" >results</a>]
+	 
+	 </td>
+    <td><% $jobs->{$id}->{id} |h %></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{assigned_to_cluster} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>   
+   
+    <td width="150"><% $jobs->{$id}->{submitted} |h %></td>
+    <td><% $jobs->{$id}->{job_stderr} |h %></td>
+    <td><% $jobs->{$id}->{job_stdout} |h %></td>
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+</div>
+
+<div align="left" id="running">
+<h3>Running jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>cluster</th>
+   <th>status</th>
+   <th>Creation date</th>
+   <th>Submission date</th>
+   
+</tr>
+</thead>
+ <tbody>
+% foreach my $id (sort keys %{$jobs})
+%  {  
+%    next if (lc ( $jobs->{$id}->{'status'} ) !~ /running/i) ;
+
+<tr>
+    <td width="150" >[<a href="<% (sprintf "%s%s",$c->uri_for('submit/'),$jobs->{$id}->{id}) %>">start</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('stop/'),$jobs->{$id}->{id})  %>">stop</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]
+	 [<a href="<% $jobs->{$id}->{project_output_directory} %>" >results</a>]
+	 
+	 </td>
+    <td><% $jobs->{$id}->{id} |h %></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{assigned_to_cluster} |h %></td>
+    <td><% $jobs->{$id}->{status} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>   
+   
+    <td width="150"><% $jobs->{$id}->{submitted} |h %></td>
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+</div>
+
+<div align="left" id="stopped">
+<h3>Stopped jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>cluster</th>
+   <th>status</th>
+   <th>Creation date</th>
+   <th>Submission date</th>
+   <th>Job STDERR</th>
+   <th>Job STDOUT</th>
+ 
+</tr>
+</thead>
+ <tbody>
+% foreach my $id (sort keys %{$jobs})
+%  {  
+%    next if (lc ( $jobs->{$id}->{'status'} ) !~ /stop/i) ;
+
+<tr>
+    <td width="150" >[<a href="<% (sprintf "%s%s",$c->uri_for('submit/'),$jobs->{$id}->{id}) %>">start</a>]&nbsp;&nbsp;&nbsp;
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]&nbsp;&nbsp;&nbsp;
+	 [<a href="<% $jobs->{$id}->{project_output_directory} %>" >results</a>]
+	 
+	 </td>
+    <td><% $jobs->{$id}->{id} |h %></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{assigned_to_cluster} |h %></td>
+    <td><% $jobs->{$id}->{status} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>      
+    <td width="150"><% $jobs->{$id}->{submitted} |h %></td>
+    <td ><% $jobs->{$id}->{job_stdout} |h %></td>
+    <td ><% $jobs->{$id}->{job_stderr} |h %></td>
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+</div>
+
+<div align="left" id="successful">
+<h3>Successful jobs</h3>
+ <p align="left">
+<table id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th >controls</th>
+   <th>id</th>
+   <th>job name</th>
+   <th>cluster</th>
+   <th>status</th>
+   <th>Creation date</th>
+   <th>Submission date</th>
+   
+</tr>
+</thead>
+ <tbody>
+% foreach my $id (sort keys %{$jobs})
+%  {  
+%    next if (lc ( $jobs->{$id}->{'status'} ) !~ /succeeded/i) ;
+ 
+
+<tr>
+    <td width="80" >
+         [<a href="<% (sprintf "%s%s",$c->uri_for('rerun/'),$jobs->{$id}->{id}) %>">rerun</a>]
+	 [<a href="<% $jobs->{$id}->{project_output_directory} %>" >results</a>]
+	 
+	 </td>
+    <td><% $jobs->{$id}->{id} |h %></td>
+    <td><% $jobs->{$id}->{jobname} |h %></td>
+ 
+    <td><% $jobs->{$id}->{assigned_to_cluster} |h %></td>
+    <td><% $jobs->{$id}->{status} |h %></td>
+    <td width="200"><% $jobs->{$id}->{created} |h %></td>   
+   
+    <td width="150"><% $jobs->{$id}->{submitted} |h %></td>
+     
+</tr>
+% }
+</tbody>
+</table>
+</p>
+
+</div><div align="center">
+ <br /><br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

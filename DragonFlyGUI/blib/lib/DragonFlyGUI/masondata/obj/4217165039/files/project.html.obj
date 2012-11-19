@@ -1,0 +1,149 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $projects );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+     $projects = exists $pos{'projects'} ? $_[ $pos{'projects'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '<html>
+' );
+#line 8 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->comp(   '/components/style.mas'  
+); #line 8 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+<head>
+' );
+#line 10 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->comp(   '/components/header.mas'  
+); #line 10 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+<!-- setting up Tabs script ... -->
+
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+' );
+#line 18 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 18 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+' );
+#line 19 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->comp(   '/components/table.mas'  
+); #line 19 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+ <p class="clear" />
+ <H3>List of users</H3>
+ 
+ <table id="myTable-project-directories" cellspacing="1" class="tablesorter">
+  <thead>
+   <tr>
+    <th>Project</th>
+    <th>Project Name</th>
+    <th>Project Description</th>
+    <th>active</th>
+   </tr>
+ </thead>
+ <tbody>
+' );
+#line 33 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+ foreach my $id (sort {$a <=> $b} keys %{$projects})
+  {
+$m->print( '   <tr>
+' );
+#line 36 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+   foreach my $field (qw(project_id project_name project_description active))
+    {    
+$m->print( '      <td>
+' );
+#line 39 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+      if ($field eq "project_id") {
+$m->print( '	<a href="' );
+#line 40 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print(  $projects->{$id}->{project_uri}  );
+#line 40 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '" target="_blank" >
+' );
+#line 41 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+       }      
+$m->print( '       ' );
+#line 42 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print(  $projects->{$id}->{$field}  );
+#line 42 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+' );
+#line 43 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+      if ($field eq "id") {
+$m->print( '	</a >
+' );
+#line 45 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+       }      
+$m->print( '       
+      </td>
+' );
+#line 48 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+    } 
+$m->print( '   </tr> 
+' );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+  }  
+$m->print( '
+
+ </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+ 
+
+<div align="center">
+ <br />
+</div>
+' );
+#line 68 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->comp(   '/components/footer.mas'  
+); #line 68 /home/dragonfly/df/DragonFlyGUI/root/files/project.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$body' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' },
+  '$projects' => { default => ' undef' }
+},
+'load_time' => 1223238517,
+
+)
+;

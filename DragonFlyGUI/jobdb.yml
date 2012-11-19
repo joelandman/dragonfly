@@ -1,0 +1,8 @@
+--- #YAML:1.0
+# DO NOT USE TABS FOR INDENTATION OR label/value SEPARATION!!!
+name:  JobDB
+
+jobdb:
+  dsn:     'dbi:Pg:dbname=jobdb;host=crunch;port=5432'
+  dbuser:  'dfadmin'
+  dbpass:  'dr1g4nfl6db'

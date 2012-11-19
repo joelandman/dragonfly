@@ -1,0 +1,20 @@
+CREATE  TABLE jobs (
+        id          INTEGER PRIMARY KEY AUTOINCREMENT,
+        jobname     TEXT,
+	jobid	    TEXT,
+	job_owner_uid	INT,
+	job_directory	TEXT,	
+	queue_jobid	TEXT,
+	queue_jobname	TEXT,
+        submitted   INT DEFAULT 0,
+	queued	    INT DEFAULT 0,
+	started	    INT DEFAULT 0,
+	completed   INT DEFAULT 0,
+	hold	    INT DEFAULT 0,
+	assigned_to_cluster TEXT,
+	running_on  TEXT,
+	NCPU	    INT,
+	wallclock_run  TEXT,
+	wallclock_queued TEXT,
+        jobxml      TEXT
+    );

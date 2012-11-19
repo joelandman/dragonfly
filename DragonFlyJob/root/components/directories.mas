@@ -1,0 +1,18 @@
+<%args>
+$destination_path	=> undef
+</%args>
+<!-- in directories.mas -->
+<table valign="top">
+ <tr valign="top">
+  <td >Create directory</td>
+  <td>
+   <form action="/mkdir" method="POST" >
+    <input type="text" name="dir" value="" />
+    <input type="submit" name="mkdir" value="make directory" />
+    <input type="hidden" name="destination_path" value="<% $destination_path %>" />
+    <input type="hidden" name="form_submit" value="yes" />
+   </form>
+  </td>
+ </tr>
+</table>
+<!-- end of directories.mas -->

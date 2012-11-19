@@ -1,0 +1,167 @@
+<%args>
+$left	=> undef
+$navbar	=> undef
+$body	=> undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<%perl>
+if (!$navbar)
+ {
+  #
+  # handle case of no pre-defined navbar, emit 'default' navbar
+ 
+  push @{$navbar->{top}},{
+  	     label	=> "projects",
+  	     text	=> "Projects",
+	     submenu	=> "projects"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "administer",
+  	     text	=> "Administer projects",
+	     uri	=> "/projects/admin"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "current",
+  	     text	=> "Current project",
+	     uri	=> "/projects"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "open",
+  	     text	=> "Open project",
+	     uri	=> "/projects/open"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "my",
+  	     text	=> "My projects",
+	     uri	=> "/projects/my"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "list",
+  	     text	=> "List projects",
+	     uri	=> "/projects/list"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "manage",
+  	     text	=> "Mange project",
+	     uri	=> "/projects/manage"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "close",
+  	     text	=> "Close project",
+	     uri	=> "/projects/close"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+  	     label	=> "switch",
+  	     text	=> "Switch project",
+	     uri	=> "/projects/switch"
+	    };
+  push @{$navbar->{submenu}->{projects}},{
+             label      => "accounting",
+             text       => "Project accounting",
+             uri        => "/projects/accounting"
+            };
+
+
+
+  push @{$navbar->{top}},{
+  	     label	=> "jobs",
+  	     text	=> "Jobs",
+	     submenu	=> "jobs"
+	    };
+  push @{$navbar->{submenu}->{jobs}},{
+  	     label	=> "new",
+  	     text	=> "New job",
+	     uri	=> "/jobs/newj"
+	    };
+  push @{$navbar->{submenu}->{jobs}},{
+  	     label	=> "list",
+  	     text	=> "List jobs",
+	     uri	=> "/jobs/my"
+	    };
+  push @{$navbar->{submenu}->{jobs}},{
+  	     label	=> "manage",
+  	     text	=> "Manage jobs",
+	     uri	=> "/jobs/manage"
+	    };
+  push @{$navbar->{submenu}->{jobs}},{
+  	     label	=> "status",
+  	     text	=> "Job status",
+	     uri	=> "/jobs/status"
+	    };
+	    	    
+	    
+  push @{$navbar->{top}},{
+  	     label	=> "files",
+  	     text	=> "Files",
+	     submenu	=> "files"
+	    };	    
+  push @{$navbar->{submenu}->{files}},{
+  	     label	=> "manage",
+  	     text	=> "Manage files",
+	     uri	=> "/files"
+	    };
+
+
+  push @{$navbar->{top}},{
+  	     label	=> "help",
+  	     text	=> "Help",
+	     submenu	=> "help"
+	    };	    
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "feedback",
+  	     text	=> "Feedback",
+	     uri	=> "/help/feedback"
+	    };
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "howto",
+  	     text	=> "How do I ...",
+	     uri	=> "/help/howto"
+	    };
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "RFE",
+  	     text	=> "Request feature",
+	     uri	=> "/help/rfe"
+	    };
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "admin",
+  	     text	=> "Request administrator contact me",
+	     uri	=> "/help/contactme"
+	    };
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "bug",
+  	     text	=> "Report bug",
+	     uri	=> "/help/bug"
+	    };
+  push @{$navbar->{submenu}->{help}},{
+  	     label	=> "search",
+  	     text	=> "Search help system",
+	     uri	=> "/help/search"
+	    };
+
+
+  push @{$navbar->{top}},{
+  	     label	=> "logout",
+  	     text	=> "Logout",
+	     uri	=> "/logout"
+	    };	    
+
+ };
+
+</%perl>
+<& /components/nav-bar.mas,	navbar	=> $navbar  &>
+<& /components/left.mas,	links	=> $left  &>
+<& /components/body.mas,	main	=> $body  &>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

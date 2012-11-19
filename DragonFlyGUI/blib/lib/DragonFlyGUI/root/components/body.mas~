@@ -1,0 +1,35 @@
+<%args>
+$main	=> undef;
+$left	=> undef;
+</%args>
+<!-- from body.mas -->
+% use XML::Smart;
+% my ($xml,$desc,$left_xml);
+
+
+% # return if (!defined($main));
+% if ($main) {
+% $xml = XML::Smart->new($main);
+
+<div id="main-box" class="main-box" style="float:right" >
+ <ul>
+% foreach (@{$xml->{main}->{article}}) {
+%   if ( $_->{available} =~ /yes/i ) {
+  <li ><h3><% $_->{name}|h %></h3>
+%   $desc=  $_->{description}('<xml>');
+  <% $desc %> </li>
+%  }
+% }
+</div>
+% }
+% else
+% {
+%   # set up a speedometer in the main window (one for disk, one for network, one for CPU)
+ 
+<& /components/so-jgauge.mas &>
+ 
+	
+% }
+
+<p class="clear" />
+<!-- end of body.mas -->

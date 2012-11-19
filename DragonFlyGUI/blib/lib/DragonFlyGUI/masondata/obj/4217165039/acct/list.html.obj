@@ -1,0 +1,171 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $jobs, $forms, $jha_ref );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $jobs = exists $pos{'jobs'} ? $_[ $pos{'jobs'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $forms = exists $pos{'forms'} ? $_[ $pos{'forms'} ] :  undef;
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+     $jha_ref = exists $pos{'jha_ref'} ? $_[ $pos{'jha_ref'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 9 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+ use Data::Dumper;
+$m->print( '
+<html>
+' );
+#line 12 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+ my ($hash,%data);
+ my @job_fields = @{$jha_ref};
+ my @jobf;
+ my @jobi;
+$m->print( '
+' );
+#line 17 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->comp(   '/components/style.mas'  
+); #line 17 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+<head>
+' );
+#line 19 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->comp(   '/components/header.mas'  
+); #line 19 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+
+' );
+#line 27 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 27 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+
+' );
+#line 29 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->comp(   '/components/table.mas'  
+); #line 29 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+' );
+#line 34 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+ @jobi	= keys %{$jobs};
+ @jobf = keys %{$jobs->{$jobi[0]}};
+ foreach my $field (@jobf)
+  {
+$m->print( '    <th>' );
+#line 38 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $field  );
+#line 38 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '</th>
+' );
+#line 39 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+  }    
+$m->print( '</tr>
+</thead>
+<tbody> 
+
+' );
+#line 44 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+ foreach my $jobid (sort {$a <=> $b} keys %{$jobs}) 
+  {
+$m->print( '  <!-- jobid = ' );
+#line 46 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $jobid  );
+#line 46 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( ' -->
+  <!-- jobs = ' );
+#line 47 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  Dumper($jobs->{$jobid})  );
+#line 47 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( ' -->
+<tr>
+ <td><a href="' );
+#line 49 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $c->uri_for('jobdata/id=') . $jobs->{$jobid}->{id}  );
+#line 49 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '">' );
+#line 49 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $jobs->{$jobid}->{id}  );
+#line 49 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '</a></td>
+ <td>' );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $jobs->{$jobid}->{project}  );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '</td> 
+' );
+#line 51 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+  foreach my $field (@jobf)
+   {
+     next if ($field eq "id");
+     next if ($field eq "project");
+$m->print( ' <td>
+  ' );
+#line 56 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print(  $jobs->{$jobid}->{$field}  );
+#line 56 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+ </td>
+' );
+#line 58 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+   }
+$m->print( '</tr>
+' );
+#line 60 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+ }
+$m->print( '</tbody>
+</table>
+</p>
+<p> <!-- % $forms->render % -->
+<div align="center">
+ <br />
+</div>
+' );
+#line 68 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->comp(   '/components/footer.mas'  
+); #line 68 /home/dragonfly/df/DragonFlyGUI/root/acct/list.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$body' => { default => ' undef' },
+  '$forms' => { default => ' undef' },
+  '$jha_ref' => { default => ' undef' },
+  '$jobs' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' }
+},
+'load_time' => 1223238508,
+
+)
+;

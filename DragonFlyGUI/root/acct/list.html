@@ -1,0 +1,70 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$jobs   => undef
+$forms  => undef
+$jha_ref=> undef
+</%args>
+% use Data::Dumper;
+
+<html>
+% my ($hash,%data);
+% my @job_fields = @{$jha_ref};
+% my @jobf;
+% my @jobi;
+
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+
+<& /components/table.mas                            &>
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+% @jobi	= keys %{$jobs};
+% @jobf = keys %{$jobs->{$jobi[0]}};
+% foreach my $field (@jobf)
+%  {
+    <th><% $field %></th>
+%  }    
+</tr>
+</thead>
+<tbody> 
+
+% foreach my $jobid (sort {$a <=> $b} keys %{$jobs}) 
+%  {
+  <!-- jobid = <% $jobid %> -->
+  <!-- jobs = <% Dumper($jobs->{$jobid}) %> -->
+<tr>
+ <td><a href="<% $c->uri_for('jobdata/id=') . $jobs->{$jobid}->{id} %>"><% $jobs->{$jobid}->{id} %></a></td>
+ <td><% $jobs->{$jobid}->{project} %></td> 
+%  foreach my $field (@jobf)
+%   {
+%     next if ($field eq "id");
+%     next if ($field eq "project");
+ <td>
+  <% $jobs->{$jobid}->{$field} %>
+ </td>
+%   }
+</tr>
+% }
+</tbody>
+</table>
+</p>
+<p> <!-- % $forms->render % -->
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

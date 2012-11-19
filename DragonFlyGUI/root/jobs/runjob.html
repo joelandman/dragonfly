@@ -1,0 +1,59 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$jobs  => undef
+</%args>
+% use Data::Dumper;
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+
+<H2>Select Job to Run</H2>
+<div align="left">
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+   <th>Submit Job</th>
+   <th>Job ID</th>
+   <th>Job Name</th>
+</tr>
+</thead>
+ <tbody>
+% foreach my $job (sort keys %{$jobs}) {
+%  # skip submitted jobs
+%  next if ($jobs->{$job}->{submitted});
+
+<tr>
+    <td>
+      <a href="<% $c->uri_for('submit/') . $job %>">Submit</a>
+    </td>
+    <td>
+      [list method]: <% $job %>  
+    </td>
+    <td>
+      <pre>
+<% $jobs->{$job}->{jobname} %>
+      </pre>
+    </td>
+</tr>
+% }
+</tbody>
+</table>
+</div>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

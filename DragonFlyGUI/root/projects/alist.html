@@ -1,0 +1,43 @@
+<%args>
+$projects     => undef
+</%args>
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<H1> List of Projects </H1>
+<pre>
+
+% foreach my $hash (@{$projects})
+% {
+<hr />
+%   my %data = %{$hash->{_column_data}};
+%   foreach ('project_id',
+%            'project_name',
+%            'project_description',
+%            'project_status',
+%            'project_start',
+%            'project_uri',
+%            'project_documentation',
+%            'active',
+%            'locked',
+%            'id')
+%   {
+     <b> <% $_ %> => </b> <% $data{$_} %>
+%    print "\n";
+%   }
+% }
+
+</pre>
+
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

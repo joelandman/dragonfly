@@ -1,0 +1,15 @@
+<%args>
+$tab	=> undef
+</%args>
+<!-- in table.mas -->
+
+
+<!-- setting up table ... -->
+<script type="text/javascript">
+$(document).ready(function() 
+    { 
+        $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} ); 
+    } 
+); 
+</script>
+<!-- done with table.mas -->

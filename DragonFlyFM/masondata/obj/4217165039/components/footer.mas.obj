@@ -1,0 +1,34 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 /home/dragonfly/df/DragonFlyFM/root/components/footer.mas
+$m->print( '<!-- from footer.mas -->
+<div class="footer" >
+ <p class="clear" />
+ <div id="header-left">
+  <a href="http://scalableinformatics.com" style="border-style: none">
+   <img src="/static/images/sillc_sm2.jpg" alt="Scalable Informatics" class="left-image" /> 
+  </a>
+ </div>
+ 
+ <div id="header-right">
+ <img src="/static/images/simply_faster_sm_trans.png" alt="Simply faster" class="right-image" />
+</div>
+<div align="center">
+  Copyright &copy; 2003-2007 Scalable Informatics LLC<br />
+  All trademarks are properties of their respective owners.<br />
+  DragonFly is dual licensed (<a href="">GPLv2</a> and commercial).<br />Contact <a href="http://scalableinformatics.com">Scalable Informatics</a> for details.
+ </div>
+</div>
+<!-- end of footer.mas -->
+' );
+;return;
+},
+'load_time' => 1222744732,
+
+)
+;

@@ -1,0 +1,12 @@
+<%args>
+$css				=> "scalableinformatics_default.css";
+$enable_jquery	=>	1;
+</%args>
+<!-- style.mas -->
+ <link href="/style/<% $css |h %>" rel="stylesheet" type="text/css" />
+<& /components/tabs.mas &>
+<& /components/navigation.mas &>
+<& /components/treeview.mas &>
+<& /components/multiple_uploads.mas &>
+<& /components/progress.mas &>
+<!-- end of style.mas -->

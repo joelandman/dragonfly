@@ -1,0 +1,297 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $form, $page, $appdata );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $form = exists $pos{'form'} ? $_[ $pos{'form'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $page = exists $pos{'page'} ? $_[ $pos{'page'} ] :  undef;
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+     $appdata = exists $pos{'appdata'} ? $_[ $pos{'appdata'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 9 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ use Data::Dumper;
+$m->print( '
+<html>
+' );
+#line 12 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/style.mas'  
+); #line 12 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+<head>
+' );
+#line 14 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/header.mas'  
+); #line 14 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+' );
+#line 20 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 20 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+' );
+#line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/left.mas',        links   => $left    
+); #line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+' );
+#line 22 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/body.mas',        main    => $body    
+); #line 22 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+
+
+<H3>Adding application: ' );
+#line 25 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $page  );
+#line 25 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</H3>
+' );
+#line 26 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ if ($appdata) {
+$m->print( ' <p class="clear" />
+ <p>Application name: <strong>' );
+#line 28 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{meta}->{appname}  );
+#line 28 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</p>
+' );
+#line 29 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ }
+$m->print( '
+<p /> ' );
+#line 31 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $form->render  );
+#line 31 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+<p />
+ You will be allowed to edit all of these items at the end of this process.
+<p />
+<div id="param-table">
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Parameter name</th>
+   <th>Parameter default value</th>
+   <th>Parameter Description</th>  
+  </tr>
+ </thead>
+ <tbody>
+' );
+#line 45 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ if ($appdata) 
+  {
+   foreach my $param (keys %{$appdata->{parameter}})
+    {
+$m->print( '  <tr>
+   <td>' );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{parameter}->{$param}->{name}  );
+#line 50 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 51 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{parameter}->{$param}->{value}  );
+#line 51 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 52 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{parameter}->{$param}->{desc}  );
+#line 52 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+  </tr>
+
+' );
+#line 55 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+    } 
+  }
+$m->print( ' </tbody>
+</table>
+</div>
+<p />
+<div id="arg-table">
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Argument name</th>
+   <th>Arguement default value</th>
+   <th>Argument Description</th>  
+   <th>Mandatory</th>  
+   <th>Input file</th>  
+   <th>Output file</th>  
+  </tr>
+ </thead>
+ <tbody>
+' );
+#line 74 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ if ($appdata) 
+  {
+   foreach my $argument (keys %{$appdata->{argument}})
+    {
+$m->print( '  <tr>
+   <td>' );
+#line 79 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{name}  );
+#line 79 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 80 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{value}  );
+#line 80 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 81 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{desc}  );
+#line 81 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 82 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{mandatory}  );
+#line 82 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 83 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{input_file}  );
+#line 83 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 84 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{argument}->{$argument}->{output_file}  );
+#line 84 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+  </tr>
+
+' );
+#line 87 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+    } 
+  }
+$m->print( ' </tbody>
+</table>
+</div>
+<p />
+<!-- Dump = ' );
+#line 93 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  Dumper($appdata)  );
+#line 93 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( ' -->
+<div id="env-table">
+Environment copy in: <strong> ' );
+#line 95 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{copy}  );
+#line 95 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( ' </strong>
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Environment variable</th>
+   <th>value</th>
+   <th>Description</th>  
+   <th>append</th>  
+   <th>insert</th>  
+   <th>delete</th>  
+   <th>add</th>  
+  </tr>
+ </thead>
+ <tbody>
+' );
+#line 109 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+ if ($appdata) 
+  {
+   foreach my $e (keys %{$appdata->{environment}})
+    {
+     next if ($e =~ /copy/);
+$m->print( '  <tr>
+   <td>' );
+#line 115 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{name}  );
+#line 115 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 116 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{value}  );
+#line 116 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 117 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{desc}  );
+#line 117 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 118 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{append}  );
+#line 118 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 119 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{insert}  );
+#line 119 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 120 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{delete}  );
+#line 120 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+   <td>' );
+#line 121 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print(  $appdata->{environment}->{$e}->{add}  );
+#line 121 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '</td>
+  </tr>
+ 
+' );
+#line 124 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+    } 
+  }
+$m->print( ' </tbody>
+</table>
+</div>
+<div align="center">
+ <br />
+</div>
+' );
+#line 132 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->comp(   '/components/footer.mas'  
+); #line 132 /home/dragonfly/df/DragonFlyGUI/root/apps/add.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$appdata' => { default => ' undef' },
+  '$body' => { default => ' undef' },
+  '$form' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' },
+  '$page' => { default => ' undef' }
+},
+'load_time' => 1223227008,
+
+)
+;

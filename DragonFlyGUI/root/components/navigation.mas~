@@ -1,0 +1,37 @@
+<%args>
+$enable_jquery	=>	1;
+</%args>
+<!-- in navigation.mas -->
+% if ($enable_jquery) {
+<!-- setting up jQuery navigation -->
+<link href="/style/mega/skins/light_blue.css" rel="stylesheet" type="text/css" />
+<link href="/style/mega/nav-mega.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript'>
+
+$(document).ready(function($) {
+    jQuery('#nav-mega').dcMegaMenu({
+        rowItems: '3',
+        speed: 'fast' ,
+        effect: 'slide'
+    });
+    
+});
+       
+</script>        
+<!-- done setting up jQuery navigation bar -->
+
+% }
+<!-- actual menu list -->
+
+<%perl>
+use LWP::UserAgent;
+my $NICs;
+my $ua = LWP::UserAgent->new;
+my $request = HTTP::Request->new('GET', 'http://localhost:3000/monitor/listnics');
+$NICs   = $request->content;
+
+</%perl>
+<!-- NICs = <% $NICs|h %> -->
+<& /components/nav-mega.mas, NICs => $NICs  &>
+<!-- end of actual menu list -->
+<!-- end of navigation.mas -->

@@ -1,0 +1,77 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $destination_path, $is_IE, $rel_path );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+     $destination_path = exists $pos{'destination_path'} ? $_[ $pos{'destination_path'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+     $is_IE = exists $pos{'is_IE'} ? $_[ $pos{'is_IE'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+     $rel_path = exists $pos{'rel_path'} ? $_[ $pos{'rel_path'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 6 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+$m->print( '<!-- in upload.mas -->
+ 
+<table valign="top">
+ <tr valign="top">
+  <td >Upload file(s):</td>
+  <td>
+   <form 
+   	action="/upload" 
+	enctype="multipart/form-data" 
+	method="POST"     
+' );
+#line 16 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+ if (!$is_IE) {   
+$m->print( '                 onsubmit="return startEmbeddedProgressBar(this)"
+' );
+#line 18 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+ }
+$m->print( '		 >
+    <input type="file" class="multi" />
+    <input type="submit" name="upload" value="upload file(s)" />
+    <input type="hidden" name="destination_path" value="' );
+#line 22 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+$m->print(  $destination_path  );
+#line 22 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+$m->print( '" />
+    <input type="hidden" name="form_submit" value="yes" />
+    <input type="hidden" name="rel_path" value="' );
+#line 24 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+$m->print(  $rel_path  );
+#line 24 /home/dragonfly/df/DragonFlyFM/root/components/upload.mas
+$m->print( '" />
+   </form>
+  </td>
+ </tr>
+ <tr>
+  <div id=\'progress\'></div>
+ </tr>
+</table>
+<!-- end of upload.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$destination_path' => { default => ' undef' },
+  '$is_IE' => { default => ' undef' },
+  '$rel_path' => { default => ' undef' }
+},
+'load_time' => 1223231469,
+
+)
+;

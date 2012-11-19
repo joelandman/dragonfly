@@ -1,0 +1,51 @@
+<%args>
+$left	=> undef;
+</%args>
+<!-- start of left.mas -->
+% use XML::Smart;
+% my ($xml,$topic,$asset,%assets,$desc);
+
+%# parse xml file describing assets
+
+% $xml = XML::Smart->new($left);
+<div id="left-box" class="left-box" >
+% if ($left) {
+% $xml = XML::Smart->new($left);
+ <ul>
+% foreach (@{$xml->{left}->{article}}) {
+%   if ( $_->{available} =~ /yes/i ) {
+  <li ><h3><% $_->{name}|h %></h3>
+%   $desc=  $_->{description}('<xml>');
+  <% $desc %> </li>
+%  }
+% }
+</div>
+% }
+% else
+% {
+%   # set up default sysinfo
+<table>
+ <thead>
+  <tr>
+   <th>Param</th>
+   <th>Current Value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>host name</td>
+   <td><strong><% `hostname` |h %></strong>   
+  </tr>
+  <tr>
+   <td>date</td>
+   <td><strong><% `date` |h %></strong>   
+  </tr>
+ </tbody>
+</table>
+% }
+
+
+</div>
+
+<!-- end of left.mas -->
+ 

@@ -1,0 +1,4 @@
+# Form config file root/forms/acct/xml.fb
+name: acct_xml
+method: post
+submit: Back to Job List

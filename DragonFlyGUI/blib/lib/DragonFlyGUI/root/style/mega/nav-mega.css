@@ -1,0 +1,109 @@
+#nav-mega {
+font: normal 13px Arial, sans-serif;
+list-style: none;
+position: relative;
+padding: 0;
+margin: 0;
+}
+#nav-mega li ul, #nav-mega .sub {
+display: none;
+}
+#nav-mega .sub ul {
+display: block;
+}
+#nav-mega {
+background: #222;
+width: 100%;
+height: 40px;
+position: relative;
+}
+#nav-mega li {
+float: left;
+margin: 0;
+padding: 0;
+font-weight: bold;
+}
+#nav-mega li a {
+float: left;
+display: block;
+color: #fff;
+padding: 12px 25px;
+background: #222;
+text-decoration: none;
+}
+#nav-mega li.mega-hover a, #nav-mega li a:hover {
+background: #CCC;
+color: #000;
+}
+#nav-mega li .sub-container {
+position: absolute;
+}
+#nav-mega li .sub {
+background: #efefef;
+padding: 15px;
+border: 1px solid #ccc;
+}
+#nav-mega li .sub .row {
+width: 100%;
+overflow: hidden;
+clear: both;
+}
+#nav-mega li .sub li {
+list-style: none;
+float: none;
+width: 170px;
+font-size: 1em;
+font-weight: normal;
+}
+#nav-mega li .sub li.mega-hdr {
+margin: 0 10px 10px 0;
+float: left;
+}
+#nav-mega li .sub li.mega-hdr.last {
+margin-right: 0;
+}
+#nav-mega li .sub a {
+background: none;
+color: #111;
+padding: 7px 10px;
+display: block;
+float: none;
+font-size: 0.9em;
+}
+#nav-mega li .sub li.mega-hdr a.mega-hdr-a {
+padding: 5px 15px;
+margin-bottom: 5px;
+background: #6B6B6B;
+text-transform: uppercase;
+font-weight: bold;
+color: #fff;
+}
+#nav-mega li .sub li.mega-hdr a.mega-hdr-a:hover {
+color: #000;
+}
+#nav-mega .sub li.mega-hdr li a {
+padding: 4px 5px;
+font-weight: normal;
+}
+#nav-mega .sub li.mega-hdr li a:hover {
+color: #a32403;
+background: #efefef;
+}
+#nav-mega .sub ul li {
+padding-right: 0;
+}
+#nav-mega li .sub-container.non-mega .sub {
+padding: 10px;
+}
+#nav-mega li .sub-container.non-mega li {
+padding: 0;
+width: 190px;
+margin: 0;
+}
+#nav-mega li .sub-container.non-mega li a {
+padding: 7px 5px 7px 22px;
+}
+#nav-mega li .sub-container.non-mega li a:hover {
+color: #a32403;
+background: #efefef;
+}

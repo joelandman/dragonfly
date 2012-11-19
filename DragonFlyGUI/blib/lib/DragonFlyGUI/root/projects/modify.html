@@ -1,0 +1,37 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$projects  => undef
+$forms => undef
+$project_users_ref => undef
+$id     => undef 
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+<& /components/checkbox.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+</%perl>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+
+<pre>
+% print $forms->render(values => $projects);
+</pre>
+
+<div align="center">
+ <br />
+</div>
+<a href="/projects/users/<% $id %>">Manage users for this project</a>.
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

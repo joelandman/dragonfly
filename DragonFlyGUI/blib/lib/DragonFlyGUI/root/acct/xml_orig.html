@@ -1,0 +1,30 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$xml    => undef
+$jid    => undef
+</%args>
+</html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/table.mas                            &>
+<p>
+<H2>Job XML for JOBID = <% $jid %> </H2>
+<p>
+
+<% $xml %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

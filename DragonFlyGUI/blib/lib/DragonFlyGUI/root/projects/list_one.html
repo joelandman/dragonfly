@@ -1,0 +1,29 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$projects  => undef
+$forms => undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/left.mas,        links   => $left  &>
+<& /components/body.mas,        main    => $body  &>
+
+<pre>
+% print $forms->render(values => $projects);
+</pre>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

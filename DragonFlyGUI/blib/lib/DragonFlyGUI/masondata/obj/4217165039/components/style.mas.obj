@@ -1,0 +1,52 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $css, $enable_jquery );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+     $css = exists $pos{'css'} ? $_[ $pos{'css'} ] :  "scalableinformatics_default.css";;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+     $enable_jquery = exists $pos{'enable_jquery'} ? $_[ $pos{'enable_jquery'} ] : 	1;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->print( '<!-- style.mas -->
+ <link href="/style/' );
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->print( $m->interp->apply_escapes( (join '', ( $css)), 'h' ) );
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->print( '" rel="stylesheet" type="text/css" />
+' );
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->comp(   '/components/tabs.mas'  
+); #line 7 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->print( '
+' );
+#line 8 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->comp(   '/components/navigation.mas'  
+); #line 8 /home/dragonfly/df/DragonFlyGUI/root/components/style.mas
+$m->print( '
+<!-- end of style.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$css' => { default => ' "scalableinformatics_default.css";' },
+  '$enable_jquery' => { default => '	1;' }
+},
+'load_time' => 1222744045,
+
+)
+;

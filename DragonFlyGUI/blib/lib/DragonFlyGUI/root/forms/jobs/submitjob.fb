@@ -1,0 +1,4 @@
+# Form config file root/forms/jobs/submit.fb
+name: jobs_submit
+method: post
+submit: Previous, Exit, Erase, Cancel, Run

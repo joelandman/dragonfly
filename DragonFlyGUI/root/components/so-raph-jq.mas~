@@ -1,0 +1,91 @@
+
+<!-- jquery and Raphael.js speedometer,  see http://dejapong.com/?p=138 -->
+<div id="speeder"></div>
+<script type="text/javascript" src="/js/raphael-min.js"></script>
+<script src="/js/raphael.speedometer.js" type="text/javascript"></script>
+<script src="/js/jquery.timers-1.2.js" type="text/javascript"></script>
+
+<div id="speedometer">
+<script type="text/javascript">
+    var BW   = new Number();
+    var ODO  = new Number();
+    var update_interval = new Number(1.0);
+    var interation_lim  = new Number(0);
+    
+    //alert('BW=' + BW);
+    var speeder = Raphael.fn.speedometer("speeder",200,200);
+	speeder.setOptions({
+                        startNumber:0,
+                        endNumber:2500,
+                        numNumbers:10,
+                        odometerText:"MB/s",
+                        height:200,
+                        width:200
+                       });
+                       
+    // now for the fancy autoupdate of the speedometer ...
+    // hopefully 1/sec
+    //function update()
+     
+    function update() {
+     BW = $.ajax({
+                url:"http://localhost:3000/monitor/totalbw/total",
+                async: false
+              }).responseText;      
+     speeder.accelerate(BW/2);       
+    };
+    
+    update();
+    
+    //function ding(M) {
+    // alert("msg: "+M)l
+    //};
+    //alert("Clank!");
+   
+    //$(window).setInterval(alert("hi"),10000)
+    setInterval(function () {update();},2000)
+    
+</script>	  
+</div>
+<div id="iop-meter">
+<script type="text/javascript">
+    var IOPS   = new Number();
+     
+    var IOP_update_interval = new Number(1.0);
+    var IOP_interation_lim  = new Number(0);
+    
+    //alert('BW=' + BW);
+    var iopper = Raphael.fn.speedometer("speeder",200,200);
+    iopper.setOptions({
+                        startNumber:0,
+                        endNumber:300,
+                        numNumbers:10,
+                        odometerText:"IOPs",
+                        height:200,
+                        width:200
+                       });
+                       
+    // now for the fancy autoupdate of the speedometer ...
+    // hopefully 1/sec
+    //function update()
+     
+    function update_iops() {
+     IOPS = $.ajax({
+                url:"http://localhost:3000/monitor/totaliops/total",
+                async: false
+              }).responseText;      
+     iopper.accelerate(IOPS);       
+    };
+    
+    update_iops();
+    
+    //function ding(M) {
+    // alert("msg: "+M)l
+    //};
+    //alert("Clank!");
+   
+    //$(window).setInterval(alert("hi"),10000)
+    setInterval(function () {update_iops();},2000)
+    
+</script>     
+</div>

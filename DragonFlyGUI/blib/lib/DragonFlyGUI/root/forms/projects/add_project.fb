@@ -1,0 +1,54 @@
+# Form config file root/forms/projects/manage.fb
+name: projects_List_one
+debug: 0
+method: post
+fields:
+    project_id:
+        label: Project ID
+        type:  text
+        size:  80
+        required: 1
+    project_name:
+        label: Project Name
+        type:  text
+        size:  80
+        required: 1
+    project_description:
+        label: Project Description
+        type:  textarea
+        cols:  56
+        rows:  5
+    project_status:
+        label: Project Status
+        type:  text
+        size:  80
+        required: 0
+    project_start:
+        label: Project Start Date
+        type:  text
+        size:  80
+        required: 1
+    project_documentation:
+        label: Project Documentation
+        type:  textarea
+        cols:  56
+        rows:  5
+    project_uri:
+        label: Data Repository Location
+        type:  text
+        size:  80
+        required: 1
+    active:
+        label: Active
+        type:  text
+        size:  3
+        required: 0
+    locked:
+        label: Locked
+        type:  text
+        size:  3
+        required: 0
+
+submit: Submit Updates
+submit: Delete This Project
+submit: Update This Project, Delete This Project, Return to Project List

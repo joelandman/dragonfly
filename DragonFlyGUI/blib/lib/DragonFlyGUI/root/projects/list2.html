@@ -1,0 +1,59 @@
+<%args>
+$projects     => undef
+</%args>
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+
+<H1>Complete List of Projects</H1>
+
+<SCRIPT LANGUAGE="perl" TYPE="text/perl">
+print "Hello World!\n";
+</SCRIPT>
+
+<pre>
+<% @hashkeys = keys( %projects ) %>
+<% for ( $i = 0; $i < @hashkeys; ++$i ) { %>
+<% print "$hashkeys[ $i ] => $hash{ $hashkeys[ $i ] }\n"; %>
+<% } %>
+</pre>
+
+<table>
+<tr>
+   <th>ID</th>
+   <th>Project Name</th>
+   <th>Project ID</th>
+   <th>Start Date</th>
+   <th>Status</th>
+   <th>Data Repository</th>
+   <th>Description</th>
+   <th>Documentation</th>
+   <th>Active Status</th>
+   <th>Locked Status</th>
+</tr>
+
+<pre>
+[% # Display each project in a table row %]
+[% FOREACH project IN projects -%]
+  <tr>
+    <td>[% project->id %]</td>
+    <td>[% project.project_name %]</td>
+    <td>[% project.project_id %]</td>
+    <td>[% project.project_start %]</td>
+    <td>[% project.project_status %]</td>
+    <td>[% project.project_uri %]</td>
+    <td>[% project.project_description %]</td>
+    <td>[% project.project_documentation %]</td>
+    <td>[% project.active %]</td>
+    <td>[% project.locked %]</td>
+    </td>
+  </tr>
+[% END -%]
+</pre>
+</table>
+<& /components/footer.mas &>
+</body>
+</html> 

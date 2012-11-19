@@ -1,0 +1,4 @@
+# Form config file root/forms/acct/list.fb
+name: acct_list
+method: post
+submit: Create Excel File: /tmp/acct.xls

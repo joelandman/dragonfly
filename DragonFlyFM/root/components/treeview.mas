@@ -1,0 +1,26 @@
+<%args>
+$enable_jquery	=>	1;
+</%args>
+<!-- in treeview.mas -->
+% if ($enable_jquery) {
+<!-- setting up jQuery treeview -->
+
+<link rel="stylesheet" href="/style/jquery.treeview.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/js/jquery.treeview.js"></script>
+<style type="text/css">
+  #browser {
+    font-family: Verdana, helvetica, arial, sans-serif;
+    font-size: 68.75%;
+  }
+</style> 
+
+<script>
+  $(document).ready(function(){
+    $("#browser").treeview();
+  });
+  </script>
+  
+<!-- done setting up jQuery treeview -->
+
+% }
+<!-- end of treeview.mas -->

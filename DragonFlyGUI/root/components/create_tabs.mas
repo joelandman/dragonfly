@@ -1,0 +1,65 @@
+<%args>
+$tab	=> undef
+</%args>
+<!-- in create_tabs.mas -->
+<%perl>
+my @array =  ('a'..'z','A'..'Z');
+my (@container_letters,$container,$this);
+map {push @container_letters,$array[int(rand scalar(@array))]} (1..8);
+$container	= join("",@container_letters);
+</%perl>
+
+<%perl>
+# tabs come in via an array of hashes with the following structure
+#
+# $tab[...] = { label=>"..." uri=>"...",content=>"..."  }
+#
+# they are pre-arranged in order in the array for easy traversal
+#
+return if (!$tab);	# if there is no work to do, then return
+
+# now generate the tabs from the tab data structure
+</%perl>
+
+<!-- setting up Tabs script ... -->
+<script type="text/javascript">
+ $(function() {
+     $('#tab-container-<% $container|h %>').tabs();              
+ });
+</script>
+<!-- end of Tabs script setup ... -->
+
+<!-- setting up tabs -->
+% # setup the tab container
+<div id="tab-container-<% $container|h %>">
+ <ul>
+
+% # set up UL to each tab element
+%foreach $this (@$tab)
+% {
+   <li>
+    <a href="#<% $this->{uri}|h %>">
+     <span>
+      <% $this->{label}|h %>
+     </span>
+    </a>
+   </li>
+% }
+ </ul>
+
+% # now create each div container for each tab, and put the content there ...
+%foreach $this (@$tab)
+% {
+   <div align="center" id="<% $this->{uri}|h %>">    
+      <% $this->{content} %>    
+   </div>
+% }
+
+% # terminate the tab div container ...
+</div>
+
+<!-- end of tabs setup ... -->
+
+
+
+<!-- done with create_tabs.mas -->

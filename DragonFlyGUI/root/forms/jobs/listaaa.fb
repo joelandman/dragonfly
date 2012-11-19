@@ -1,0 +1,10 @@
+# Form config file root/forms/jobs/list.fb
+name: jobs_list
+method: post
+fields:
+    jobxml:
+        label: Job XML
+        type:  textarea
+        cols:  80
+        rows:  12
+

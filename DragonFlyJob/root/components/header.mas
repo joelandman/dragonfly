@@ -1,0 +1,11 @@
+<!-- from header.mas -->
+<title>DragonFly</title>
+<div id="header-left">
+ <img src="/static/images/DragonFly-sm.png" alt="DragonFly" class="left-image" /> 
+</div>
+
+<div id="header-right">
+ <img src="/static/images/df-2-sm2.jpg" alt="dragonfly logo" class="right-image" />
+</div>
+<p class="clear" />
+<!-- end of header.mas -->

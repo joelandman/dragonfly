@@ -1,0 +1,6 @@
+name: feedback
+
+feedback:
+  dsn:     'dbi:Pg:dbname=feedback;host=crunch;port=5432'
+  dbuser:  'dfadmin'
+  dbpass:  'dr1g4nfl6db'

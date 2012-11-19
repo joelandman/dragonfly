@@ -1,0 +1,32 @@
+<%args>
+$projects       => undef
+</%args>
+% my $project;
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<table>
+<tr><th>Title</th><th>Project</th><th>List</th></tr>
+
+% foreach $project (keys %{$projects}) {
+ <tr>
+%  foreach (keys (%{$projects->{$project}}))
+%   {
+     <td><% $projects->{$project}->{$_} |h %></td>
+%   }
+ </tr>
+% }
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

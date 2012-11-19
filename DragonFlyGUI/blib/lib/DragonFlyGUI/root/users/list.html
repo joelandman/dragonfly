@@ -1,0 +1,32 @@
+<%args>
+$users	=> undef
+</%args>
+% my $user;
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<table>
+<tr><th>Title</th><th>User</th><th>List</th></tr>
+
+% foreach $user (keys %{$users}) {
+ <tr>
+%  foreach (keys (%{$users->{$user}}))
+%   {
+     <td><% $users->{$user}->{$_} |h %></td>
+%   }  
+ </tr>  
+% }
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

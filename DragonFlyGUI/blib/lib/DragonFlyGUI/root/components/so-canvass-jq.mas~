@@ -1,0 +1,42 @@
+
+<!-- jquery and Raphael.js speedometer,  see http://dejapong.com/?p=138 -->
+<div id="speeder"></div>
+<script src="/js/jquery.timer.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/style/canvass-so/speedometer.css" media="screen" />
+
+        <script type="text/javascript" src="/js/canvass-so/xcanvas.js"></script>
+        <script type="text/javascript" src="/js/canvass-so/tbe.js"></script>
+
+        <script type="text/javascript" src="/js/canvass-so/digitaldisplay.js"></script>
+        <script type="text/javascript" src="/js/canvass-so/speedometer.js"></script>
+        <script type="text/javascript" src="/js/canvass-so/themes/default.js"></script>
+
+        <script type="text/javascript" src="/js/canvass-so/example.js"></script>
+        <script type="text/javascript" src="/js/canvass-so/controls.js"></script>
+       
+
+<script type="text/javascript">
+    var BW   = new Number();
+    var ODO  = new Number();
+    var speedometer;
+          // Explicit onready listener for modern browsers. If you use a JS framework,
+          // you should replace this code with your toolkit's "onReady" helpers (e.g.
+          // $(document).ready() on jQuery, Event.observe('dom:loaded') on prototype,
+          // and so on.
+          //document.addEventListener ("DOMContentLoaded", function() {          
+           // document.removeEventListener ("DOMContentLoaded", arguments.callee, false);
+          $(document).ready() {
+            // Check out configuration and API on GitHub Wiki:
+            // http://wiki.github.com/vjt/canvas-speedometer
+            speedometer = new Speedometer ('speedometer', {theme: 'default'});
+            speedometer.draw ();
+            speedometer.addEventListener ('speedometer:animateend', function () {
+              controls.start ();
+            });
+
+            var controls = new Controls ();
+            controls.start ();
+           
+          }
+    
+</script>	  

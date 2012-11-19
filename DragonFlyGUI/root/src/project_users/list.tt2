@@ -1,0 +1,22 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'Project Users List' -%]
+
+<table>
+<tr><th>Title</th><th>Project Users</th><th>List</th></tr>
+[% # Display each project_user in a table row %]
+[% FOREACH projectuser IN project_users -%]
+  <tr>
+    <td>[% projectuser.id %]</td>
+    <td>[% projectuser.user %]</td>
+    <td>[% projectuser.project %]</td>
+    <td>[% projectuser.role %]</td>
+    <td>[% projectuser.date_joined %]</td>
+    <td>[% projectuser.date_left %]</td>
+    <td>[% projectuser.data_repository %]</td>
+    <td>[% projectuser.access_type %]</td>
+    <td>[% projectuser.active %]</td>
+    <td>[% projectuser.access %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

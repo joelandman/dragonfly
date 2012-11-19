@@ -1,0 +1,401 @@
+<%args>
+$navbar	=> undef;
+</%args>
+
+<!-- in nav-bar.mas -->
+
+<%perl>
+my @array =  ('a'..'z','A'..'Z');
+my (@container_letters,$container,$this,$menu);
+map {push @container_letters,$array[int(rand scalar(@array))]} (1..8);
+$container	= join("",@container_letters);
+
+
+
+
+# navbar comes in via an hash of hashes with the following structure
+#
+# $navbar->{top} = [{ label=>"..." , text=>"...", uri=>"...",submenu=>"..."}, ...]
+# $navbar->{submenu}->{$label} = [{ label=>"..." , text=>"...", uri=>"...",submenu=>"..."}, ...]
+# 
+# so that $navbar->{top} is an array, and populated in order of appearance
+# where "top" signifies the top level menu
+#       "label" is the menu id label 
+#       "text" is the text in the menu
+#       "uri" if defined is the URI to the link that this menu represents
+#       "submenu" if defined points to the submenu named as the next level down
+#                 only one level of submenu is currently supported
+#       
+#
+# they are pre-arranged in order in the array for easy traversal
+#
+ 
+if (!$navbar)
+ {
+  #
+  # handle case of no pre-defined navbar, emit 'default' navbar
+ 
+  push @{$navbar->{top}},{
+             label      => "system",
+             text       => "System",
+             submenu    => "system"
+            };           
+  push @{$navbar->{submenu}->{system}},{
+             label      => "sysinfo",
+             text       => "System Information",
+             uri        => "/admin/sysinfo"
+            };
+  push @{$navbar->{submenu}->{system}},{
+	     label      => "mce",
+	     text       => "Machine Check Exceptions",
+	     uri        => "/admin/mce"
+	    };
+  push @{$navbar->{submenu}->{system}},{
+             label      => "logview",
+             text       => "Log Viewer",
+             uri        => "/admin/logview"
+            };
+
+  push @{$navbar->{submenu}->{system}},{
+   	     label      => "reboot",
+	     text       => "Reboot System",
+     	     uri        => "/admin/reboot"
+	    };
+  push @{$navbar->{submenu}->{system}},{
+	     label      => "poweroff",
+	     text       => "Power Off System",
+	     uri        => "/admin/poweroff"
+	    };
+	    
+	    
+  push @{$navbar->{top}},{
+             label      => "configuration",
+             text       => "Config",
+             submenu    => "configuration"
+            };           
+  push @{$navbar->{submenu}->{configuration}},{
+             label      => "network",
+             text       => "Network",
+             uri        => "/configuration/network"
+            };
+#if ( $c->check_user_roles( 'admin' ) ) {
+  push @{$navbar->{submenu}->{configuration}},{
+             label      => "datetime",
+             text       => "Date and Time",
+             uri        => "/configuration/date_and_time"
+            };
+#}
+  push @{$navbar->{submenu}->{configuration}},{
+	         label      => "password",
+	         text       => "Admin Password",
+	         uri        => "/configuration/admin_password"
+  };
+  push @{$navbar->{submenu}->{configuration}},{
+	         label      => "security",
+	         text       => "Security",
+	         uri        => "/configuration/security"
+  };
+  push @{$navbar->{submenu}->{configuration}},{
+	         label      => "acl",
+	         text       => "Network Access Control",
+	         uri        => "/configuration/network_acl"
+  };
+ 
+
+###
+  push @{$navbar->{top}},{
+             label      => "raid",
+             text       => "RAID",
+             submenu    => "raid"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "listraids",
+             text       => "List RAID",
+             uri        => "/raid/list"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "addraids",
+             text       => "Add RAID",
+             uri        => "/raid/add"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "modifyraids",
+             text       => "Modify RAID",
+             uri        => "/raid/modify"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "onlineofflineraid",
+             text       => "Online/Offline RAID",
+             uri        => "/raid/online_offline"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "deleteraids",
+             text       => "Delete RAID",
+             uri        => "/raid/delete"
+            };
+  push @{$navbar->{submenu}->{raid}},{
+             label      => "physicaldisklist",
+             text       => "List Physical Disk",
+             uri        => "/raid/list_disk"
+            };
+###			
+  push @{$navbar->{top}},{
+             label      => "localfs",
+             text       => "LocalFS",
+             submenu    => "localfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "listfs",
+             text       => "List Local filesystems",
+             uri        => "/localfs/listfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "addfs",
+             text       => "Add Physical Local filesystem",
+             uri        => "/localfs/addfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "addvfs",
+             text       => "Add Virtual Local filesystem",
+             uri        => "/localfs/addvfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "editfs",
+             text       => "Edit filesystem",
+             uri        => "/localfs/editfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "snapfs",
+             text       => "Snapshot filesystem",
+             uri        => "/localfs/editfs"
+            };
+  push @{$navbar->{submenu}->{localfs}},{
+             label      => "replicatefs",
+             text       => "Replicate filesystem",
+             uri        => "/localfs/replicatefs"
+            };
+###
+  push @{$navbar->{top}},{
+             label      => "filetargets",
+             text       => "File",
+             submenu    => "filetargets"
+            };
+  push @{$navbar->{submenu}->{filetargets}},{
+             label      => "nfs",
+             text       => "NFS",
+             uri        => "/targets/file/nfs"
+            };
+  push @{$navbar->{submenu}->{filetargets}},{
+             label      => "gluster",
+             text       => "GlusterFS",
+             uri        => "/targets/file/glusterfs"
+            };
+  push @{$navbar->{submenu}->{filetargets}},{
+             label      => "cifs",
+             text       => "CIFS/SMB",
+             uri        => "/targets/file/cifs"
+            };
+  push @{$navbar->{submenu}->{filetargets}},{
+             label      => "acl",
+             text       => "Access Control",
+             uri        => "/targets/file/acl"
+            };
+###
+  push @{$navbar->{top}},{
+             label      => "blocktargets",
+             text       => "Block",
+             submenu    => "blocktargets"
+            };
+  push @{$navbar->{submenu}->{blocktargets}},{
+             label      => "iscsi",
+             text       => "iSCSI",
+             uri        => "/targets/block/iscsi"
+            };
+  push @{$navbar->{submenu}->{blocktargets}},{
+             label      => "srp",
+             text       => "SRP",
+             uri        => "/targets/block/srp"
+            };
+  push @{$navbar->{submenu}->{blocktargets}},{
+             label      => "fcoe",
+             text       => "FCoE",
+             uri        => "/targets/block/fcoe"
+            };
+  push @{$navbar->{submenu}->{blocktargets}},{
+             label      => "acl",
+             text       => "Access Control",
+             uri        => "/targets/block/acl"
+            };
+
+###
+  push @{$navbar->{top}},{
+             label      => "clusterfs",
+             text       => "CFS",
+             submenu    => "clusterfs"
+            };
+			
+  push @{$navbar->{submenu}->{clusterfs}},{
+             label      => "lustre",
+             text       => "Lustre",
+             uri        => "/targets/cfs/lustre"
+            };
+  push @{$navbar->{submenu}->{clusterfs}},{
+             label      => "fhgfs",
+             text       => "FhGFS",
+             uri        => "/targets/cfs/fhgfs"
+            };
+  push @{$navbar->{submenu}->{clusterfs}},{
+             label      => "ceph",
+             text       => "Ceph",
+             uri        => "/targets/cfs/ceph"
+            };
+  push @{$navbar->{submenu}->{clusterfs}},{
+             label      => "acl",
+             text       => "Access Control",
+             uri        => "/targets/cfs/acl"
+            };
+###
+ 
+
+
+  push @{$navbar->{top}},{
+             label      => "help",
+             text       => "Help",
+             submenu    => "help"
+            };      
+  push @{$navbar->{submenu}->{help}},{
+             label      => "feedback",
+             text       => "Feedback",
+             uri        => "/admin/feedback"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "howto",
+             text       => "How do I ...",
+             uri        => "/help/howto"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "RFE",
+             text       => "Request feature",
+             uri        => "/admin/rfe"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "admin",
+             text       => "Request administrator contact me",
+             uri        => "/admin/support_request"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "bug",
+             text       => "Report bug",
+             uri        => "/help/bug"
+            };
+  push @{$navbar->{submenu}->{help}},{
+             label      => "search",
+             text       => "Search help system",
+             uri        => "/help/search"
+            };
+
+
+  push @{$navbar->{top}},{
+             label      => "logout",
+             text       => "Logout",
+             uri        => "/logout"
+            };      
+###
+ 
+
+
+  push @{$navbar->{top}},{
+             label      => "demo",
+             text       => "Demo",
+             submenu    => "demo"
+            };      
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "kdb+1_sd",
+             text       => "kdb+ demo #1 spinning disk",
+             uri        => "/demo/run/kdb+1"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "kdb+2_sd",
+             text       => "kdb+ demo #2 spinning disk",
+             uri        => "/demo/run/kdb+2"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "kdb+1_fd",
+             text       => "kdb+ demo #1 Flash disk",
+             uri        => "/demo/run/kdb+1"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "kdb+2",
+             text       => "kdb+ demo #2 Flash disk",
+             uri        => "/demo/run/kdb+2"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "disk_bw_1",
+             text       => "Spinning disk bandwidth",
+             uri        => "/demo/run/sdbw"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "disk_bw_2",
+             text       => "Flash disk bandwidth",
+             uri        => "/demo/run/fdbw"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "disk_bw_1",
+             text       => "Spinning disk bandwidth",
+             uri        => "/demo/run/sdbw"
+            };
+  push @{$navbar->{submenu}->{demo}},{
+             label      => "disk_bw_2",
+             text       => "Flash disk bandwidth",
+             uri        => "/demo/run/fdbw"
+            };
+ 
+ };
+
+# now generate the tabs from the tab data structure
+</%perl>
+
+% # external enclosing div and UL
+<div align="left">
+ <ul class="jd_menu jd_menu_slate accessible " style="width: 100%;">
+
+% foreach $this (@{$navbar->{top}}) 
+%  {
+    <li>
+%   if (defined($this->{uri}))
+%    {
+      <a href="<%  ($this->{uri}) %>" >
+%    }
+      <%  $this->{text}|h %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%   if (defined($this->{submenu}))
+%    {
+        
+
+% # generate submenu
+       <ul class="accessible">
+% foreach $menu (@{$navbar->{submenu}->{$this->{submenu}}})
+%  { 
+        <li>
+	 <a href="<% $menu->{uri} %>">
+	   <% $menu->{text}|h %>
+	 </a>
+	</li>
+%  }
+	
+	
+       </ul>       
+%    }
+       
+%   if (defined($this->{uri}))
+%    {
+      </a>
+%    }
+ 
+    </li>
+%  }
+ </ul>
+ 
+
+
+</div> 
+<!-- end of nav-bar.mas -->

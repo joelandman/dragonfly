@@ -1,0 +1,144 @@
+<%args>
+$xmldir	=> undef
+$is_IE	=> undef
+$top_path	=> undef
+$rel_path	=> undef
+$real_rel_path  => undef
+$download_uri_base	=> undef
+</%args>
+<html>
+% use Data::Dumper;
+% use XML::Smart;
+% use File::Spec;
+
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<!-- & /components/body.mas,        main    => $body  & -->
+
+<%perl>
+return if (!$xmldir);
+
+# parse XML ...
+my $xml		= XML::Smart->new($xmldir);
+my $base_path	= $xml->{'dirtree'}{'head'}{'path'}->content;
+my ($dirs,$files,$dir,$file);
+		
+# note:  is_IE has as its entire purpose in life, to signify whether
+# or not we are using IE in any of its forms.  This is, unfortunately,
+# important, as IE seems to break on standard AJAXified stuff, 
+# so we turn AJAX uploads off if we detect IE. 
+
+ 
+</%perl>
+
+<p align="left">
+Quick navigation: <a href="/list">project top directory</a> 
+%   my $bread_crumb = "";
+%   foreach my $_subdir (File::Spec->splitdir( $real_rel_path ))
+%    {
+%      next if (($_subdir eq "/") || ($_subdir eq ""));
+%      my $_tmp_bread_crumb	= File::Spec->catfile($bread_crumb, $_subdir );
+%      $bread_crumb	= $_tmp_bread_crumb;	
+       / <a href="/list/<% $top_path %><% $bread_crumb |h %>"><% $_subdir |h %></a>
+%    }
+ : [<a href="<% $download_uri_base %>xmldir/<% $bread_crumb %>">xml</a>]
+</p>
+<hr />
+
+<p align="center">
+ <table>
+  <tr valign="top">
+   <td><& /components/upload.mas, destination_path => $base_path, is_IE => $is_IE , rel_path => $rel_path &></td>
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   <td><& /components/directories.mas, destination_path => $base_path , rel_path => $rel_path &></td>
+  </tr>
+% if (0) {
+  <tr>
+   <td colspan=2><& /components/settopdir.mas, top_dir => $top_path &></td>
+  </tr>
+% }
+ </table>
+</p>
+
+<p /> 
+<table align="center">
+ <thead> 
+  <tr>
+   <th>Directories under <% $rel_path %> :  </th>
+   <th></th>
+   <th>Files</th>
+  </tr>
+ </thead>
+ <tbody>
+ <tr>
+  <td valign="top">
+<!-- start of directory list -->
+<ul id='browser' class='filetree'>
+<!-- top path = <% $top_path %> -->
+% foreach $dir ($xml->{'dirtree'}{'directory'}{'directory'}('[@]','name'))
+% {
+  <li>
+   <span class='folder'>
+%   my $_tpath	= File::Spec->catfile($rel_path,$dir->content);
+    <a href="/list/<% $_tpath|h %>"><% $dir->content |h %></a>
+     <!-- t_path = <% $_tpath %>  -->
+   </span>
+  </li>  
+% }
+</ul>
+  </td>
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td valign="top">
+   <table id="myTable" cellspacing="1" class="tablesorter">
+    <thead>
+     <tr>
+      <th>Date&nbsp;&nbsp;</th>
+      <th>Size (bytes)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th>Name&nbsp;&nbsp;</th>
+     </tr>
+    </thead>
+    <tbody>
+
+% foreach $file ($xml->{'dirtree'}{'directory'}{'file'}('@'))
+% {
+     <tr>
+      <td>
+       <% $file->{'access-time'}->content%>
+      </td>
+      <td align="right">
+       <% $file->{'size'}->content%>
+      </td>
+      <td>
+<!-- bread_crumb = <% $bread_crumb %>  -->
+       <a href="<% $download_uri_base %>/download/<% File::Spec->catfile($rel_path,$file->{'name'}->content)|h %>">
+	<% $file->{'name'}->content |h %> 
+       </a>
+      </td>
+     </tr>
+% }
+    </tbody>
+   </table>
+  </td>
+ </tr>
+ </tbody>
+</table>
+<!-- foreach my $file ($xml->{'dirtree'}{'directory'}{'file'}('[@]','name')) -->
+
+<!--
+   <%  $xmldir %>
+  -->
+
+</ul>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Form config file root/forms/jobs/newjob00.fb
+name: newjob00
+method: post
+submit: Create a New Job
+#, Clone an Existing Job

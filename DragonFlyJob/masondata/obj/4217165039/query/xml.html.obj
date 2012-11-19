@@ -1,0 +1,69 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $hash );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+     $hash = exists $pos{'hash'} ? $_[ $pos{'hash'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print( '<?xml version="1.0" ?>
+<jobs>
+' );
+#line 6 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+ foreach my $job ( @{$hash} )
+  {
+$m->print( ' <job
+' );
+#line 9 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+   foreach my $tag ( sort keys %{$job} )
+    {
+      next if ($tag =~ /jobxml/);
+$m->print( '       ' );
+#line 12 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print(  $tag  );
+#line 12 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print( '="' );
+#line 12 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print(  $job->{$tag}  );
+#line 12 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print( '"
+' );
+#line 13 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+    }
+$m->print( '  >
+  <jobxml>
+   ' );
+#line 16 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print(  $job->{'jobxml'}  );
+#line 16 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+$m->print( '
+  </jobxml>    
+ </job>
+' );
+#line 19 /home/dragonfly/df/DragonFlyJob/root/query/xml.html
+  }
+$m->print( '</jobs>
+' );
+;return;
+},
+'declared_args' => {
+  '$hash' => { default => ' undef' }
+},
+'load_time' => 1223340358,
+
+)
+;

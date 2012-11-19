@@ -1,0 +1,16 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'User Auth List' -%]
+
+<table>
+<tr><th>Title</th><th>User Auth</th><th>List</th></tr>
+[% # Display each user_auth in a table row %]
+[% FOREACH userauth IN user_auth -%]
+  <tr>
+    <td>[% userauth.id %]</td>
+    <td>[% userauth.passwd %]</td>
+    <td>[% userauth.ssh_key %]</td>
+    <td>[% userauth.user %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

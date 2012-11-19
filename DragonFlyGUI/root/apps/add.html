@@ -1,0 +1,134 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$form   => undef
+$page	=> undef
+$appdata=> undef
+</%args>
+% use Data::Dumper;
+
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/left.mas,        links   => $left  &>
+<& /components/body.mas,        main    => $body  &>
+
+
+<H3>Adding application: <% $page %></H3>
+% if ($appdata) {
+ <p class="clear" />
+ <p>Application name: <strong><% $appdata->{meta}->{appname} %></p>
+% }
+
+<p /> <% $form->render %>
+<p />
+ You will be allowed to edit all of these items at the end of this process.
+<p />
+<div id="param-table">
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Parameter name</th>
+   <th>Parameter default value</th>
+   <th>Parameter Description</th>  
+  </tr>
+ </thead>
+ <tbody>
+% if ($appdata) 
+%  {
+%   foreach my $param (keys %{$appdata->{parameter}})
+%    {
+  <tr>
+   <td><% $appdata->{parameter}->{$param}->{name} %></td>
+   <td><% $appdata->{parameter}->{$param}->{value} %></td>
+   <td><% $appdata->{parameter}->{$param}->{desc} %></td>
+  </tr>
+
+%    } 
+%  }
+ </tbody>
+</table>
+</div>
+<p />
+<div id="arg-table">
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Argument name</th>
+   <th>Arguement default value</th>
+   <th>Argument Description</th>  
+   <th>Mandatory</th>  
+   <th>Input file</th>  
+   <th>Output file</th>  
+  </tr>
+ </thead>
+ <tbody>
+% if ($appdata) 
+%  {
+%   foreach my $argument (keys %{$appdata->{argument}})
+%    {
+  <tr>
+   <td><% $appdata->{argument}->{$argument}->{name} %></td>
+   <td><% $appdata->{argument}->{$argument}->{value} %></td>
+   <td><% $appdata->{argument}->{$argument}->{desc} %></td>
+   <td><% $appdata->{argument}->{$argument}->{mandatory} %></td>
+   <td><% $appdata->{argument}->{$argument}->{input_file} %></td>
+   <td><% $appdata->{argument}->{$argument}->{output_file} %></td>
+  </tr>
+
+%    } 
+%  }
+ </tbody>
+</table>
+</div>
+<p />
+<!-- Dump = <% Dumper($appdata) %> -->
+<div id="env-table">
+Environment copy in: <strong> <% $appdata->{environment}->{copy} %> </strong>
+<table  id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+  <tr>
+   <th>Environment variable</th>
+   <th>value</th>
+   <th>Description</th>  
+   <th>append</th>  
+   <th>insert</th>  
+   <th>delete</th>  
+   <th>add</th>  
+  </tr>
+ </thead>
+ <tbody>
+% if ($appdata) 
+%  {
+%   foreach my $e (keys %{$appdata->{environment}})
+%    {
+%     next if ($e =~ /copy/);
+  <tr>
+   <td><% $appdata->{environment}->{$e}->{name} %></td>
+   <td><% $appdata->{environment}->{$e}->{value} %></td>
+   <td><% $appdata->{environment}->{$e}->{desc} %></td>
+   <td><% $appdata->{environment}->{$e}->{append} %></td>
+   <td><% $appdata->{environment}->{$e}->{insert} %></td>
+   <td><% $appdata->{environment}->{$e}->{delete} %></td>
+   <td><% $appdata->{environment}->{$e}->{add} %></td>
+  </tr>
+ 
+%    } 
+%  }
+ </tbody>
+</table>
+</div>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

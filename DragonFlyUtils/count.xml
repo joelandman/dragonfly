@@ -1,0 +1,8 @@
+<program name="Count" index="" version="1">
+ <env>
+ </env>
+ <exec>
+  <executable path="/data/apps/bin/" version="1" name="count.pl" smp="No" extra_end="" extra_begin="" />
+  <arg label="Input" name="-i" comment="file whose letters you want counted" required="Yes" input_file="Yes" output_file="No" />
+ </exec>
+</program>

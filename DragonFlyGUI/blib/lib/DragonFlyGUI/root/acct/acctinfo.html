@@ -1,0 +1,34 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$forms  => undef
+</%args>
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+<& /components/left.mas,        links   => $left  &>
+<& /components/body.mas,        main    => $body  &>
+
+<H2>Welcome to the Accounting Wizard</H2>
+<p>
+<H3>Enter Job Selection Criteria</H3>
+
+<p> <% $forms->render %>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>
+

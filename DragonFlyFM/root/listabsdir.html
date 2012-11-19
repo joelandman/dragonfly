@@ -1,0 +1,38 @@
+<%args>
+$file_array		=> undef
+$is_IE			=> undef
+$top_path		=> undef
+$rel_path		=> undef
+$download_uri_base	=> undef
+</%args>
+<%perl>
+use XML::Smart;
+use File::Spec;
+my (@files,$name,$rpath,@top_dir);
+@top_dir = File::Spec->splitdir( $top_path );
+if ($file_array)
+ {
+  @files = @{$file_array};
+ }
+</%perl>
+
+% if (!$file_array) {
+%  # no directories
+  <files>
+  </files>
+% return;  
+% }
+
+<files>
+% foreach my $file (@files) 
+%  { 
+%   my @dirs = File::Spec->splitdir( $file );
+%   my @rel_dir=@dirs;
+%   foreach my $index (0 .. $#top_dir) 
+%    { 
+%      shift @rel_dir if ($dirs[$index] eq $top_dir[$index]);
+%    }
+  <file name="<% $dirs[$#dirs] %>" fullpath="<% $file %>"  download_abspath="<% $download_uri_base %>downloadabs/<% $file %>" 
+  />
+%  }
+</files>

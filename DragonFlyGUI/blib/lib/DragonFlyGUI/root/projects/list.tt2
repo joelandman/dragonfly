@@ -1,0 +1,22 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'Project List' -%]
+
+<table>
+<tr><th>Title</th><th>Project</th><th>List</th></tr>
+[% # Display each project in a table row %]
+[% FOREACH project IN projects -%]
+  <tr>
+    <td>[% project.id %]</td>
+    <td>[% project.project_name %]</td>
+    <td>[% project.project_id %]</td>
+    <td>[% project.project_start %]</td>
+    <td>[% project.project_status %]</td>
+    <td>[% project.project_uri %]</td>
+    <td>[% project.project_description %]</td>
+    <td>[% project.project_documentation %]</td>
+    <td>[% project.active %]</td>
+    <td>[% project.locked %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

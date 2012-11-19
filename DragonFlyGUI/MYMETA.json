@@ -1,0 +1,45 @@
+{
+   "abstract" : "Catalyst based application",
+   "author" : [
+      "Joe Landman,,,"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.113640",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "DragonFlyGUI",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.36"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : 0
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Catalyst" : "5.7007",
+            "Catalyst::Action::RenderView" : 0,
+            "Catalyst::Plugin::ConfigLoader" : 0,
+            "Catalyst::Plugin::Static::Simple" : 0,
+            "YAML" : 0
+         }
+      }
+   },
+   "release_status" : "stable",
+   "version" : "0.01"
+}

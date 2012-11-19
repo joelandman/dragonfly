@@ -1,0 +1,17 @@
+<%args>
+$enable_jquery	=>	1;
+</%args>
+<!-- in progress.mas -->
+% if ($enable_jquery) {
+<!-- setting up upload progress bar -->
+
+<link href="/style/progress.css" rel="stylesheet" type="text/css" />
+<script src="/js/progress.js" type="text/javascript"></script>
+<script src="/js/progress.jmpl.js" type="text/javascript"></script>
+
+ 
+  
+<!-- done setting up upload progress bar -->
+
+% }
+<!-- end of progress.mas -->

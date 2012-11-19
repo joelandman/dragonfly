@@ -1,0 +1,11 @@
+<%args>
+$error   		=> undef
+$updatable_fields	=> undef
+</%args>
+<?xml version="1.0" ?>
+<error>
+ <% $error %>
+% if ( $updatable_fields ) {
+ Updatable fields: <% join(", ",@{$updatable_fields} ) %>
+% }
+</error>

@@ -1,0 +1,28 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 /home/dragonfly/df/DragonFlyGUI/root/components/header.mas
+$m->print( '<!-- from header.mas -->
+<title>DragonFly</title>
+<div id="header-left">
+ <a href="http://scalableinformatics.com" border="0">
+  <img src="/static/images/72-si-logo.png" alt="Scalable Informatics" class="left-image" border="0" /> 
+ </a>
+</div>
+
+<div id="header-right">
+ <img src="/static/images/df_logo_sm.png" alt="dragonfly logo" class="right-image" />
+</div>
+<p class="clear" />
+<!-- end of header.mas -->
+' );
+;return;
+},
+'load_time' => 1223226936,
+
+)
+;

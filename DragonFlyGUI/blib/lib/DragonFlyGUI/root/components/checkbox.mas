@@ -1,0 +1,8 @@
+<%args>
+$tab	=> undef
+</%args>
+<!-- in checkbox.mas -->
+
+<script src="/js/jquery.checkboxes.pack.js" type="text/javascript"></script>
+
+<!-- done with checkbox.mas -->

@@ -1,0 +1,5 @@
+# Form config file root/forms/acct/list2.fb
+name: acct_list2
+method: post
+submit: Create Excel File
+

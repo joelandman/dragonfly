@@ -1,0 +1,283 @@
+package DragonFlyGUI::Controller::Monitor;
+use Moose;
+use namespace::autoclean;
+
+BEGIN {extends 'Catalyst::Controller'; }
+
+=head1 NAME
+
+DragonFlyGUI::Controller::Monitor - Catalyst Controller
+
+=head1 DESCRIPTION
+
+Catalyst Controller.
+
+=head1 METHODS
+
+=cut
+
+
+=head2 index
+
+=cut
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+    $c->forward('/monitor/totalbw/total');
+    
+}
+
+sub totalbw : Local : Path('totalbw'): Arg(1) {
+    my ( $self, $c , $type  ) = @_;
+    # return bandwidth in MB/s for a particular device (or all devices if not given an argument)
+    my ($device,$rbw,$wbw,$sum,$fh,$line);
+    $sum    = 0.0;
+    $c->log->debug('monitor/devbw: type = '.$type);
+   
+    open($fh,"< /tmp/BW.data") or return;
+    while ($line = <$fh>)
+     {
+      chomp($line);
+      ($device,$rbw,$wbw) = split(/\,/,$line);
+       $sum += $wbw if (($type =~ /write/i) ||  ($type =~ /total/));
+       $sum += $rbw if (($type =~ /read/i)  ||  ($type =~ /total/));                
+     }
+    $c->log->debug('monitor/totalbw: total BW = '.$sum);
+    close($fh);        
+    $c->response->body((sprintf "%.3f",$sum/1000000.0));
+}
+
+sub totalbw_j : Local : Path('totalbw_j'): Arg(1) {
+    my ( $self, $c , $type  ) = @_;
+    use JSON::DWIW;
+    my $json_obj = JSON::DWIW->new;
+    # return bandwidth in MB/s for a particular device (or all devices if not given an argument)
+    my ($device,$rbw,$wbw,$sum,$fh,$line);
+    $sum    = 0;
+    $c->log->debug('monitor/devbw: type = '.$type);
+   
+    open($fh,"< /tmp/BW.data") or return;
+    while (chomp($line = <$fh>))
+     {
+      ($device,$rbw,$wbw) = split(/\,/,$line);
+       $sum += $wbw if (($type =~ /write/i) ||  ($type =~ /total/));
+       $sum += $rbw if (($type =~ /read/i) ||  ($type =~ /total/));                
+     }
+    $c->log->debug('monitor/totalbw: total BW = '.$sum);
+    close($fh);
+    $sum/=1000000.0;
+    $c->response->body($json_obj->to_json($sum));
+}
+
+sub totalbw_x : Local : Path('totalbw_x'): Arg(1) {
+    my ( $self, $c , $type  ) = @_;
+    
+     
+    # return bandwidth in MB/s for a particular device (or all devices if not given an argument)
+    my ($device,$rbw,$wbw,$sum,$fh,$line);
+    $sum    = 0;
+    $c->log->debug('monitor/devbw: type = '.$type);
+   
+    open($fh,"< /tmp/BW.data") or return;
+    while (chomp($line = <$fh>))
+     {
+      ($device,$rbw,$wbw) = split(/\,/,$line);
+       $sum += $wbw if (($type =~ /write/i) ||  ($type =~ /total/));
+       $sum += $rbw if (($type =~ /read/i) ||  ($type =~ /total/));                
+     }
+    $c->log->debug('monitor/totalbw: total BW = '.$sum);
+    close($fh);
+    $sum/=1000000.0;
+    $c->response->body('<?xml version="1.0"?>'."\n".'<bw>'.$sum.'</bw>'  );
+}
+sub devbw : Local : Path('devbw'): Arg(2)  {
+    my ( $self, $c , $type, $dev  ) = @_;
+    # return bandwidth in MB/s for a particular device (or all devices if not given an argument)
+    my ($device,$rbw,$wbw,$sum,$fh,$line);
+    $sum    = 0;
+    $c->log->debug('monitor/devbw:  dev = '.$dev);
+    $c->log->debug('monitor/devbw: type = '.$type);
+    open($fh,"< /tmp/BW.data") or return;
+    while (chomp($line = <$fh>))
+     {
+      ($device,$rbw,$wbw) = split(/\,/,$line);      
+      if ($dev =~ /$device/) 
+         { 
+           $sum += $wbw if (($type =~ /write/i) ||  ($type =~ /total/));
+           $sum += $rbw if (($type =~ /read/i) ||  ($type =~ /total/));         
+         }
+     }
+    $c->log->debug('monitor/devbw: '.$type.' device BW = '.$sum);
+    close($fh);        
+    $c->response->body((sprintf "%.3f",$sum/1000000.0));
+}
+
+sub totaliops : Local : Path('totaliops'): Arg(1) {
+    my ( $self, $c , $type  ) = @_;
+    # return iops for a particular device (or all devices if not given an argument)
+    my ($device,$riop,$wiop,$sum,$fh,$line);
+    $sum    = 0;
+    $c->log->debug('monitor/devbw: type = '.$type);
+   
+    open($fh,"< /tmp/IOP.data") or return;
+    while (($line = <$fh>))
+     {
+      chomp($line);
+      ($device,$riop,$wiop) = split(/\,/,$line);
+       $sum += $wiop if (($type =~ /write/i) ||  ($type =~ /total/));
+       $sum += $riop if (($type =~ /read/i) ||   ($type =~ /total/));                
+     }
+    $c->log->debug('monitor/totaliops: total IOPs = '.$sum);
+    close($fh);        
+    $c->response->body((sprintf "%i",$sum));
+}
+
+
+sub deviops : Local : Path('deviops'): Arg(2)  {
+    my ( $self, $c , $type, $dev  ) = @_;
+    # return iops for a particular device (or all devices if not given an argument)
+    my ($device,$riop,$wiop,$sum,$fh,$line);
+    $sum    = 0;
+    $c->log->debug('monitor/deviops:  dev = '.$dev);
+    $c->log->debug('monitor/deviops: type = '.$type);
+    open($fh,"< /tmp/IOP.data") or return;
+    while (chomp($line = <$fh>))
+     {
+      ($device,$riop,$wiop) = split(/\,/,$line);      
+      if ($dev =~ /$device/) 
+         { 
+           $sum += $wiop if (($type =~ /write/i) ||  ($type =~ /total/));
+           $sum += $riop if (($type =~ /read/i) ||  ($type =~ /total/));         
+         }
+     }
+    $c->log->debug('monitor/deviops: '.$type.' device IOPS = '.$sum);
+    close($fh);        
+    $c->response->body((sprintf "%i",$sum));
+}
+sub list_disks : Local : Path('list_disks') :Args(0) {
+    my ( $self, $c ) = @_;
+    use XML::Smart;
+    use Data::Dumper;
+    my ($disks,$fh,$line,$dev,$dev_part,$part,$xml);
+    open($fh,"< /etc/mtab") or return;
+    while ($line = <$fh>)
+     {
+      if ($line !~ /^\/dev\/(.*?)\s/ )
+         {
+           next;
+         }
+        else
+         {
+          $dev_part = $1;
+          ($dev,$part)  = split(/\d+/,$dev_part);
+          $disks->{$dev} = 1;
+          $c->log->debug('monitor/list_disks: found disk = '.$dev);
+         }
+     }
+    close($fh);
+    
+    $xml    = XML::Smart->new();
+    foreach (keys %{$disks})
+     {
+      $xml->{disk}->{device}=$_;
+     }    
+    $c->response->body($xml->data(meta=>{build_from=>'DragonFly 0.5'},nometagen => 1));
+}
+
+sub list_used_partitions : Local : Path('list_used_partitions') :Args(0) {
+    my ( $self, $c ) = @_;
+    use XML::Smart;
+    use Data::Dumper;
+    my ($disks,$fh,$line,$dev,$dev_part,$part,$xml,$disk);
+    open($fh,"< /etc/mtab") or return;
+    while ($line = <$fh>)
+     {
+      if ($line !~ /^\/dev\/(.*?)\s/ )
+         {
+           next;
+         }
+        else
+         {
+          $dev_part = $1;
+          ($dev,$part)  = split(/\d+/,$dev_part);
+          $disks->{$dev}->{$part} = 1;
+          $c->log->debug('monitor/list_disks: found used disk partition = '.$dev_part);
+         }
+     }
+    close($fh);
+    
+    $xml    = XML::Smart->new();
+    foreach $disk (keys %{$disks})
+      {
+       foreach (keys %{$disks->{$disk}})
+         {
+           $xml->{partitions}->{$disk}->{$_} = 1;
+         }
+      }
+    
+    $c->response->body($xml->data(meta=>{build_from=>'DragonFly 0.5'},nometagen => 1));
+}
+
+sub listnics_h : Local : Path('listnics') {
+    my ( $self, $c  ) = @_;
+    # return list of NICs and IB HCAs in a comma separated form
+    my ($nics,@list,@nic_list,$nic,$response,$n);
+    $nics   = `/bin/ls /sys/class/net/`;
+    $n      = "\n";
+    @list   = split(/\n/,$nics);
+    $c->log->debug('monitor/listnics: nics = '.$nics);
+    $c->log->debug('monitor/listnics: nics = '.join(',',@list));
+    $response   = ''.$n;
+        
+    foreach $nic (@list) 
+     { 
+       next if ($nic =~ /^tun/ );
+       next if ($nic =~ /^pan/ );
+       next if ($nic =~ /^vbox/ );
+       next if ($nic =~ /^lo/ );       
+       $response    .= sprintf ('<li><a href="/config/network/nic/%s">%s</a></li>',$nic,$nic).$n;       
+     }
+    $response       .= ''.$n; 
+    $c->log->debug('monitor/listnics: nics = '.$response);
+    
+    $c->response->body($response);
+}
+
+sub listnics : Local : Path('listnics') {
+    my ( $self, $c  ) = @_;
+    # return list of NICs and IB HCAs in a comma separated form
+    my ($nics,@list,@nic_list,$nic,$response,$n);
+    $nics   = `/bin/ls /sys/class/net/`;
+    $n      = "\n";
+    @list   = split(/\n/,$nics);
+    $c->log->debug('monitor/listnics: nics = '.$nics);
+    $c->log->debug('monitor/listnics: nics = '.join(',',@list));
+    $response   = ''.$n;
+        
+    foreach $nic (@list) 
+     { 
+       next if ($nic =~ /^tun/ );
+       next if ($nic =~ /^pan/ );
+       next if ($nic =~ /^vbox/ );
+       next if ($nic =~ /^lo/ );     
+       push @nic_list,$nic;
+    }
+    $response       = join(",",@nic_list);
+    $c->log->debug('monitor/listnics: nics = '.$response);
+    
+    $c->response->body($response);
+}
+=head1 AUTHOR
+
+A clever guy
+
+=head1 LICENSE
+
+This library is free software. You can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+__PACKAGE__->meta->make_immutable;
+
+1;

@@ -1,0 +1,6 @@
+name: projectdb
+
+projectdb:
+  dsn:     'dbi:Pg:dbname=projectdb;host=crunch;port=5432'
+  dbuser:  'dfadmin'
+  dbpass:  'dr1g4nfl6db'

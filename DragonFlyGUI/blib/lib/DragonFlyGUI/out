@@ -1,0 +1,602 @@
+nohup: ignoring input
+Odd number of elements in anonymous hash at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Catalyst/Component.pm line 93.
+Constant subroutine DragonFlyGUI::Controller::Jobs::true redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::false redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::true redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Constant subroutine DragonFlyGUI::Controller::Jobs::false redefined at /opt/dragonfly/lib/perl5/5.10.0/constant.pm line 115.
+Subroutine initialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 70.
+Subroutine uninitialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 88.
+Subroutine reinitialize redefined at /opt/dragonfly/lib/perl5/site_perl/5.10.0/Class/C3.pm line 101.
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[warn] You are running an old script!
+
+  Please update by running (this will overwrite existing files):
+    catalyst.pl -force -scripts DragonFlyGUI
+
+  or (this will not overwrite existing files):
+    catalyst.pl -scripts DragonFlyGUI
+
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::Authentication  0.10007                                  |
+| Catalyst::Plugin::Authentication::Credential::Password                     |
+| Catalyst::Plugin::Authentication::Store::DBIC  0.11                        |
+| Catalyst::Plugin::Authorization::Roles  0.07                               |
+| Catalyst::Plugin::Config::YAML  0.04                                       |
+| Catalyst::Plugin::ConfigLoader  0.21                                       |
+| Catalyst::Plugin::Redirect  0.02                                           |
+| Catalyst::Plugin::Session  0.19                                            |
+| Catalyst::Plugin::Session::State::Cookie  0.09                             |
+| Catalyst::Plugin::Session::Store::File  0.13                               |
+| Catalyst::Plugin::StackTrace  0.09                                         |
+| Catalyst::Plugin::Static::Simple  0.20                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/home/dragonfly/df/DragonFlyGUI"
+[debug] Loaded Config "/home/dragonfly/df/DragonFlyGUI/dragonflygui.yml"
+[warn] Authentication::Store::DBIC is deprecated!
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| DragonFlyGUI::Controller::Acct                                  | instance |
+| DragonFlyGUI::Controller::Admin                                 | instance |
+| DragonFlyGUI::Controller::Apps                                  | instance |
+| DragonFlyGUI::Controller::Files                                 | instance |
+| DragonFlyGUI::Controller::Help                                  | instance |
+| DragonFlyGUI::Controller::Jobs                                  | instance |
+| DragonFlyGUI::Controller::Login                                 | instance |
+| DragonFlyGUI::Controller::Logout                                | instance |
+| DragonFlyGUI::Controller::Main                                  | instance |
+| DragonFlyGUI::Controller::Projects                              | instance |
+| DragonFlyGUI::Controller::Root                                  | instance |
+| DragonFlyGUI::Controller::Users                                 | instance |
+| DragonFlyGUI::Model::DragonFlyGUIDB                             | instance |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Job                        | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Project                    | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::Role                       | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::User                       | class    |
+| DragonFlyGUI::Model::DragonFlyGUIDB::UserRole                   | class    |
+| DragonFlyGUI::View::Mason                                       | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | DragonFlyGUI::Controller::Root       | default      |
+| /end                 | DragonFlyGUI::Controller::Root       | end          |
+| /index               | DragonFlyGUI::Controller::Root       | index        |
+| /ping                | DragonFlyGUI::Controller::Root       | ping         |
+| /auto                | DragonFlyGUI::Controller::Root       | auto         |
+| /jobs/review         | DragonFlyGUI::Controller::Jobs       | review       |
+| /jobs/submit         | DragonFlyGUI::Controller::Jobs       | submit       |
+| /jobs/newjob00       | DragonFlyGUI::Controller::Jobs       | newjob00     |
+| /jobs/submitjob      | DragonFlyGUI::Controller::Jobs       | submitjob    |
+| /jobs/clone          | DragonFlyGUI::Controller::Jobs       | clone        |
+| /jobs/xml            | DragonFlyGUI::Controller::Jobs       | xml          |
+| /jobs/list_one       | DragonFlyGUI::Controller::Jobs       | list_one     |
+| /jobs/runjob         | DragonFlyGUI::Controller::Jobs       | runjob       |
+| /jobs/list           | DragonFlyGUI::Controller::Jobs       | list         |
+| /jobs/list2          | DragonFlyGUI::Controller::Jobs       | list2        |
+| /jobs/stop           | DragonFlyGUI::Controller::Jobs       | stop         |
+| /jobs/rerun          | DragonFlyGUI::Controller::Jobs       | rerun        |
+| /jobs/build_jobxml   | DragonFlyGUI::Controller::Jobs       | build_jobxml |
+| /jobs/default        | DragonFlyGUI::Controller::Jobs       | default      |
+| /jobs/newjob1        | DragonFlyGUI::Controller::Jobs       | newjob1      |
+| /jobs/editjob        | DragonFlyGUI::Controller::Jobs       | editjob      |
+| /jobs/on_submit_tri- | DragonFlyGUI::Controller::Jobs       | on_submit_t- |
+| ggered_pre           |                                      | riggered_pre |
+| /jobs/delete         | DragonFlyGUI::Controller::Jobs       | delete       |
+| /jobs/newjob0        | DragonFlyGUI::Controller::Jobs       | newjob0      |
+| /login/index         | DragonFlyGUI::Controller::Login      | index        |
+| /login/licensing     | DragonFlyGUI::Controller::Login      | licensing    |
+| /help/search         | DragonFlyGUI::Controller::Help       | search       |
+| /help/default        | DragonFlyGUI::Controller::Help       | default      |
+| /help/bug            | DragonFlyGUI::Controller::Help       | bug          |
+| /help/feedback       | DragonFlyGUI::Controller::Help       | feedback     |
+| /help/howto          | DragonFlyGUI::Controller::Help       | howto        |
+| /help/contactme      | DragonFlyGUI::Controller::Help       | contactme    |
+| /help/rfe            | DragonFlyGUI::Controller::Help       | rfe          |
+| /acct/listsome       | DragonFlyGUI::Controller::Acct       | listsome     |
+| /acct/jobdata        | DragonFlyGUI::Controller::Acct       | jobdata      |
+| /acct/acctinfo       | DragonFlyGUI::Controller::Acct       | acctinfo     |
+| /acct/jobs           | DragonFlyGUI::Controller::Acct       | jobs         |
+| /acct/index          | DragonFlyGUI::Controller::Acct       | index        |
+| /acct/listall        | DragonFlyGUI::Controller::Acct       | listall      |
+| /acct/xml            | DragonFlyGUI::Controller::Acct       | xml          |
+| /apps/getargs        | DragonFlyGUI::Controller::Apps       | getargs      |
+| /apps/addarg         | DragonFlyGUI::Controller::Apps       | addarg       |
+| /apps/add            | DragonFlyGUI::Controller::Apps       | add          |
+| /apps/review         | DragonFlyGUI::Controller::Apps       | review       |
+| /apps/addenvcopy     | DragonFlyGUI::Controller::Apps       | addenvcopy   |
+| /apps/appupdate      | DragonFlyGUI::Controller::Apps       | appupdate    |
+| /apps/xml            | DragonFlyGUI::Controller::Apps       | xml          |
+| /apps/list           | DragonFlyGUI::Controller::Apps       | list         |
+| /apps/newapp         | DragonFlyGUI::Controller::Apps       | newapp       |
+| /apps/appdata        | DragonFlyGUI::Controller::Apps       | appdata      |
+| /apps/getparms       | DragonFlyGUI::Controller::Apps       | getparms     |
+| /apps/addenv         | DragonFlyGUI::Controller::Apps       | addenv       |
+| /apps/default        | DragonFlyGUI::Controller::Apps       | default      |
+| /apps/generate_appx- | DragonFlyGUI::Controller::Apps       | generate_ap- |
+| ml                   |                                      | pxml         |
+| /apps/index          | DragonFlyGUI::Controller::Apps       | index        |
+| /apps/addparam       | DragonFlyGUI::Controller::Apps       | addparam     |
+| /apps/addexecutable  | DragonFlyGUI::Controller::Apps       | addexecutab- |
+|                      |                                      | le           |
+| /apps/addmpi         | DragonFlyGUI::Controller::Apps       | addmpi       |
+| /apps/addreview      | DragonFlyGUI::Controller::Apps       | addreview    |
+| /main/index          | DragonFlyGUI::Controller::Main       | index        |
+| /admin/adduser       | DragonFlyGUI::Controller::Admin      | adduser      |
+| /admin/listuser      | DragonFlyGUI::Controller::Admin      | listuser     |
+| /admin/support_requ- | DragonFlyGUI::Controller::Admin      | support_req- |
+| est                  |                                      | uest         |
+| /admin/feedback      | DragonFlyGUI::Controller::Admin      | feedback     |
+| /admin/index         | DragonFlyGUI::Controller::Admin      | index        |
+| /admin/edituser      | DragonFlyGUI::Controller::Admin      | edituser     |
+| /admin/rfe           | DragonFlyGUI::Controller::Admin      | rfe          |
+| /files/index         | DragonFlyGUI::Controller::Files      | index        |
+| /projects/listxxx    | DragonFlyGUI::Controller::Projects   | listxxx      |
+| /projects/form_crea- | DragonFlyGUI::Controller::Projects   | form_create- |
+| te_do                |                                      | _do          |
+| /projects/dumper     | DragonFlyGUI::Controller::Projects   | dumper       |
+| /projects/users      | DragonFlyGUI::Controller::Projects   | users        |
+| /projects/close      | DragonFlyGUI::Controller::Projects   | close        |
+| /projects/form_crea- | DragonFlyGUI::Controller::Projects   | form_create  |
+| te                   |                                      |              |
+| /projects/xml        | DragonFlyGUI::Controller::Projects   | xml          |
+| /projects/modify     | DragonFlyGUI::Controller::Projects   | modify       |
+| /projects/add_proje- | DragonFlyGUI::Controller::Projects   | add_project  |
+| ct                   |                                      |              |
+| /projects/list       | DragonFlyGUI::Controller::Projects   | list         |
+| /projects/default    | DragonFlyGUI::Controller::Projects   | default      |
+| /projects/switch     | DragonFlyGUI::Controller::Projects   | switch       |
+| /projects/delete     | DragonFlyGUI::Controller::Projects   | delete       |
+| /projects/accounting | DragonFlyGUI::Controller::Projects   | accounting   |
+| /users/index         | DragonFlyGUI::Controller::Users      | index        |
+| /users/list          | DragonFlyGUI::Controller::Users      | list         |
+| /logout/index        | DragonFlyGUI::Controller::Logout     | index        |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /acct/acctinfo                      | /acct/acctinfo                       |
+| /acct/jobdata                       | /acct/jobdata                        |
+| /acct/jobs                          | /acct/jobs                           |
+| /acct/listall                       | /acct/listall                        |
+| /acct/listsome                      | /acct/listsome                       |
+| /acct/xml                           | /acct/xml                            |
+| /admin/adduser                      | /admin/adduser                       |
+| /admin/edituser                     | /admin/edituser                      |
+| /admin/feedback                     | /admin/feedback                      |
+| /admin/listuser                     | /admin/listuser                      |
+| /admin/rfe                          | /admin/rfe                           |
+| /admin/support_request              | /admin/support_request               |
+| /apps/add                           | /apps/add                            |
+| /apps/addarg                        | /apps/addarg                         |
+| /apps/addenv                        | /apps/addenv                         |
+| /apps/addenvcopy                    | /apps/addenvcopy                     |
+| /apps/addexecutable                 | /apps/addexecutable                  |
+| /apps/addmpi                        | /apps/addmpi                         |
+| /apps/addparam                      | /apps/addparam                       |
+| /apps/addreview                     | /apps/addreview                      |
+| /apps/appdata                       | /apps/appdata                        |
+| /apps/appupdate                     | /apps/appupdate                      |
+| /apps/getargs                       | /apps/getargs                        |
+| /apps/getparms                      | /apps/getparms                       |
+| /apps/list                          | /apps/list                           |
+| /apps/newapp                        | /apps/newapp                         |
+| /apps/review                        | /apps/review                         |
+| /apps/xml                           | /apps/xml                            |
+| /files/index                        | /files/index                         |
+| /help/bug                           | /help/bug                            |
+| /help/contactme                     | /help/contactme                      |
+| /help/feedback                      | /help/feedback                       |
+| /help/howto                         | /help/howto                          |
+| /help/rfe                           | /help/rfe                            |
+| /help/search                        | /help/search                         |
+| /jobs/clone                         | /jobs/clone                          |
+| /jobs/editjob                       | /jobs/editjob                        |
+| /jobs/list                          | /jobs/list                           |
+| /jobs/list2                         | /jobs/list2                          |
+| /jobs/list_one                      | /jobs/list_one                       |
+| /jobs/newjob0                       | /jobs/newjob0                        |
+| /jobs/newjob00                      | /jobs/newjob00                       |
+| /jobs/newjob1                       | /jobs/newjob1                        |
+| /jobs/rerun                         | /jobs/rerun                          |
+| /jobs/review                        | /jobs/review                         |
+| /jobs/runjob                        | /jobs/runjob                         |
+| /jobs/stop                          | /jobs/stop                           |
+| /jobs/submit                        | /jobs/submit                         |
+| /jobs/submitjob                     | /jobs/submitjob                      |
+| /jobs/xml                           | /jobs/xml                            |
+| /licensing                          | /login/licensing                     |
+| /ping                               | /ping                                |
+| /projects/accounting                | /projects/accounting                 |
+| /projects/add_project               | /projects/add_project                |
+| /projects/close                     | /projects/close                      |
+| /projects/delete                    | /projects/delete                     |
+| /projects/dumper                    | /projects/dumper                     |
+| /projects/form_create               | /projects/form_create                |
+| /projects/form_create_do            | /projects/form_create_do             |
+| /projects/list                      | /projects/list                       |
+| /projects/listxxx                   | /projects/listxxx                    |
+| /projects/modify                    | /projects/modify                     |
+| /projects/switch                    | /projects/switch                     |
+| /projects/users                     | /projects/users                      |
+| /projects/xml                       | /projects/xml                        |
+| /users/list                         | /users/list                          |
+'-------------------------------------+--------------------------------------'
+
+[info] DragonFlyGUI powered by Catalyst 5.7014
+You can connect to your server at http://dragonfly:3000
+[info] *** Request 1 (0.200/s) [31792] [Thu Mar  5 10:16:22 2009] ***
+[debug] "GET" request for "/" from "192.168.1.2"
+[debug] ***Root::auto User not found, forwarding to /login
+[debug] Redirecting to "http://dragonfly:3000/login"
+[info] Request took 0.024011s (41.648/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.001428s |
+| /end                                                           | 0.001316s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 2 (0.400/s) [31792] [Thu Mar  5 10:16:22 2009] ***
+[debug] "GET" request for "login" from "192.168.1.2"
+[debug] Path is "login"
+[debug] Rendering component "/login.html"
+[info] Request took 0.204418s (4.892/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.000253s |
+| /login/index                                                   | 0.000152s |
+| /end                                                           | 0.192194s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.189857s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 3 (0.035/s) [31792] [Thu Mar  5 10:17:42 2009] ***
+[debug] "GET" request for "/" from "192.168.1.33"
+[debug] ***Root::auto User not found, forwarding to /login
+[debug] Redirecting to "http://dragonfly.scalableinformatics.com:3000/login"
+[info] Request took 0.012391s (80.704/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.001307s |
+| /end                                                           | 0.000792s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 4 (0.047/s) [31792] [Thu Mar  5 10:17:42 2009] ***
+[debug] "GET" request for "login" from "192.168.1.33"
+[debug] Path is "login"
+[debug] Rendering component "/login.html"
+[info] Request took 0.023238s (43.033/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.000256s |
+| /login/index                                                   | 0.000151s |
+| /end                                                           | 0.010834s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.008595s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 22 (0.173/s) [31792] [Thu Mar  5 10:18:24 2009] ***
+[debug] Body Parameters are:
+.-------------------------------------+--------------------------------------.
+| Parameter                           | Value                                |
++-------------------------------------+--------------------------------------+
+| password                            | dr1g4nfl6                            |
+| username                            | dragonfly                            |
+'-------------------------------------+--------------------------------------'
+[debug] "POST" request for "login" from "192.168.1.33"
+[debug] Path is "login"
+[debug] Created session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Successfully authenticated user 'dragonfly'.
+[debug] Redirecting to "http://dragonfly.scalableinformatics.com:3000/main"
+[info] Request took 0.372592s (2.684/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.000269s |
+| /login/index                                                   | 0.350714s |
+| /end                                                           | 0.000846s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 23 (0.181/s) [31792] [Thu Mar  5 10:18:24 2009] ***
+[debug] "GET" request for "main" from "192.168.1.33"
+[debug] Path is "main"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Rendering component "/index.html"
+[info] Request took 0.090323s (11.071/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.003621s |
+| /main/index                                                    | 0.000192s |
+| /end                                                           | 0.070689s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.068420s |
+'----------------------------------------------------------------+-----------'
+
+[CGI::FormBuilder::Messages::new] (debug1) creating Messages object from (default)
+[CGI::FormBuilder::new] (debug1) field creation done, list = ()
+[CGI::FormBuilder::new] (debug1) rewriting existing FormBuilder object
+D[31792] db_open: args -> 'dbuser:dbpass:dsn'
+D[31792] db_open: open optional args -> 'AutoCommit => 1, RaiseError => 0'
+D[31792]: DBIx::SimplePerl database connection succeeded
+D[31792]: DBIx::SimplePerl database connection dump = $VAR1 = bless( {
+                 '_dbh' => bless( {}, 'DBI::db' ),
+                 'debug' => 1
+               }, 'DBIx::SimplePerl' );
+
+D[31792] db_search: prepare = 'SELECT * FROM "users"' 
+D[31792] db_search: prepare succeeded
+prepare: SELECT * FROM "users"
+D[31792] db_search: executing search
+D[31792] db_search: execute succeeded
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+[info] *** Request 26 (0.197/s) [31792] [Thu Mar  5 10:18:29 2009] ***
+[debug] "GET" request for "admin/listuser" from "192.168.1.33"
+[debug] Path is "admin/listuser"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Form (admin/listuser): Looking for config file admin/listuser.fb
+[debug] Form (admin/listuser): Can't find form config admin/listuser.fb in: /home/dragonfly/df/DragonFlyGUI/root/forms
+[debug] Rendering component "/admin/listusers.html"
+[info] Request took 0.148931s (6.715/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002641s |
+| /admin/listuser                                                | 0.065089s |
+| /end                                                           | 0.065122s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.062784s |
+'----------------------------------------------------------------+-----------'
+
+D[31792] db_open: args -> 'dbuser:dbpass:dsn'
+D[31792] db_open: open optional args -> 'AutoCommit => 1, RaiseError => 0'
+D[31792]: DBIx::SimplePerl database connection succeeded
+D[31792]: DBIx::SimplePerl database connection dump = $VAR1 = bless( {
+                 '_dbh' => bless( {}, 'DBI::db' ),
+                 'debug' => 1
+               }, 'DBIx::SimplePerl' );
+
+D[31792] db_search: prepare = 'SELECT * FROM "projects"' 
+D[31792] db_search: prepare succeeded
+prepare: SELECT * FROM "projects"
+D[31792] db_search: executing search
+D[31792] db_search: execute succeeded
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+D[31792] db_next: returning hashref
+[info] *** Request 27 (0.201/s) [31792] [Thu Mar  5 10:18:31 2009] ***
+[debug] "GET" request for "projects/list" from "192.168.1.33"
+[debug] Path is "projects/list"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] projects/list: dump of projectdb rc = $VAR1 = {
+          'success' => 1
+        };
+[debug] projects/list: dump of projectdb query x = $VAR1 = {
+          'locked' => 'Unlocked',
+          'active' => 'Active',
+          'project_status' => '',
+          'project_start' => '2008-10-05 14:14:44 -0400',
+          'project_uri_xml' => undef,
+          'id' => '3',
+          'project_description' => '',
+          'project_documentation' => '',
+          'project_name' => 'testing project',
+          'project_uri' => 'http://dragonflyfm.scalableinformatics.com/path//home2/projects/P0003',
+          'project_id' => 'P0003'
+        };
+[debug] projects/list: dump of projectdb query x = $VAR1 = {
+          'locked' => 'Unlocked',
+          'active' => 'Active',
+          'project_status' => 'active',
+          'project_start' => '2008-10-05 12:49:23 -0400',
+          'project_uri_xml' => undef,
+          'id' => '2',
+          'project_description' => 'This is a project for Joes testing',
+          'project_documentation' => 'not yet',
+          'project_name' => 'Joes tests',
+          'project_uri' => 'http://dragonflyfm.scalableinformatics.com/path//home2/projects/P0002',
+          'project_id' => 'P0002'
+        };
+[debug] projects/list: dump of projectdb query x = $VAR1 = {
+          'locked' => 'Unlocked',
+          'active' => 'Active',
+          'project_status' => 'alive',
+          'project_start' => '2008-10-06 22:09:08 -0400',
+          'project_uri_xml' => undef,
+          'id' => '4',
+          'project_description' => '',
+          'project_documentation' => '',
+          'project_name' => 'conquering clusters',
+          'project_uri' => 'http://dragonfly:3010/',
+          'project_id' => 'abc123'
+        };
+[debug] projects/list: dump of projectdb query x = $VAR1 = {
+          'locked' => 'No',
+          'active' => 'Yes',
+          'project_status' => 'Active',
+          'project_start' => '2008-10-05',
+          'project_uri_xml' => 'http://dragonfly.scalableinformatics.com:3010/xmlabsdir//home2/projects/P00001',
+          'id' => '1',
+          'project_description' => 'mpiHMMer tests',
+          'project_documentation' => 'see http://www.mpihmmer.org',
+          'project_name' => 'mpiHMMer tests',
+          'project_uri' => 'http://dragonfly.scalableinformatics.com:3010/path//home2/projects/P00001',
+          'project_id' => 'P00001'
+        };
+[debug] projects/list: dump of projectdb query x = $VAR1 = {
+          'locked' => 'Unlocked',
+          'active' => 'Active',
+          'project_status' => 'Active',
+          'project_start' => '2008-10-07 09:27:53 -0400',
+          'project_uri_xml' => undef,
+          'id' => '5',
+          'project_description' => '',
+          'project_documentation' => 'see http://google.com',
+          'project_name' => 'CRL Testing number 1',
+          'project_uri' => 'http://dragonfly.scalableinformatics.com:3010/path//home2/projects/CRL',
+          'project_id' => 'CRL'
+        };
+[debug] Rendering component "/projects/list3.html"
+[info] Request took 0.262072s (3.816/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002684s |
+| /projects/list                                                 | 0.159810s |
+| /end                                                           | 0.083062s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.080703s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 30 (0.217/s) [31792] [Thu Mar  5 10:18:35 2009] ***
+[debug] "GET" request for "apps/list" from "192.168.1.33"
+[debug] Path is "apps/list"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Rendering component "/apps/list.html"
+[info] Request took 0.311492s (3.210/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002655s |
+| /apps/list                                                     | 0.252027s |
+| /end                                                           | 0.040712s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.038358s |
+'----------------------------------------------------------------+-----------'
+
+D[31792] db_open: args -> 'dbuser:dbpass:dsn'
+D[31792] db_open: open optional args -> 'AutoCommit => 1, RaiseError => 0'
+D[31792]: DBIx::SimplePerl database connection succeeded
+D[31792]: DBIx::SimplePerl database connection dump = $VAR1 = bless( {
+                 '_dbh' => bless( {}, 'DBI::db' ),
+                 'debug' => 1
+               }, 'DBIx::SimplePerl' );
+
+D[31792] db_search: prepare = 'SELECT * FROM "jobs"' 
+D[31792] db_search: prepare succeeded
+prepare: SELECT * FROM "jobs"
+D[31792] db_search: executing search
+D[31792] db_search: execute succeeded
+D[31792] db_close
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 201.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 205.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 206.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 336.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 336.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 336.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 340.
+Use of uninitialized value in join or string at /home/dragonfly/df/DragonFlyGUI/root/jobs/list.html line 336.
+[info] *** Request 31 (0.220/s) [31792] [Thu Mar  5 10:18:38 2009] ***
+[debug] "GET" request for "jobs/list" from "192.168.1.33"
+[debug] Path is "jobs/list"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] jobs/xml dbi:Pg:dbname=jobdb;host=crunch;port=5432
+[debug] Rendering component "/jobs/list.html"
+[info] Request took 0.281154s (3.557/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002647s |
+| /jobs/list                                                     | 0.200725s |
+| /end                                                           | 0.061273s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.058883s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 32 (0.212/s) [31792] [Thu Mar  5 10:18:48 2009] ***
+[debug] "GET" request for "acct/listall" from "192.168.1.33"
+[debug] Path is "acct/listall"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] acct/listall: excel file for download=/tmp/ORyPpHKeIW.xls
+[debug] Rendering component "/acct/list.html"
+[info] Request took 0.117486s (8.512/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002634s |
+| /acct/listall                                                  | 0.037514s |
+| /end                                                           | 0.060575s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.058168s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 33 (0.213/s) [31792] [Thu Mar  5 10:18:52 2009] ***
+[debug] "GET" request for "files" from "192.168.1.33"
+[debug] Path is "files"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Files/index projectdb dsndbi:Pg:dbname=projectdb;host=crunch;port=5432
+[debug] Rendering component "/files/project.html"
+[info] Request took 0.090546s (11.044/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002648s |
+| /files/index                                                   | 0.034704s |
+| /end                                                           | 0.037062s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.034702s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 34 (0.215/s) [31792] [Thu Mar  5 10:18:55 2009] ***
+[debug] "GET" request for "logout" from "192.168.1.33"
+[debug] Path is "logout"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] Redirecting to "http://dragonfly.scalableinformatics.com:3000/"
+[info] Request took 0.030936s (32.325/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002654s |
+| /logout/index                                                  | 0.000972s |
+| /end                                                           | 0.000790s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 35 (0.222/s) [31792] [Thu Mar  5 10:18:55 2009] ***
+[debug] "GET" request for "/" from "192.168.1.33"
+[debug] Found sessionid "17d22709e77cfb16b1b43afbf06dbf1f188b751d" in cookie
+[debug] Restored session "17d22709e77cfb16b1b43afbf06dbf1f188b751d"
+[debug] ***Root::auto User not found, forwarding to /login
+[debug] Redirecting to "http://dragonfly.scalableinformatics.com:3000/login"
+[info] Request took 0.019996s (50.010/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.002728s |
+| /end                                                           | 0.000843s |
+'----------------------------------------------------------------+-----------'
+
+[info] *** Request 36 (0.228/s) [31792] [Thu Mar  5 10:18:55 2009] ***
+[debug] "GET" request for "login" from "192.168.1.33"
+[debug] Path is "login"
+[debug] Rendering component "/login.html"
+[info] Request took 0.018430s (54.259/s)
+.----------------------------------------------------------------+-----------.
+| Action                                                         | Time      |
++----------------------------------------------------------------+-----------+
+| /auto                                                          | 0.000258s |
+| /login/index                                                   | 0.000153s |
+| /end                                                           | 0.005838s |
+|  -> DragonFlyGUI::View::Mason->process                         | 0.003553s |
+'----------------------------------------------------------------+-----------'
+

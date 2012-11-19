@@ -1,0 +1,5 @@
+# Form config file root/forms/acct/acctinfo.fb
+name: acct_acct_info
+method: post
+submit: Submit
+reset: Reset

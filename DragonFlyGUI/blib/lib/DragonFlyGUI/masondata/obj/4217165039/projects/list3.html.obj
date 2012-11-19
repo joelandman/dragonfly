@@ -1,0 +1,169 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $projects );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     $projects = exists $pos{'projects'} ? $_[ $pos{'projects'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 8 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '<html>
+' );
+#line 9 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+ use Data::Dumper;
+ my ($hash,%data);;
+ my @project_fields = ('project_id', 'project_name', 'active', 'status', 'locked', 'project_start', 'project_description', 'project_uri', 'project_documentation' );
+$m->print( ' 
+' );
+#line 13 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->comp(   '/components/style.mas'  
+); #line 13 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+<head>
+' );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->comp(   '/components/header.mas'  
+); #line 15 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+' );
+#line 22 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 22 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+' );
+#line 23 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->comp(   '/components/table.mas'  
+); #line 23 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+
+<!--
+  Dump of projects:
+  ' );
+#line 27 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print(  Dumper($projects)  );
+#line 27 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+  -->
+
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+    <th>Project ID</th>
+    <th>Name</th>
+    <th>Active</th>
+    <th>Status</th>
+    <th>Locked</th>
+    <th>Start</th>
+    <th>Description</th>
+    <th>Data Repository</th>
+    <th>Documentation</th>
+</tr>
+</thead>
+<tbody> 
+' );
+#line 46 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+ foreach $hash (@{$projects}) {
+#   %data = %{$hash->{_column_data}};
+	%data	= %{$hash};
+$m->print( '    
+<tr>
+' );
+#line 51 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+   foreach (@project_fields)
+   {
+$m->print( ' <td>
+' );
+#line 54 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     if ($_ eq "project_id")
+      {
+$m->print( '         <a href="' );
+#line 56 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print(  $c->uri_for('modify/') . $data{id}  );
+#line 56 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '">
+' );
+#line 57 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+      }
+     if ($_ eq "project_uri")
+      {
+$m->print( '         <a href="' );
+#line 60 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print(  $data{project_uri}  );
+#line 60 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '" target="_blank" >
+' );
+#line 61 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+      }
+$m->print( '       ' );
+#line 62 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print(  $data{$_}  );
+#line 62 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+' );
+#line 63 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+     if ($_ eq "project_id")
+      {
+$m->print( '         </a>
+' );
+#line 66 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+      }
+$m->print( '  </td>
+' );
+#line 68 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+   }
+$m->print( '</tr>
+' );
+#line 70 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+ }
+$m->print( '</tbody>
+</table>
+</p>
+<div align="center">
+ <br />
+</div>
+' );
+#line 77 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->comp(   '/components/footer.mas'  
+); #line 77 /home/dragonfly/df/DragonFlyGUI/root/projects/list3.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$body' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' },
+  '$projects' => { default => ' undef' }
+},
+'load_time' => 1223225089,
+
+)
+;

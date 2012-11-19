@@ -1,0 +1,93 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $form );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+     $form = exists $pos{'form'} ? $_[ $pos{'form'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 7 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '<html>
+' );
+#line 8 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/style.mas'  
+); #line 8 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+<head>
+' );
+#line 10 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/header.mas'  
+); #line 10 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+' );
+#line 16 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 16 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+' );
+#line 17 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/left.mas',        links   => $left    
+); #line 17 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+' );
+#line 18 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/body.mas',        main    => $body    
+); #line 18 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+
+
+<H3>Adding user</H3>
+
+<p /> ' );
+#line 23 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print(  $form->render  );
+#line 23 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+
+<div align="center">
+ <br />
+</div>
+' );
+#line 28 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->comp(   '/components/footer.mas'  
+); #line 28 "/local2/home/landman/df/DragonFlyGUI/root/admin/adduser.html"
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$body' => { default => ' undef' },
+  '$form' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' }
+},
+'load_time' => 1301071033,
+
+)
+;

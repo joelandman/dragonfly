@@ -1,0 +1,3 @@
+<%args>
+$fh	=>	undef;
+</%args>

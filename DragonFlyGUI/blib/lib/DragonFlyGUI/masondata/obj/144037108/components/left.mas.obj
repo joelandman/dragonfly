@@ -1,0 +1,114 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( '<!-- start of left.mas -->
+' );
+#line 5 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ use XML::Smart;
+ my ($xml,$topic,$asset,%assets,$desc);
+$m->print( '
+' );
+#line 8 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+# parse xml file describing assets
+$m->print( '
+' );
+#line 10 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ $xml = XML::Smart->new($left);
+$m->print( '<div id="left-box" class="left-box" style="float:left" >
+' );
+#line 12 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ if ($left) {
+ $xml = XML::Smart->new($left);
+$m->print( ' <ul>
+' );
+#line 15 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ foreach (@{$xml->{left}->{article}}) {
+   if ( $_->{available} =~ /yes/i ) {
+$m->print( '  <li ><h3>' );
+#line 17 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( $_->{name})), 'h' ) );
+#line 17 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( '</h3>
+' );
+#line 18 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+   $desc=  $_->{description}('<xml>');
+$m->print( '  ' );
+#line 19 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print(  $desc  );
+#line 19 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( ' </li>
+' );
+#line 20 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+  }
+ }
+$m->print( '</div>
+' );
+#line 23 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ }
+ else
+ {
+   # set up default sysinfo
+$m->print( '<table>
+ <thead>
+  <tr>
+   <th>Param</th>
+   <th>Current Value</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>host name</td>
+   <td><strong>' );
+#line 37 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( `hostname`)), 'h' ) );
+#line 37 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( '</strong>   
+  </tr>
+  <tr>
+   <td>date</td>
+   <td><strong>' );
+#line 41 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( `date`)), 'h' ) );
+#line 41 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+$m->print( '</strong>   
+  </tr>
+ </tbody>
+</table>
+' );
+#line 45 "/local2/home/landman/df/DragonFlyGUI/root/components/left.mas"
+ }
+$m->print( '
+
+</div>
+
+<!-- end of left.mas -->
+ 
+' );
+;return;
+},
+'declared_args' => {
+  '$left' => { default => ' undef;' }
+},
+'load_time' => 1302289533,
+
+)
+;

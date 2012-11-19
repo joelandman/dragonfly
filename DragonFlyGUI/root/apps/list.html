@@ -1,0 +1,69 @@
+<%args>
+$left   => undef
+$navbar => undef
+$body   => undef
+$apps  => undef
+
+</%args>
+
+<html>
+% my ($hash,%data);;
+% my @project_fields = ('id', 'appname', 'serial', 'version', 'owner_id', 'changable', 'date_added', 'derived_from' );
+ 
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+
+<& /components/nav-bar.mas,     navbar  => $navbar  &>
+
+<& /components/table.mas                            &>
+<p align="right">
+<table   id="myTable" cellspacing="1" class="tablesorter">
+ <thead>
+<tr>
+    <th>Application ID</th>
+    <th>Name</th>
+    <th>Serial</th>
+    <th>Version</th>
+    <th>Owner</th>
+    <th>Changeable</th>
+    <th>Date Added</th>
+    <th>Derived from</th>
+</tr>
+</thead>
+<tbody> 
+% foreach $hash (@{$apps}) {
+%   %data = %{$hash};
+    
+<tr>
+%   foreach (@project_fields)
+%   {
+ <td>
+%     if ($_ eq "id")
+%      {
+         <a href="<% $c->uri_for('appdata/id=') . $data{id} %>">
+%      }
+  <% $data{$_} %>
+%     if ($_ eq "id")
+%      {
+         </a>
+%      }
+  </td>
+%   }
+</tr>
+% }
+</tbody>
+</table>
+</p>
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

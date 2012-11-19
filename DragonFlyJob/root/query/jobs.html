@@ -1,0 +1,56 @@
+<%args>
+$hash	=> undef
+$is_IE	=> undef
+</%args>
+<html>
+% use Data::Dumper;
+
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+% return if (!$hash);
+
+
+   <table id="myTable" cellspacing="1" class="tablesorter">
+    <thead>
+     <tr>
+% foreach my $field ( sort keys %{$hash->{0}} )
+%  {     
+      <th><% $field|h %>&nbsp;&nbsp;</th>
+%  }
+       
+     </tr>
+    </thead>
+    <tbody>
+
+% foreach my $ndx ( sort {$a<=>$b} keys %{$hash} )
+%  {     
+     <tr>
+%   foreach my $field ( sort keys %{$hash->{$ndx}} )
+%    {     
+      <td>
+       <% $hash->{$ndx}->{$field}|h %>
+      </td>
+%    }
+      </td>
+     </tr>
+%  }
+    </tbody>
+   </table>
+
+<!--
+   Dump: <% Dumper($hash) %>
+  -->
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

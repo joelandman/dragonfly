@@ -1,0 +1,14 @@
+<%args>
+$status   	=> undef
+$heartbeat   	=> undef
+$id   		=> undef
+</%args>
+% $status 	= "unknown" if (!$status);
+% $heartbeat 	= "unknown" if (!$heartbeat);
+
+<?xml version="1.0" ?>
+<job 
+	id="<% $id %>" 
+	status="<% $status %>"  
+	heartbeat="<% $heartbeat  %>"  
+   />

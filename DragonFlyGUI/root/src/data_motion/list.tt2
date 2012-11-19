@@ -1,0 +1,15 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'Data Motion List' -%]
+
+<table>
+<tr><th>Title</th><th>Data Motion</th><th>List</th></tr>
+[% # Display each data_motion entry in a table row %]
+[% FOREACH datamotion IN data_motion -%]
+  <tr>
+    <td>[% datamotion.id %]</td>
+    <td>[% datamotion.uri_depository %]</td>
+    <td>[% datamotion.project %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

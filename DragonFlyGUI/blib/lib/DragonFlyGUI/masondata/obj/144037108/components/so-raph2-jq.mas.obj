@@ -1,0 +1,44 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 "/local2/home/landman/df/DragonFlyGUI/root/components/so-raph2-jq.mas"
+$m->print( '<script type="text/javascript" src="/js/gauges/timers.js"></script>
+<script type="text/javascript" src="/js/gauges/gauge.js"></script>
+<script type="text/javascript" src="/js/gauges/fuel.js"></script>
+<script type="text/javascript" src="/js/gauges/speedometer.js"></script>
+<script type="text/javascript" src="/js/gauges/temp.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {     
+
+        //Create new speedometer gauge
+        var speedGauge = new Speedometer("speedometer");
+                
+        //Accelerate speedometer
+        speedGauge.Accelerate();
+        
+}); //document.ready
+</script>
+
+
+<div id="wrapper">
+
+<li id="speedGauge">
+                <div id="speedometer">
+                        <img src="/static/images/gauges/needle.png" alt="needle"/>
+                </div>
+        </li>
+
+
+</div><!-- /wrapper -->
+' );
+;return;
+},
+'load_time' => 1301338636,
+
+)
+;

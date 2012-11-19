@@ -1,0 +1,7 @@
+<%args>
+$hash   => undef
+</%args>
+% use XML::Smart;
+% my $xml	= XML::Smart->new;
+% $xml->{project} = $hash;
+<% $xml->data %>

@@ -1,0 +1,16 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'User ID List' -%]
+
+<table>
+<tr><th>Title</th><th>User ID</th><th>List</th></tr>
+[% # Display each userid in a table row %]
+[% FOREACH userid IN user_id -%]
+  <tr>
+    <td>[% userid.id %]</td>
+    <td>[% userid.uid %]</td>
+    <td>[% userid.gid %]</td>
+    <td>[% userid.user %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

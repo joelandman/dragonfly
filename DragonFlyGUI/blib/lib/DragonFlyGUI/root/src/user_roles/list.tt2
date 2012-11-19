@@ -1,0 +1,14 @@
+[% # Provide a title to root/lib/site/header -%]
+[% META title = 'User Roles List' -%]
+
+<table>
+<tr><th>Title</th><th>User Roles</th><th>List</th></tr>
+[% # Display each userrole in a table row %]
+[% FOREACH userrole IN user_roles -%]
+  <tr>
+    <td>[% userrole.user_id %]</td>
+    <td>[% userrole.role_id %]</td>
+    </td>
+  </tr>
+[% END -%]
+</table>

@@ -1,0 +1,14 @@
+<%args>
+$mkdatadir	=> undef
+$datadir	=> undef
+$errormessage	=> undef
+</%args>
+<results dir="<% $datadir %>" 
+% if ($mkdatadir eq "succeeded") {
+  mkdatadir="success" />
+%  }
+% elsif ($mkdatadir eq "failed") {
+  mkdatadir="failed" >
+  <% $errormessage|h %>
+</results>
+% }

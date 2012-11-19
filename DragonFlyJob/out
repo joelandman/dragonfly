@@ -1,0 +1,140 @@
+nohup: ignoring input
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[warn] You are running an old script!
+
+  Please update by running (this will overwrite existing files):
+    catalyst.pl -force -scripts DragonFlyJob
+
+  or (this will not overwrite existing files):
+    catalyst.pl -scripts DragonFlyJob
+
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.21                                       |
+| Catalyst::Plugin::StackTrace  0.09                                         |
+| Catalyst::Plugin::Static::Simple  0.20                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/home/dragonfly/df/DragonFlyJob"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| DragonFlyJob::Controller::Add                                   | instance |
+| DragonFlyJob::Controller::Log                                   | instance |
+| DragonFlyJob::Controller::Query                                 | instance |
+| DragonFlyJob::Controller::Root                                  | instance |
+| DragonFlyJob::Controller::Update                                | instance |
+| DragonFlyJob::View::Mason                                       | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | DragonFlyJob::Controller::Root       | default      |
+| /end                 | DragonFlyJob::Controller::Root       | end          |
+| /index               | DragonFlyJob::Controller::Root       | index        |
+| /ping                | DragonFlyJob::Controller::Root       | ping         |
+| /update/xml          | DragonFlyJob::Controller::Update     | xml          |
+| /query/appxml        | DragonFlyJob::Controller::Query      | appxml       |
+| /query/status        | DragonFlyJob::Controller::Query      | status       |
+| /query/default       | DragonFlyJob::Controller::Query      | default      |
+| /query/xml           | DragonFlyJob::Controller::Query      | xml          |
+| /add/default         | DragonFlyJob::Controller::Add        | default      |
+| /log/update_stderr   | DragonFlyJob::Controller::Log        | update_stde- |
+|                      |                                      | rr           |
+| /log/update_stdout   | DragonFlyJob::Controller::Log        | update_stdo- |
+|                      |                                      | ut           |
+| /log/index           | DragonFlyJob::Controller::Log        | index        |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /add/db                             | /add/_opendb                         |
+| /appxml                             | /query/appxml                        |
+| /ping                               | /ping                                |
+| /status                             | /query/status                        |
+| /stderr                             | /log/update_stderr                   |
+| /stdout                             | /log/update_stdout                   |
+| /update                             | /update/xml                          |
+| /xml                                | /query/xml                           |
+'-------------------------------------+--------------------------------------'
+
+[info] AppDB powered by Catalyst 5.7014
+You can connect to your server at http://dragonfly:3020
+Restarting server on SIGHUP...
+[debug] Debug messages enabled
+[debug] Statistics enabled
+[warn] You are running an old script!
+
+  Please update by running (this will overwrite existing files):
+    catalyst.pl -force -scripts DragonFlyJob
+
+  or (this will not overwrite existing files):
+    catalyst.pl -scripts DragonFlyJob
+
+[debug] Loaded plugins:
+.----------------------------------------------------------------------------.
+| Catalyst::Plugin::ConfigLoader  0.21                                       |
+| Catalyst::Plugin::StackTrace  0.09                                         |
+| Catalyst::Plugin::Static::Simple  0.20                                     |
+'----------------------------------------------------------------------------'
+
+[debug] Loaded dispatcher "Catalyst::Dispatcher"
+[debug] Loaded engine "Catalyst::Engine::HTTP"
+[debug] Found home "/home/dragonfly/df/DragonFlyJob"
+[debug] Loaded components:
+.-----------------------------------------------------------------+----------.
+| Class                                                           | Type     |
++-----------------------------------------------------------------+----------+
+| DragonFlyJob::Controller::Add                                   | instance |
+| DragonFlyJob::Controller::Log                                   | instance |
+| DragonFlyJob::Controller::Query                                 | instance |
+| DragonFlyJob::Controller::Root                                  | instance |
+| DragonFlyJob::Controller::Update                                | instance |
+| DragonFlyJob::View::Mason                                       | instance |
+'-----------------------------------------------------------------+----------'
+
+[debug] Loaded Private actions:
+.----------------------+--------------------------------------+--------------.
+| Private              | Class                                | Method       |
++----------------------+--------------------------------------+--------------+
+| /default             | DragonFlyJob::Controller::Root       | default      |
+| /end                 | DragonFlyJob::Controller::Root       | end          |
+| /index               | DragonFlyJob::Controller::Root       | index        |
+| /ping                | DragonFlyJob::Controller::Root       | ping         |
+| /update/xml          | DragonFlyJob::Controller::Update     | xml          |
+| /query/appxml        | DragonFlyJob::Controller::Query      | appxml       |
+| /query/status        | DragonFlyJob::Controller::Query      | status       |
+| /query/default       | DragonFlyJob::Controller::Query      | default      |
+| /query/xml           | DragonFlyJob::Controller::Query      | xml          |
+| /add/default         | DragonFlyJob::Controller::Add        | default      |
+| /log/update_stderr   | DragonFlyJob::Controller::Log        | update_stde- |
+|                      |                                      | rr           |
+| /log/update_stdout   | DragonFlyJob::Controller::Log        | update_stdo- |
+|                      |                                      | ut           |
+| /log/index           | DragonFlyJob::Controller::Log        | index        |
+'----------------------+--------------------------------------+--------------'
+
+[debug] Loaded Path actions:
+.-------------------------------------+--------------------------------------.
+| Path                                | Private                              |
++-------------------------------------+--------------------------------------+
+| /add/db                             | /add/_opendb                         |
+| /appxml                             | /query/appxml                        |
+| /ping                               | /ping                                |
+| /status                             | /query/status                        |
+| /stderr                             | /log/update_stderr                   |
+| /stdout                             | /log/update_stdout                   |
+| /update                             | /update/xml                          |
+| /xml                                | /query/xml                           |
+'-------------------------------------+--------------------------------------'
+
+[info] AppDB powered by Catalyst 5.7014
+You can connect to your server at http://dragonfly:3020

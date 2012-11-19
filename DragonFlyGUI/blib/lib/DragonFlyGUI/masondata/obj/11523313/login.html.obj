@@ -1,0 +1,181 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $nav, $body, $error_msg, $tab );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/login.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/login.html
+     $nav = exists $pos{'nav'} ? $_[ $pos{'nav'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/login.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/login.html
+     $error_msg = exists $pos{'error_msg'} ? $_[ $pos{'error_msg'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/login.html
+     $tab = exists $pos{'tab'} ? $_[ $pos{'tab'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 8 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '<html>
+' );
+#line 9 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->comp(   '/components/style.mas'  
+); #line 9 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '
+
+<head>
+' );
+#line 12 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->comp(   '/components/header.mas'  
+); #line 12 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '
+</head>
+<body>
+' );
+#line 15 /home/dragonfly/df/DragonFlyGUI/root/login.html
+
+use Sys::Hostname;
+my $hostname	= hostname;
+#
+# handle case of no pre-defined tabs, emit 'default' set of login tabs
+if (!$tab)
+ {
+  push @$tab,{
+  	     label	=> "Login",
+	     uri	=> "login",
+	     content	=> '
+<p>
+ <table>
+  <form method="POST" action="/login">
+   <tr>
+    <td><strong>Username</strong>:</td>
+    <td><input type="text" name="username" size="32" /></td>
+   </tr>
+   <tr>
+    <td><strong>Password</strong>:</td>
+    <td> <input type="password" name="password" size="32" /></td>
+   </tr>
+   <tr>
+    <td><input type="submit" value="Login" /></td>
+   </tr>
+  </form>
+ </table>
+</p>	     
+	     '
+	    };
+	    
+  push @$tab,{
+  	     label	=> "Help",
+	     uri	=> "help",
+	     content	=> '
+
+<p align="justify">
+ For help on logins, or getting login access, please contact your systems
+ administrator, or <a href="mailto:help@scalableinformatics.com?Subject=DragonFly setup help">
+ send us an email</a>.
+ <br />
+ <br />
+ For help on setting up your own DragonFly system atop an existing or new HPC environment,
+ please <a href="mailto:help@scalableinformatics.com?Subject=DragonFly login help">
+ send us an email</a>.
+ <br />
+ <br />
+ To report a problem with the system, please
+ <a href="mailto:help@scalableinformatics.com?Subject=DragonFly problem">
+ send us an email</a>.
+</p>
+	     '
+	     };
+  push @$tab,{
+  	     label	=> "About",
+	     uri	=> "about",
+	     content	=> '
+<p align="justify">
+ 
+  DragonFly is a technology owned, developed, and marketed by <A href="http://scalableinformatics.com">Scalable Informatics LLC</a>
+  that
+  enables end users to interact with complex high perfromance computing environments.
+  DragonFly and its ancestors (SICE) have been in active development since 2002.
+  <br /><br />
+  DragonFly allows end users to interact with their high performance computing
+  environments via commonly available web browser tools.  It provides a buffer between
+  complex command line environments and accessable GUI environments, and allows
+  high performance computing resource owners to make very different computing enviroments
+  appear to be very similar.  This reduces complexity and shortens learning curves
+  for users, allowing them to become more productive sooner.  DragonFly is designed specifically
+  to enable easy addition of new applications, and rapid deployment of the application across
+  multiple DragonFly-based environments.
+  <br /><br />
+  Dragonfly is dual licensed <a href="http://www.fsf.org/licensing/licenses/info/GPLv2.html">GPLv2-only</a> for open source non-supported projects,
+  and <a href="/licensing">commercial</a> for closed source or supported projects.  Paid support and customization
+  is available for either version.
+  
+  DragonFly and SICE are copyright &copy; 2002-2007 <A href="http://scalableinformatics.com">Scalable Informatics LLC</a>
+  
+</p>
+	     '
+	     };  
+ }
+#line 99 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '
+' );
+#line 100 /home/dragonfly/df/DragonFlyGUI/root/login.html
+ if ($error_msg) {
+$m->print( '<div align="center" class="error_msg">
+ <p>' );
+#line 102 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( $m->interp->apply_escapes( (join '', ( $error_msg)), 'h' ) );
+#line 102 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '</p>
+</div>
+' );
+#line 104 /home/dragonfly/df/DragonFlyGUI/root/login.html
+ }
+$m->print( '<div align="center" >
+ <br />
+ <br />
+</div>
+' );
+#line 109 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->comp(   '/components/create_tabs.mas',tab=>$tab   
+); #line 109 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '
+
+<div align="center" >
+ <br />
+ <br />
+</div>
+
+' );
+#line 116 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->comp(   '/components/footer.mas'  
+); #line 116 /home/dragonfly/df/DragonFlyGUI/root/login.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$body' => { default => ' undef' },
+  '$error_msg' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$nav' => { default => ' undef' },
+  '$tab' => { default => ' undef' }
+},
+'load_time' => 1300392124,
+
+)
+;

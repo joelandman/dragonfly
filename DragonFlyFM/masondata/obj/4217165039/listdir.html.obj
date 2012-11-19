@@ -1,0 +1,111 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $file_array, $is_IE, $top_path, $rel_path, $download_uri_base );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+     $file_array = exists $pos{'file_array'} ? $_[ $pos{'file_array'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+     $is_IE = exists $pos{'is_IE'} ? $_[ $pos{'is_IE'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+     $top_path = exists $pos{'top_path'} ? $_[ $pos{'top_path'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+     $rel_path = exists $pos{'rel_path'} ? $_[ $pos{'rel_path'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+     $download_uri_base = exists $pos{'download_uri_base'} ? $_[ $pos{'download_uri_base'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 8 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+
+use XML::Smart;
+use File::Spec;
+my (@files,$name,$rpath,@top_dir);
+@top_dir = File::Spec->splitdir( $top_path );
+if ($file_array)
+ {
+  @files = @{$file_array};
+ }
+#line 18 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '
+' );
+#line 19 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+ if (!$file_array) {
+  # no directories
+$m->print( '  <files>
+  </files>
+' );
+#line 23 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+ return;  
+ }
+$m->print( '
+<files>
+' );
+#line 27 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+ foreach my $file (@files) 
+  { 
+   my @dirs = File::Spec->splitdir( $file );
+   my @rel_dir=@dirs;
+   foreach my $index (0 .. $#top_dir) 
+    { 
+      shift @rel_dir if ($dirs[$index] eq $top_dir[$index]);
+    }
+$m->print( '  <file name="' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  $dirs[$#dirs]  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '" fullpath="' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  $file  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '" relpath="' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  File::Spec->catfile(@rel_dir)  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '"  download_relpath="' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  $download_uri_base  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( 'download/' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  File::Spec->catfile(@rel_dir)  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '"  download_abspath="' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  $download_uri_base  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( 'downloadabs/' );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print(  $file  );
+#line 35 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+$m->print( '" 
+  />
+' );
+#line 37 /home/dragonfly/df/DragonFlyFM/root/listdir.html
+  }
+$m->print( '</files>
+' );
+;return;
+},
+'declared_args' => {
+  '$download_uri_base' => { default => ' undef' },
+  '$file_array' => { default => ' undef' },
+  '$is_IE' => { default => ' undef' },
+  '$rel_path' => { default => ' undef' },
+  '$top_path' => { default => ' undef' }
+},
+'load_time' => 1223328693,
+
+)
+;

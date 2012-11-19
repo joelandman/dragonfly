@@ -1,0 +1,53 @@
+<%args>
+$projects  => undef
+</%args>
+<html>
+% my $hash;
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<table>
+<tr><th>Links</th>
+    <th>Project ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Start</th>
+    <th>Data Repository</th>
+    <th>Documentation</th>
+    <th>Active</th>
+    <th>Locked</th>
+</tr>
+
+% foreach my $hash (@{$projects}) {
+%   my %data = %{$hash->{_column_data}};
+<tr>
+    <td><a href="<% $c->uri_for('delete/') . $data{id} %>">Delete</a></td>
+%   foreach ('project_id',
+%            'project_name',
+%            'project_description',
+%            'project_status',
+%            'project_start',
+%            'project_uri',
+%            'project_documentation',
+%            'active',
+%            'locked')
+%   {
+     <td><% $data{$_} %></td>
+%   }
+</tr>
+% }
+</table>
+
+<div align="center">
+ <br />
+</div>
+<& /components/footer.mas &>
+</body>
+</html>

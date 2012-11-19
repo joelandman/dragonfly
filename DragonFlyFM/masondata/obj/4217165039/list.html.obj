@@ -1,0 +1,295 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $xmldir, $is_IE, $top_path, $rel_path, $real_rel_path, $download_uri_base );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $xmldir = exists $pos{'xmldir'} ? $_[ $pos{'xmldir'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $is_IE = exists $pos{'is_IE'} ? $_[ $pos{'is_IE'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $top_path = exists $pos{'top_path'} ? $_[ $pos{'top_path'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $rel_path = exists $pos{'rel_path'} ? $_[ $pos{'rel_path'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $real_rel_path = exists $pos{'real_rel_path'} ? $_[ $pos{'real_rel_path'} ] :  undef;
+#line 7 /home/dragonfly/df/DragonFlyFM/root/list.html
+     $download_uri_base = exists $pos{'download_uri_base'} ? $_[ $pos{'download_uri_base'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 9 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '<html>
+' );
+#line 10 /home/dragonfly/df/DragonFlyFM/root/list.html
+ use Data::Dumper;
+ use XML::Smart;
+ use File::Spec;
+$m->print( '
+' );
+#line 14 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/style.mas'  
+); #line 14 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+<head>
+' );
+#line 16 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/header.mas'  
+); #line 16 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+
+<!-- & /components/body.mas,        main    => $body  & -->
+
+' );
+#line 25 /home/dragonfly/df/DragonFlyFM/root/list.html
+
+return if (!$xmldir);
+
+# parse XML ...
+my $xml		= XML::Smart->new($xmldir);
+my $base_path	= $xml->{'dirtree'}{'head'}{'path'}->content;
+my ($dirs,$files,$dir,$file);
+		
+# note:  is_IE has as its entire purpose in life, to signify whether
+# or not we are using IE in any of its forms.  This is, unfortunately,
+# important, as IE seems to break on standard AJAXified stuff, 
+# so we turn AJAX uploads off if we detect IE. 
+
+ 
+#line 40 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+<p align="left">
+Quick navigation: <a href="/list">project top directory</a> 
+' );
+#line 43 /home/dragonfly/df/DragonFlyFM/root/list.html
+   my $bread_crumb = "";
+   foreach my $_subdir (File::Spec->splitdir( $real_rel_path ))
+    {
+      next if (($_subdir eq "/") || ($_subdir eq ""));
+      my $_tmp_bread_crumb	= File::Spec->catfile($bread_crumb, $_subdir );
+      $bread_crumb	= $_tmp_bread_crumb;	
+$m->print( '       / <a href="/list/' );
+#line 49 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $top_path  );
+#line 49 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( $bread_crumb)), 'h' ) );
+#line 49 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '">' );
+#line 49 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( $_subdir)), 'h' ) );
+#line 49 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '</a>
+' );
+#line 50 /home/dragonfly/df/DragonFlyFM/root/list.html
+    }
+$m->print( ' : [<a href="' );
+#line 51 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $download_uri_base  );
+#line 51 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( 'xmldir/' );
+#line 51 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $bread_crumb  );
+#line 51 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '">xml</a>]
+</p>
+<hr />
+
+<p align="center">
+ <table>
+  <tr valign="top">
+   <td>' );
+#line 58 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/upload.mas', destination_path => $base_path, is_IE => $is_IE , rel_path => $rel_path   
+); #line 58 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '</td>
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   <td>' );
+#line 60 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/directories.mas', destination_path => $base_path , rel_path => $rel_path   
+); #line 60 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '</td>
+  </tr>
+' );
+#line 62 /home/dragonfly/df/DragonFlyFM/root/list.html
+ if (0) {
+$m->print( '  <tr>
+   <td colspan=2>' );
+#line 64 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/settopdir.mas', top_dir => $top_path   
+); #line 64 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '</td>
+  </tr>
+' );
+#line 66 /home/dragonfly/df/DragonFlyFM/root/list.html
+ }
+$m->print( ' </table>
+</p>
+
+<p /> 
+<table align="center">
+ <thead> 
+  <tr>
+   <th>Directories under ' );
+#line 74 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $rel_path  );
+#line 74 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( ' :  </th>
+   <th></th>
+   <th>Files</th>
+  </tr>
+ </thead>
+ <tbody>
+ <tr>
+  <td valign="top">
+<!-- start of directory list -->
+<ul id=\'browser\' class=\'filetree\'>
+<!-- top path = ' );
+#line 84 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $top_path  );
+#line 84 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( ' -->
+' );
+#line 85 /home/dragonfly/df/DragonFlyFM/root/list.html
+ foreach $dir ($xml->{'dirtree'}{'directory'}{'directory'}('[@]','name'))
+ {
+$m->print( '  <li>
+   <span class=\'folder\'>
+' );
+#line 89 /home/dragonfly/df/DragonFlyFM/root/list.html
+   my $_tpath	= File::Spec->catfile($rel_path,$dir->content);
+$m->print( '    <a href="/list/' );
+#line 90 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( $_tpath)), 'h' ) );
+#line 90 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '">' );
+#line 90 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( $dir->content)), 'h' ) );
+#line 90 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '</a>
+     <!-- t_path = ' );
+#line 91 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $_tpath  );
+#line 91 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '  -->
+   </span>
+  </li>  
+' );
+#line 94 /home/dragonfly/df/DragonFlyFM/root/list.html
+ }
+$m->print( '</ul>
+  </td>
+  <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td valign="top">
+   <table id="myTable" cellspacing="1" class="tablesorter">
+    <thead>
+     <tr>
+      <th>Date&nbsp;&nbsp;</th>
+      <th>Size (bytes)&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th>Name&nbsp;&nbsp;</th>
+     </tr>
+    </thead>
+    <tbody>
+
+' );
+#line 109 /home/dragonfly/df/DragonFlyFM/root/list.html
+ foreach $file ($xml->{'dirtree'}{'directory'}{'file'}('@'))
+ {
+$m->print( '     <tr>
+      <td>
+       ' );
+#line 113 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $file->{'access-time'}->content );
+#line 113 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+      </td>
+      <td align="right">
+       ' );
+#line 116 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $file->{'size'}->content );
+#line 116 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+      </td>
+      <td>
+<!-- bread_crumb = ' );
+#line 119 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $bread_crumb  );
+#line 119 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '  -->
+       <a href="' );
+#line 120 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(  $download_uri_base  );
+#line 120 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '/download/' );
+#line 120 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( File::Spec->catfile($rel_path,$file->{'name'}->content))), 'h' ) );
+#line 120 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '">
+	' );
+#line 121 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( $m->interp->apply_escapes( (join '', ( $file->{'name'}->content)), 'h' ) );
+#line 121 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( ' 
+       </a>
+      </td>
+     </tr>
+' );
+#line 125 /home/dragonfly/df/DragonFlyFM/root/list.html
+ }
+$m->print( '    </tbody>
+   </table>
+  </td>
+ </tr>
+ </tbody>
+</table>
+<!-- foreach my $file ($xml->{\'dirtree\'}{\'directory\'}{\'file\'}(\'[@]\',\'name\')) -->
+
+<!--
+   ' );
+#line 135 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print(   $xmldir  );
+#line 135 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+  -->
+
+</ul>
+<div align="center">
+ <br />
+</div>
+' );
+#line 142 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->comp(   '/components/footer.mas'  
+); #line 142 /home/dragonfly/df/DragonFlyFM/root/list.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$download_uri_base' => { default => ' undef' },
+  '$is_IE' => { default => ' undef' },
+  '$real_rel_path' => { default => ' undef' },
+  '$rel_path' => { default => ' undef' },
+  '$top_path' => { default => ' undef' },
+  '$xmldir' => { default => ' undef' }
+},
+'load_time' => 1223332378,
+
+)
+;

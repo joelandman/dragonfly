@@ -1,0 +1,5 @@
+# Form config file root/forms/jobs/newjob1.fb
+name: newjob1
+method: post
+submit: Previous, Cancel, Next
+reset:  Reset

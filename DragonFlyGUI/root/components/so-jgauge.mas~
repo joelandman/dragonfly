@@ -1,0 +1,75 @@
+
+<!-- jGauge speedometer,  see  http://www.dariancabot.com/projects/jgauge_wip/doc.html -->
+<link rel="stylesheet" href="/style/jgauge/jgauge.css" type="text/css" /> <!-- CSS for jGauge styling. --> 
+ 
+<!--[if IE]>
+ <script type="text/javascript" language="javascript" src="js/excanvas.min.js"></script>
+<![endif]-->
+<script language="javascript" type="text/javascript" src="/js/jgauge/jQueryRotate.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/jgauge/jgauge-0.3.0.a3.js"></script> 
+
+
+<div class="break"></div> 
+
+<div id="speed" >
+
+  <div id="BW" class="jgauge"></div>
+
+  <div id="IOP" class="jgauge"></div>
+
+<script type="text/javascript">
+    var B   = new Number();
+	var IO	= new Number();
+    
+    var update_interval = new Number(5000000);
+    var interation_lim  = new Number(0);
+    
+	var BW = new jGauge(); // Create a new jGauge.
+    var IOP= new jGauge(); // Create a new jGauge.
+    BW.id  = 'BW'; // Link the new jGauge to the placeholder DIV.
+    IOP.id = 'IOP'; // Link the new jGauge to the placeholder DIV.
+   
+    // This function is called by jQuery once the page has finished loading.
+    $(document).ready(function(){
+      BW.init();  // Put the jGauge on the page by initialising it.
+      IOP.init(); // Put the jGauge on the page by initialising it.
+    });
+    
+     
+	BW.label.suffix = "MB/s";
+	BW.label.precision = 0;
+	BW.needle.limitAction = "autoRange";
+	BW.ticks.end = 1000;
+	BW.updateTicks();
+	BW.updateRange();
+
+	IOP.label.suffix = "IOPs";
+	IOP.label.precision = 0;
+	IOP.needle.limitAction = "autoRange";
+	IOP.ticks.end = 10000;
+	IOP.updateTicks();
+	IOP.updateRange();
+                       
+    // now for the fancy autoupdate of the speedometer ...
+    // hopefully 1/sec
+    //function update()
+     
+    function update() {
+     B = $.ajax({
+                url:"/monitor/totalbw/total",
+                async: false
+              }).responseText;      
+     BW.setValue(B);
+	 IO = $.ajax({
+                url:"/monitor/totaliops/total",
+                async: false
+              }).responseText;      
+     IOP.setValue(IO);
+    };
+    
+    update();
+        
+    setInterval(function () {update();},update_interval)
+    
+</script>	  
+</speed>

@@ -1,0 +1,14 @@
+<form method="post" action="<% $c->uri_for('form_create_do') %>">
+<table>
+  <tr><td>Project Name:</td><td><input type="text" name="project_name"></td></tr>
+  <tr><td>Project ID:</td><td><input type="text" name="project_id"></td></tr>
+  <tr><td>Project Start:</td><td><input type="text" name="project_start"></td></tr>
+  <tr><td>Project Status:</td><td><input type="text" name="project_status"></td></tr>
+  <tr><td>Project Data Repository:</td><td><input type="text" name="project_uri"></td></tr>
+  <tr><td>Project Description:</td><td><input type="text" name="project_description"></td></tr>
+  <tr><td>Project Documentation:</td><td><input type="text" name="project_documentation"></td></tr>
+  <tr><td>Active:</td><td><input type="text" name="active"></td></tr>
+  <tr><td>Locked:</td><td><input type="text" name="locked"></td></tr>
+</table>
+<input type="submit" name="Submit" value="Submit">
+</form>

@@ -1,0 +1,4 @@
+# Form config file root/forms/jobs/review.fb
+name: jobs_review
+method: post
+submit: No, Yes

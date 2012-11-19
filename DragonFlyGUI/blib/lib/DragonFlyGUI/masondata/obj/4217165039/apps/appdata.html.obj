@@ -1,0 +1,102 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $left, $navbar, $body, $forms, $app, $vers );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $left = exists $pos{'left'} ? $_[ $pos{'left'} ] :  undef;
+#line 3 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $navbar = exists $pos{'navbar'} ? $_[ $pos{'navbar'} ] :  undef;
+#line 4 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $body = exists $pos{'body'} ? $_[ $pos{'body'} ] :  undef;
+#line 5 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $forms = exists $pos{'forms'} ? $_[ $pos{'forms'} ] :  undef;
+#line 6 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $app = exists $pos{'app'} ? $_[ $pos{'app'} ] :  undef;
+#line 7 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+     $vers = exists $pos{'vers'} ? $_[ $pos{'vers'} ] :  undef;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 9 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '</html>
+' );
+#line 10 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->comp(   '/components/style.mas'  
+); #line 10 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+<head>
+' );
+#line 12 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->comp(   '/components/header.mas'  
+); #line 12 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+</head>
+<body>
+<div align="center">
+ <br />
+</div>
+' );
+#line 18 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->comp(   '/components/nav-bar.mas',     navbar  => $navbar    
+); #line 18 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+' );
+#line 19 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->comp(   '/components/table.mas'  
+); #line 19 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+<p>
+<H2>Application: ' );
+#line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print(  $app  );
+#line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version: ' );
+#line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print(  $vers  );
+#line 21 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '</H2>
+<p>
+
+' );
+#line 24 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print(  $forms->render  );
+#line 24 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+
+<div align="center">
+ <br />
+</div>
+' );
+#line 29 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->comp(   '/components/footer.mas'  
+); #line 29 /home/dragonfly/df/DragonFlyGUI/root/apps/appdata.html
+$m->print( '
+</body>
+</html>
+' );
+;return;
+},
+'declared_args' => {
+  '$app' => { default => ' undef' },
+  '$body' => { default => ' undef' },
+  '$forms' => { default => ' undef' },
+  '$left' => { default => ' undef' },
+  '$navbar' => { default => ' undef' },
+  '$vers' => { default => ' undef' }
+},
+'load_time' => 1223345441,
+
+)
+;

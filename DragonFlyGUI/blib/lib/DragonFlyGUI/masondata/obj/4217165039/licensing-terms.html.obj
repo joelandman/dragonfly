@@ -1,0 +1,140 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 1 /home/dragonfly/df/DragonFlyGUI/root/licensing-terms.html
+$m->print( '<html lang="en">
+<head>
+    <title>DragonFly Licensing</title>
+</head>
+<body>
+Dragonfly is available under a either a GPLv2-only license, or a commerial license.
+The following text is a clarification about which options are appropriate for
+your case.
+    
+<h2>DragonFly Commercial License</h2>
+
+<p align="justify">
+
+The Commercial License is an agreement with Scalable Informatics for
+organizations that do not want to release their application source code or
+require support.  Commercially licensed customers get a commercially supported product
+from Scalable Informatics. Commercially licensed users are also free from the
+requirement of making their own application open source.
+<br />
+<br />
+When your application is not licensed under either the GPLv2-only Free
+Software License as defined by the Free Software Foundation or approved by OSI,
+and you intend to or you may distribute DragonFly software, you must first
+obtain a commercial license to the DragonFly product.
+<br />
+<br />
+<h3>Typical examples of DragonFly distribution include:</h3>
+<br />
+<ul>
+ <li>  Selling software that includes DragonFly to customers who install the software on their own machines.</li>
+ <li>  Selling software that requires users and/or customers to install DragonFly themselves on their own machines.</li>
+ <li>  Building a hardware system that includes DragonFly and selling that hardware system to customers for installation at their own locations.</li>
+</ul>
+<br />
+<br />
+<h3>Specifically:</h3>
+<br />
+<ul>
+ <li> If you include the DragonFly server with an application that is not licensed
+      under the GPL or GPL-compatible license, you need a commercial license for
+      the DragonFly server.</li>
+ <li> If you develop and distribute a commercial application and as part of utilizing
+      your application, the end-user must download a copy of DragonFly; for each
+      derivative work, you (or, in some cases, your end-user) need a commercial
+      license for the DragonFly server and/or DragonFly client libraries.</li>
+ <li> If you include one or more of the DragonFly programs in your non-GPL application
+      (so that your application can run with DragonFly), you need a commercial license
+      for the program(s) in question. 
+ <li> GPL users have no direct legal relationship with Scalable Informatics LLC.
+      The commercial license, on the other hand, is Scalable Informatics LLC private
+      license, and provides a direct legal relationship with Scalable Informatics LLC.  It
+      is possible for GPL users to make a seperate legal consulting or featured development
+      agreement with Scalable Informatics LLC.  This agreement shall be independent of
+      the commercial license, and cannot be used to abrogate the terms and conditions of
+      the license.
+</ul>
+ 
+<br />
+<br />
+With a commercial non-GPL DragonFly server license, one license is required per
+HPC system head node or application server used by end users to interact with DragonFly.
+There are no restrictions on the number of connections, number of users, number of
+compute nodes, number of CPUs, memory or disks to that one DragonFly server.
+<br />
+<br />
+
+<h3>Non-Profits, Academic Institutions, and Private Individuals</h3>
+
+If you represent a non-profit organization or an academic institution, we recommend
+you publish your application as an open source / free software project using the
+GPLv2-only license. In this manner, you are free to use DragonFly software free
+of charge under the GPL license. We believe that if you have strong reasons to
+not publish your application in accordance with the GPLv2-only, you should
+purchase commercial licenses. 
+<br />
+<br />
+
+
+If you are a private individual you are free to use DragonFly software for your
+personal applications as long as you do not distribute them. If you distribute
+them, you must make a decision between the Commercial License and the GPLv2-only.
+<br />
+<br />
+
+Please note that even if you ship a free demo version of your own application,
+the above rules apply.
+<br />
+<br />
+
+<h3>Recommendations</h3>
+
+Please note that Scalable Informatics LLC can only give advice on which license
+is right for you. The final judgment, of course can be made only by a court of
+law. With that said, we recommend the commercial license to all commercial and
+government organizations. This frees you from the broad and strict requirements
+of the GPLv2-only license.
+
+To all free software enthusiasts we recommend our products under the GPLv2-only
+license.
+
+To anyone in doubt, we recommend the commercial license. It is never wrong.
+
+<br />
+<br />
+
+<h2>Ownership</h2>
+DragonFly and associated technologies are owned by
+<a href="http://scalableinformatics.com">Scalable Informatics LLC</a>.
+DragonFly and associated technologies are
+copyrighted works.  Title and ownership of the software and technologies are
+not ever passed to a licensee, under any condition.  DragonFly may build upon
+other FOSS technologies, which are distributed under their respective licenses.
+These technologies do not transfer ownership or title to licensee under any
+condition.
+<br/><br/>
+<h2>Obligations</h2>
+Licensee is bound by the license by the act of installing the software, or allowing
+the software to be installed.  By default, it is assumed by 
+<a href="http://scalableinformatics.com">Scalable Informatics LLC</a>
+that a GPLv2-only license will be elected.  If this is not the intent during
+or after installation, and one or more of the commercial license requirements are
+met, it is the obligation of the end user to obtain an appropriate commercial license
+from <a href="http://scalableinformatics.com">Scalable Informatics LLC</a>
+
+</body>
+</html>' );
+;return;
+},
+'load_time' => 1223326769,
+
+)
+;

@@ -1,0 +1,7 @@
+# format: two colons separate elements on each line
+# line format:  a pound symbol represents a comment, everything
+# from there to end of line is ignored
+# 1st element: 1 to N dashes "-" indicating the depth of this entry, 
+#  1 dash indicating top, 2 dashes are second level, etc
+-::"System"::"/system"::
+--

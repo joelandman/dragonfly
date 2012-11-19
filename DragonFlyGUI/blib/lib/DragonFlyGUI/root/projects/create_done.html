@@ -1,0 +1,21 @@
+<%args>
+$project     => undef
+</%args>
+% use Data::Dumper;
+<html>
+<& /components/style.mas &>
+<head>
+<& /components/header.mas &>
+</head>
+<body>
+<p>Added Project ID <% $project->project_id %> </p>
+<p><a href="<% $c->uri_for('/projects/list') %>">Show list of Projects</a></p>
+Dump of project: <% $project->project_id %> </br /></br />
+<pre>
+<% $Data::Dumper::Indent = 1 %>
+<% (sprintf "Dump=%s\n",Dumper($project)) %>
+</pre>
+</div>
+<& /components/footer.mas &>
+</body>
+</html> 

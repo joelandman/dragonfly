@@ -1,0 +1,19 @@
+<!-- from footer.mas -->
+<div class="footer" >
+ <p class="clear" />
+ <div id="header-left">
+  <a href="http://scalableinformatics.com" style="border-style: none">
+   <img src="/static/images/sillc_sm2.jpg" alt="Scalable Informatics" class="left-image" /> 
+  </a>
+ </div>
+ 
+ <div id="header-right">
+ <img src="/static/images/simply_faster_sm_trans.png" alt="Simply faster" class="right-image" />
+</div>
+<div align="center">
+  Copyright &copy; 2003-2007 Scalable Informatics LLC<br />
+  All trademarks are properties of their respective owners.<br />
+  DragonFly is dual licensed (<a href="">GPLv2</a> and commercial).<br />Contact <a href="http://scalableinformatics.com">Scalable Informatics</a> for details.
+ </div>
+</div>
+<!-- end of footer.mas -->

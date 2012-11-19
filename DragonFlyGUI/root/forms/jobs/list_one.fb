@@ -1,0 +1,12 @@
+# Form config file root/forms/jobs/list_one.fb
+name: jobs_list_one
+method: post
+fields:
+    jobxml:
+        label: Job XML
+        type:  textarea
+        cols:  80
+        rows:  12
+
+
+submit: Update This Job, Delete This Job, Return to Job List

@@ -1,0 +1,239 @@
+package HTML::Mason::Commands;
+use strict;
+use vars qw($m $name $c $base);
+HTML::Mason::Component::FileBased->new(
+'code' => sub {
+HTML::Mason::Exception::Params->throw
+    ( error =>
+      "Odd number of parameters passed to component expecting name/value pairs"
+    ) if @_ % 2;
+my ( $config );
+{
+    my %pos;
+    for ( my $x = 0; $x < @_; $x += 2 )
+    {
+        $pos{ $_[$x] } = $x + 1;
+    }
+#line 2 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+     $config = exists $pos{'config'} ? $_[ $pos{'config'} ] :  undef;;
+}
+$m->debug_hook( $m->current_comp->path ) if ( HTML::Mason::Compiler::IN_PERL_DB() );
+
+#line 4 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+
+
+my ($nic,$nics,@list,@nic_list,$n);
+$nics   = `/bin/ls /sys/class/net/`;
+$n      = "\n";
+@list   = split(/\n/,$nics);
+  
+foreach $nic (@list) 
+     { 
+       next if ($nic =~ /^tun/ );
+       next if ($nic =~ /^pan/ );
+       next if ($nic =~ /^vbox/ );
+       next if ($nic =~ /^lo/ );     
+       push @nic_list,$nic;
+     }    
+#line 20 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( '
+<!-- in nav-mega.mas -->
+<div id="navigation">
+ <ul id="nav-mega">
+  <li><a href="#">System</a>
+   <ul>
+    <li><a href="#">Network Connections</a>
+     <ul>
+
+' );
+#line 29 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+   foreach $nic (@nic_list) {
+$m->print( '      <li><a href="#">' );
+#line 30 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( $nic)), 'h' ) );
+#line 30 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( '</a></li>
+' );
+#line 31 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+   }
+$m->print( ' 
+      <li><a href="#">Alias</a></li>
+      <li><a href="#">VLAN</a></li>      
+      <li><a href="#">VPN</a></li>
+     </ul>
+    </li>
+   
+ 
+    <li><a href="#">Network Management</a>
+     <ul>
+      <li><a href="#">Gateway: 
+            ' );
+#line 50 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( 
+              (sprintf "%s",(
+                             $config->{network}->{gateway} ? 
+                             $config->{network}->{gateway} : 
+                             "undef"
+                            )
+              ))), 'h' ) );
+#line 50 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( '
+          </a>       
+      </li>      
+      <li><a href="#">Default Route: 
+            ' );
+#line 61 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( $m->interp->apply_escapes( (join '', ( 
+              (sprintf "%s",(
+                             $config->{network}->{defroute} ? 
+                             $config->{network}->{defroute} : 
+                             "undef"
+                            )
+              ))), 'h' ) );
+#line 61 "/home/landman/df/DragonFlyGUI/root/components/nav-mega.mas"
+$m->print( '
+          </a>       
+      </li>
+      <li><a href="#">Name Resolution:</a>
+       <ul>
+        <div id="dns:nameservers"></div>
+        <!-- div will be replaced by a set of li with 1 li per resolver -->  
+        <li><a href="#">Add resolver</a></li>
+        <li><a href="#">Delete resolver</a></li>
+       </ul>
+      </li>
+      
+      
+        
+    </ul>
+    </li>
+    <li><a href="#">RAID</a>
+     <ul>
+      <li><a href="#">Hardware LUNs</a>
+       <ul>
+        <div id="hw:LUNs"></div>
+        <!-- div will be replaced by a UL with 1 li per LUN -->  
+        <li><a href="#">Create LUN</a></li>
+        <li><a href="#">Remove LUN</a></li>
+       </ul>
+      </li>
+      <li><a href="#">Software LUNs</a>
+       <ul>
+        <div id="sw:LUNs"></div>
+        <!-- div will be replaced by a UL with 1 li per LUN -->  
+        <li><a href="#">Create LUN</a></li>
+        <li><a href="#">Remove LUN</a></li>
+       </ul>
+      </li>              
+     </ul>
+    </li>
+  
+   </ul>
+  </li>
+  
+  <li><a href="#">Storage Cluster</a>
+   <ul>
+    <li><a href="#">Storage Nodes</a>
+     <ul>
+      <div id="sicluster:nodes"></div>
+      <!-- div will be replaced by a UL with 1 li per sicluster storage node -->              
+     </ul>
+    </li> 
+    <li><a href="#">Storage Health</a>
+     <ul>
+      <div id="sicluster:health"></div>
+      <!-- div will be replaced by a UL with 1 li per RAID -->              
+     </ul>
+    </li>
+    <li><a href="#">Storage Targets</a>
+     <ul>
+      <div id="sicluster:targets"></div>
+      <!-- div will be replaced by a UL with 1 li per System monitor -->              
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li><a href="#">Status</a>
+   <ul>
+    <li><a href="#">Networking</a>
+     <ul>
+      <div id="graph:nics"></div>
+      <!-- div will be replaced by a UL with 1 li per NIC -->              
+     </ul>
+    </li> 
+    <li><a href="#">RAID</a>
+     <ul>
+      <div id="graph:raid"></div>
+      <!-- div will be replaced by a UL with 1 li per RAID -->              
+     </ul>
+    </li>
+    <li><a href="#">System health</a>
+     <ul>
+      <div id="graph:system"></div>
+      <!-- div will be replaced by a UL with 1 li per System monitor -->              
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li><a href="#">Targets</a>
+   <ul>
+    <li><a href="#">Block</a>
+     <ul>
+       <li><a href="#">iSCSI</a></li>            
+       <li><a href="#">SRP</a></li>            
+       <li><a href="#">FCoE</a> </li>            
+     </ul>
+    </li> 
+    <li><a href="#">File</a>
+     <ul>
+       <li><a href="#">NFS</a></li>            
+       <li><a href="#">CIFS/SMB</a></li>              
+     </ul>
+    </li>    
+   </ul>
+  </li>
+  <li><a href="#">Cluster File System</a>
+   <ul>
+    <li><a href="#">Lustre</a>
+     <ul>
+       <li><a href="#">Configure MDS</a></li>  
+       <li><a href="#">Manage MDS</a></li> 
+       <li><a href="#">Configure OSS/OST</a></li>
+       <li><a href="#">Manage OSS/OST</a></li>
+     </ul>
+    </li> 
+    <li><a href="#">GlusterFS</a>
+     <ul>
+       <li><a href="#">Manage Peers</a></li>   
+       <li><a href="#">Manage FS</a></li>          
+       <li><a href="#">Manage NFS server</a></li>          
+       <li><a href="#">Manage parameters</a></li>   
+       <li><a href="#">Manage Access</a></li>          
+     </ul>
+    </li>  
+    <li><a href="#">CIFS</a>
+     <ul>
+       <li><a href="#">Manage Shares</a></li>             
+       <li><a href="#">Manage Access</a></li>          
+     </ul>
+    </li>  
+    <li><a href="#">Ceph</a>
+    </li>      
+   </ul>
+  </li>  
+  
+  <li><a href="/logout">Logout</a></li>
+  
+ </ul>
+</div> 
+<!-- end of nav-mega.mas -->
+' );
+;return;
+},
+'declared_args' => {
+  '$config' => { default => ' undef;' }
+},
+'load_time' => 1302648961,
+
+)
+;

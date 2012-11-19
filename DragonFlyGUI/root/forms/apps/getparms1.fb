@@ -1,0 +1,4 @@
+# Form config file root/forms/apps/getparms.fb
+name: jobs_getparms
+method: post
+submit: Cancel, Previous, No Parameters, Add a Parameter
